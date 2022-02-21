@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PierreDellacherieTetrisController.cpp" />
     <ClCompile Include="TetrisBlock.cpp" />
     <ClCompile Include="TetrisController.cpp" />
     <ClCompile Include="TetrisDraw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h" />
+    <ClInclude Include="PierreDellacherieTetrisController.h" />
     <ClInclude Include="TetrisBlock.h" />
     <ClInclude Include="TetrisController.h" />
     <ClInclude Include="TetrisDraw.h" />

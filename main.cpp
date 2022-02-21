@@ -10,6 +10,7 @@
 #include "TetrisDraw.h"
 #include "TetrisBlock.h"
 #include "TetrisController.h"
+#include "PierreDellacherieTetrisController.h"
 
 using namespace std;
 
@@ -27,18 +28,6 @@ WCHAR*			szWindowClassName = TEXT("TetrisClass");
 //
 //------------------------------------------------------------------------------------
 
-void CALLBACK TimerProc(HWND hWnd, UINT nMsg, UINT nTimerid, DWORD dwTime)
-{
-	switch (nTimerid)
-	{
-	case TIMER_BLOCK_DOWN:
-
-		break;
-
-	default: break;
-	}
-
-}
 LRESULT CALLBACK WindowProc(HWND hwnd,
 	UINT msg,
 	WPARAM wparam,
