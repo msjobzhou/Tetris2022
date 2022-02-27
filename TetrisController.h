@@ -21,6 +21,7 @@ public:
 	void setCurTetrisBlock(CTetrisBlock* pCurTetrisBlock=0);
 	bool executeCommand(int nCmd);
 	CTetrisBlock* getCurTetrisBlock();
+	CTetrisDraw* getTetrisDraw();
 	bool isGameOver();
 	long GetScore();
 

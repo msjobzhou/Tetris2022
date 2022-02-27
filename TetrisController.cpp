@@ -50,6 +50,10 @@ CTetrisBlock* CTetrisController::getCurTetrisBlock()
 {
 	return m_pCurTetrisBlock;
 }
+CTetrisDraw* CTetrisController::getTetrisDraw()
+{
+	return m_pTetrisDraw;
+}
 bool CTetrisController::canTetrisBlockMovable(CTetrisBlock* pBlock, int x, int y)
 {
 	//根据用户指令判断当前方块是否可以旋转或者移动到位置(x,y),x,y从0开始
