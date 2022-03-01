@@ -138,11 +138,56 @@ int CPierreDellacherieTetrisController::getBoardColumnTransitions(bool *pbArrTet
 }
 int CPierreDellacherieTetrisController::getBoardBuriedHoles(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth)
 {
-
-	return 0;
+	//对于每一列，从上往下检测，碰到第一个为true的element之后，在这个方块之下的每个为false的element都计数为1个Buried hole
+	int nBuriedHoles = 0;
+	for (int x = 0; x < nWidth; ++x)
+	{
+		bool bFirstOccupiedElementofThisColumn = false;
+		for (int y = nHeight - 1; y >= 0; y--)
+		{
+			if (!bFirstOccupiedElementofThisColumn && (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] == true))
+			{
+				bFirstOccupiedElementofThisColumn = true;
+			}
+			if (bFirstOccupiedElementofThisColumn && (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] == false))
+			{
+				nBuriedHoles++;
+			}
+		}
+	}
+	return nBuriedHoles;
 }
 int CPierreDellacherieTetrisController::getBoardWells(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth)
 {
-
-	return 0;
+	//对于每一列，从上往下检测，如果当前的element为false，则检测左右两侧element是否为true，或者是board边界
+	int nSumWellDepth = 0;
+	for (int x = 0; x < nWidth; ++x)
+	{
+		int nWell = 0;
+		for (int y = nHeight - 1; y >= 0; y--)
+		{
+			if (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] == false)
+			{
+				if ((x - 1 < 0) && (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x +1] == true))
+				{
+					nWell++;
+				}
+				else if ((x + 1) >= nTetrisBoardWidth && (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x - 1] == true))
+				{
+					nWell++;
+				}
+				else if ((pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x + 1] == true) && (pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x - 1] == true))
+				{
+					nWell++;
+				}
+				else
+				{
+					int nWellDepthFrom1to_nWell = ((1 + nWell)*nWell) / 2;
+					nSumWellDepth += nWellDepthFrom1to_nWell; //具体为啥这样算参考代码注释中提到的博客
+					nWell = 0;
+				}
+			}
+		}
+	}
+	return nSumWellDepth;
 }

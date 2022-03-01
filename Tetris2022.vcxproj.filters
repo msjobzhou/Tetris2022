@@ -30,6 +30,9 @@
     <ClCompile Include="PierreDellacherieTetrisController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="PierreDellacherieUnittest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h">
@@ -45,6 +48,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="PierreDellacherieTetrisController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PierreDellacherieUnittest.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

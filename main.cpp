@@ -12,6 +12,8 @@
 #include "TetrisController.h"
 #include "PierreDellacherieTetrisController.h"
 
+#include "PierreDellacherieUnittest.h"
+
 using namespace std;
 
 
@@ -84,6 +86,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		SetTimer(hwnd, TIMER_BLOCK_DOWN, 1000, NULL);
 
+
+		PierreDellacherieUnittest pdut;
+		pdut.addTestFunc(test_getErodedPieceCellsMetric);
+		pdut.runTest();
 	}
 
 	break;
