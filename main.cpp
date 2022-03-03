@@ -87,9 +87,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		SetTimer(hwnd, TIMER_BLOCK_DOWN, 1000, NULL);
 
 
-		PierreDellacherieUnittest pdut;
-		pdut.addTestFunc(test_getErodedPieceCellsMetric);
-		pdut.runTest();
+		
 	}
 
 	break;
@@ -324,6 +322,10 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 	ShowWindow(hwnd, ncmdshow);
 	UpdateWindow(hwnd);
+
+	PierreDellacherieUnittest pdut;
+	pdut.addTestFunc(test_getErodedPieceCellsMetric);
+	pdut.runTest();
 
 	//enter the message loop
 	bool bDone = false;

@@ -20,7 +20,7 @@ public:
 	void getArrTetrisBoardCopyFromCTetrisDraw(bool *pbArrTetrisBoardCopy);
 	void getCurrentTetrisBlockCopy(sTetrisBlock& stb);
 
-private:
+public:
 	int getLandingHeight(sTetrisBlock stb);
 	int getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock stb);
 	int getBoardRowTransitions(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);

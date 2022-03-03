@@ -57,13 +57,14 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 	for (int i = 0; i < stb.nBlockHeight; i++)
 	{
 		int j;
-		//nBlockHeightTmp表示当前方块放在位置的下方高度（也就是tetris board的行）
-		int nBlockHeightTmp = stb.nPosY - stb.nBlockHeight + 1;
+		//注意方块的坐标左上是(0,0)，x轴往右增加，y轴往下增加， Tetrisboard左下是(0,0)，y轴往上增加
+		//nBlockHeightTmp表示当前方块的第i行对应的tetrisBoard的高度（也就是tetris board的行）
+		int nBlockHeightTmp = stb.nPosY -i;
 		//计算填充前方块所在tetris board的行中，有元素占据的位置个数
 		int nOccupiedNum = 0;
 		for (j = 0; j < nTetrisBoardWidth; j++)
 		{
-			if (true == pbArrTetrisBoardCopy[(nBlockHeightTmp + i)*nTetrisBoardWidth + j])
+			if (true == pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + j])
 			{
 				nOccupiedNum++;
 			}
@@ -74,7 +75,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		{
 			if(true == stb.pbBlock[i*stb.nBlockWidth + j])
 			{
-				pbArrTetrisBoardCopy[(nBlockHeightTmp + i)*nTetrisBoardWidth + stb.nPosX+j]
+				pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + stb.nPosX+j]
 					= stb.pbBlock[i*stb.nBlockWidth + j];
 			}
 		}
@@ -83,7 +84,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		int nOccupiedNumAfterTetrisBlockDownTillItCannotMove = 0;
 		for (j = 0; j < nTetrisBoardWidth; j++)
 		{
-			if (true == pbArrTetrisBoardCopy[(nBlockHeightTmp + i)*nTetrisBoardWidth + j])
+			if (true == pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + j])
 			{
 				nOccupiedNumAfterTetrisBlockDownTillItCannotMove++;
 			}
