@@ -324,7 +324,11 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	UpdateWindow(hwnd);
 
 	PierreDellacherieUnittest pdut;
-	pdut.addTestFunc(test_getErodedPieceCellsMetric);
+	pdut.addTestFunc(test_getErodedPieceCellsMetric); 
+	pdut.addTestFunc(test_getBoardRowTransitions); 
+	pdut.addTestFunc(test_getBoardColumnTransitions); 
+	pdut.addTestFunc(test_getBoardBuriedHoles); 
+	pdut.addTestFunc(test_getBoardWells); 
 	pdut.runTest();
 
 	//enter the message loop

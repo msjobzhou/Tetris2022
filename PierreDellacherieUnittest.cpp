@@ -82,17 +82,141 @@ void test_getErodedPieceCellsMetric()
 }
 void test_getBoardRowTransitions()
 {
+	int nHeight = 3;
+	int nWidth = 10;
+	bool *pbArrTetrisBoardCopy = new bool[nHeight*nWidth];
+	//    ¡ö¡ö ¡ö¡ö¡ö
+	//¡ö¡ö   ¡ö  ¡ö  ¡ö
+	//¡ö  ¡ö ¡ö¡ö  ¡ö¡ö¡ö
+	for (int i = 0; i < nHeight; i++)
+	{
+		for (int j = 0; j < nWidth; j++)
+		{
+			pbArrTetrisBoardCopy[i*nWidth + j] = true;
+		}
+	}
+	pbArrTetrisBoardCopy[0 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 6] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 2] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 5] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 7] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 9] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 0] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 4] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 8] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 9] = false;
 
+	CPierreDellacherieTetrisController pdtc(0);
+	assert(pdtc.getBoardRowTransitions(pbArrTetrisBoardCopy, nHeight, nWidth) == 17);
+	delete[]pbArrTetrisBoardCopy;
 }
 void test_getBoardColumnTransitions()
 {
+	int nHeight = 3;
+	int nWidth = 10;
+	bool *pbArrTetrisBoardCopy = new bool[nHeight*nWidth];
+	//    ¡ö¡ö ¡ö¡ö¡ö
+	//¡ö¡ö   ¡ö  ¡ö  ¡ö
+	//¡ö  ¡ö ¡ö¡ö  ¡ö¡ö¡ö
+	for (int i = 0; i < nHeight; i++)
+	{
+		for (int j = 0; j < nWidth; j++)
+		{
+			pbArrTetrisBoardCopy[i*nWidth + j] = true;
+		}
+	}
+	pbArrTetrisBoardCopy[0 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 6] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 2] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 5] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 7] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 9] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 0] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 4] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 8] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 9] = false;
 
+	CPierreDellacherieTetrisController pdtc(0);
+	assert(pdtc.getBoardColumnTransitions(pbArrTetrisBoardCopy, nHeight, nWidth) == 14);
+	delete[]pbArrTetrisBoardCopy;
 }
 void test_getBoardBuriedHoles()
 {
+	int nHeight = 3;
+	int nWidth = 10;
+	bool *pbArrTetrisBoardCopy = new bool[nHeight*nWidth];
+	//    ¡ö¡ö ¡ö¡ö¡ö
+	//¡ö¡ö   ¡ö  ¡ö  ¡ö
+	//¡ö  ¡ö ¡ö¡ö  ¡ö¡ö¡ö
+	for (int i = 0; i < nHeight; i++)
+	{
+		for (int j = 0; j < nWidth; j++)
+		{
+			pbArrTetrisBoardCopy[i*nWidth + j] = true;
+		}
+	}
+	pbArrTetrisBoardCopy[0 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[0 * nWidth + 6] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 2] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 3] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 5] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 7] = false;
+	pbArrTetrisBoardCopy[1 * nWidth + 9] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 0] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 1] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 4] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 8] = false;
+	pbArrTetrisBoardCopy[2 * nWidth + 9] = false;
 
+	CPierreDellacherieTetrisController pdtc(0);
+	assert(pdtc.getBoardBuriedHoles(pbArrTetrisBoardCopy, nHeight, nWidth) == 7);
+	delete[]pbArrTetrisBoardCopy;
 }
 void test_getBoardWells()
 {
+	int nHeight = 4;
+	int nWidth = 10;
+	bool *pbArrTetrisBoardCopy = new bool[nHeight*nWidth];
+	//    ¡ö¡ö ¡ö¡ö¡ö¡ö
+	//  ¡ö   ¡ö  ¡ö  ¡ö¡ö
+	//¡ö  ¡ö ¡ö¡ö  
+	//¡ö  ¡ö ¡ö  ¡ö
+	for (int i = 0; i < nHeight; i++)
+	{
+		for (int j = 0; j < nWidth; j++)
+		{
+			pbArrTetrisBoardCopy[i*nWidth + j] = false;
+		}
+	}
+	pbArrTetrisBoardCopy[0 * nWidth + 0] = true;
+	pbArrTetrisBoardCopy[0 * nWidth + 2] = true;
+	pbArrTetrisBoardCopy[0 * nWidth + 4] = true;
+	pbArrTetrisBoardCopy[0 * nWidth + 6] = true;
+	pbArrTetrisBoardCopy[1 * nWidth + 0] = true;
+	pbArrTetrisBoardCopy[1 * nWidth + 2] = true;
+	pbArrTetrisBoardCopy[1 * nWidth + 4] = true;
+	pbArrTetrisBoardCopy[1 * nWidth + 5] = true;
+	pbArrTetrisBoardCopy[2 * nWidth + 1] = true;
+	pbArrTetrisBoardCopy[2 * nWidth + 4] = true;
+	pbArrTetrisBoardCopy[2 * nWidth + 6] = true;
+	pbArrTetrisBoardCopy[2 * nWidth + 8] = true;
+	pbArrTetrisBoardCopy[2 * nWidth + 9] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 2] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 3] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 5] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 6] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 7] = true;
+	pbArrTetrisBoardCopy[3 * nWidth + 8] = true;
 
+	CPierreDellacherieTetrisController pdtc(0);
+	int nWells = pdtc.getBoardWells(pbArrTetrisBoardCopy, nHeight, nWidth);
+	assert(nWells == 17);
+	delete[]pbArrTetrisBoardCopy;
 }
