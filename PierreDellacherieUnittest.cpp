@@ -217,6 +217,6 @@ void test_getBoardWells()
 
 	CPierreDellacherieTetrisController pdtc(0);
 	int nWells = pdtc.getBoardWells(pbArrTetrisBoardCopy, nHeight, nWidth);
-	assert(nWells == 17);
+	assert(nWells == 13);
 	delete[]pbArrTetrisBoardCopy;
 }

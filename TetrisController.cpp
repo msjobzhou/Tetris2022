@@ -68,7 +68,7 @@ bool CTetrisController::canTetrisBlockMovable(CTetrisBlock* pBlock, int x, int y
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
 			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j))
+			if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
 				return false;
 		}
 	}
@@ -86,7 +86,7 @@ bool CTetrisController::canTetrisBlockMovable(bool **ppbBlockArr, int nHeight, i
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
 			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j))
+			if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
 				return false;
 		}
 	}

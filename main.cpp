@@ -253,11 +253,26 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 	case WM_TIMER:
 	{
+		HDC hdc = GetDC(hwnd);
+		HDC hdcOld = pTetrisDraw->SetHDC(hdc);
 		switch (wparam)
 		{
 			case TIMER_BLOCK_DOWN:
-				//发送WM_KEYDOWN消息跟本窗口函数自己处理，这里直接调用pTetrisController->executeCommand(3)往下移动方块不能绘制方块，不知道啥原因
-				SendMessage(hwnd, WM_KEYDOWN, 0x53, 0);
+				if (false == pTetrisController->executeCommand(3))
+				{
+					//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
+					if (false == pTetrisController->isGameOver())
+					{
+						pTetrisController->setCurTetrisBlock();
+					}
+					else
+					{
+						//停止定时器
+						KillTimer(hwnd, TIMER_BLOCK_DOWN);
+						MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+					}
+				}
+				break;
 
 			default:break;
 		}
@@ -323,13 +338,15 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	ShowWindow(hwnd, ncmdshow);
 	UpdateWindow(hwnd);
 
-	PierreDellacherieUnittest pdut;
-	pdut.addTestFunc(test_getErodedPieceCellsMetric); 
-	pdut.addTestFunc(test_getBoardRowTransitions); 
-	pdut.addTestFunc(test_getBoardColumnTransitions); 
-	pdut.addTestFunc(test_getBoardBuriedHoles); 
-	pdut.addTestFunc(test_getBoardWells); 
-	pdut.runTest();
+	//unit test 的代码 start
+	//PierreDellacherieUnittest pdut;
+	//pdut.addTestFunc(test_getErodedPieceCellsMetric); 
+	//pdut.addTestFunc(test_getBoardRowTransitions); 
+	//pdut.addTestFunc(test_getBoardColumnTransitions); 
+	//pdut.addTestFunc(test_getBoardBuriedHoles); 
+	//pdut.addTestFunc(test_getBoardWells); 
+	//pdut.runTest();
+	//unit test 的代码 end
 
 	//enter the message loop
 	bool bDone = false;
