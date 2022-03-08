@@ -228,7 +228,7 @@ int CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBoar
 
 	return nScore;
 }
-sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb)
+sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nHighestEvalutionScoreRet)
 {
 	//这里只搜索直角形路径或者垂直下降路径(如下图↓和→←指示的方向1,2,3)，不考虑移动过程中变形，钻洞等复杂场景
 	//   1←■  →→3
@@ -379,7 +379,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			nTetrisBlockPreY = nTargetY;
 		}
 	}
-
+	nHighestEvalutionScoreRet = nHighestEvalutionScore;
 	return sp;
 }
 
@@ -387,6 +387,9 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 
 bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBlock(list<int>& cmdList)
 {
+	if (!cmdList.empty())
+		cmdList.clear();
+	//命令对应表 1 left 2 right 3 down 4 rotate
 	bool *pbArrTetrisBoardCopy = new bool[nTetrisBoardHeight*nTetrisBoardWidth];
 	int nHeight = nTetrisBoardHeight;
 	int nWidth = nTetrisBoardWidth;
@@ -394,16 +397,70 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 	CTetrisBlock* pTetrisBlock = getCurTetrisBlock();
 	int nBlockHeight = pTetrisBlock->getBlockHeight();
 	int nBlockWidth = pTetrisBlock->getBlockWidth();
+	int nMaxOrientation = pTetrisBlock->getBlockMaxOrientation();
 	stb.pbBlock = new bool[nBlockHeight*nBlockWidth];
 
 	getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
 	getCurrentTetrisBlockCopy(stb);
 
-	//对每个俄罗斯的可变形状进行pickPositionWithHighestEvalutionScore调用，选择出evaluationFunction得分最高的最优旋转+最优移动组合
+	sPosition sp;
+	int nHighestScore=-99999999;
+	int nBlockRotateTime = 0;
+	//对每个俄罗斯方块的可变形状进行pickPositionWithHighestEvalutionScore调用，选择出evaluationFunction得分最高的最优旋转+最优移动组合
+	for (int nRotation = 0; nRotation < nMaxOrientation; nRotation++)
+	{	
+		//第一次保持原始方块的形状，不旋转
+		if(0!=nRotation)
+			RotateTetrisBlock(stb);
+		int nHighestEvalutionScoreRet;
+		sPosition spTmp;
+		spTmp = pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+		if (nHighestEvalutionScoreRet >= nHighestScore)
+		{
+			nHighestScore = nHighestEvalutionScoreRet;
+			sp = spTmp;
+			nBlockRotateTime = nRotation;
+		}
+	}
+	getCurrentTetrisBlockCopy(stb);
+	//将rotate的命令加入到cmdList
+	while (nBlockRotateTime>0)
+	{
+		RotateTetrisBlock(stb);
+		cmdList.push_back(4);
+		nBlockRotateTime--;
+	}
+	//按照先向左或者向右移动，再向下移动的方式将tetrisBlock移动到sPosition sp
+	if (stb.nPosX > sp.nPosX)
+	{
+		int nLeftMoveTimes = stb.nPosX - sp.nPosX;
+		while (nLeftMoveTimes > 0)
+		{
+			cmdList.push_back(1);
+			nLeftMoveTimes--;
+		}
+	}
+	else if (stb.nPosX < sp.nPosX)
+	{
+		int nRightMoveTimes = sp.nPosX - stb.nPosX;
+		while (nRightMoveTimes > 0)
+		{
+			cmdList.push_back(2);
+			nRightMoveTimes--;
+		}
+	}
+	
+	int nDownMoveTimes = sp.nPosY - stb.nPosY;
+	while (nDownMoveTimes > 0)
+	{
+		cmdList.push_back(3);
+		nDownMoveTimes--;
+	}
 
 	delete[] stb.pbBlock;
 	delete[] pbArrTetrisBoardCopy;
 
+	return true;
 }
 
 //仿照CTetrisBlock的prepareRotate实现的功能

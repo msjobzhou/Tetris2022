@@ -7,6 +7,7 @@ private:
 	int m_nType;
 	int m_nBlockHeight, m_nBlockWidth;
 	bool **m_ppbBlock;
+	int m_nMaxOrientation;
 
 protected:
 	bool** newBlock2DArr(int nRow, int nCol);
@@ -23,6 +24,7 @@ public:
 	int getBlockWidth();
 	int getBlockPosX();
 	int getBlockPosY();
+	int getBlockMaxOrientation();
 	bool** getBlock2DArr();
 	void setBlockHeight(int nHeight);
 	void setBlockWidth(int nWidth);

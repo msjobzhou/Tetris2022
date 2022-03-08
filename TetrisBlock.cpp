@@ -464,6 +464,7 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 	default:
 		break;
 	}
+	m_nMaxOrientation = nMaxOrientation;
 	//根据block的高度和高度设置其初始位置
 	m_nPosX = int(nTetrisBoardWidth / 2 - 1 - m_nBlockWidth / 2);
 	m_nPosY = nTetrisBoardHeight - 1 + m_nBlockHeight - 1;
@@ -482,4 +483,9 @@ void CTetrisBlock::right()
 void CTetrisBlock::down()
 {
 	m_nPosY--;
+}
+
+int CTetrisBlock::getBlockMaxOrientation()
+{
+	return m_nMaxOrientation;
 }
