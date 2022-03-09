@@ -220,3 +220,73 @@ void test_getBoardWells()
 	assert(nWells == 13);
 	delete[]pbArrTetrisBoardCopy;
 }
+
+void test_pickPositionWithHighestEvalutionScore()
+{
+	//针对如下tetris board布局测试各种block形状
+	//
+	//    ■   ■
+	//  ■■ ■■■  ■
+	//■■■ ■■■■■
+
+	//先构造如上的board数据
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = 100;
+	rect.bottom = 200;
+	//CTetrisDraw构造函数的两个参数在此测试函数中并不会用到，所以随便设置一下
+	CTetrisDraw* pTetrisDraw = new CTetrisDraw(0, rect);
+	CPierreDellacherieTetrisController* pTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
+	pTetrisDraw->SetTetrisArrayItem(0, 0);
+	pTetrisDraw->SetTetrisArrayItem(0, 1);
+	pTetrisDraw->SetTetrisArrayItem(0, 2);
+	pTetrisDraw->SetTetrisArrayItem(0, 4);
+	pTetrisDraw->SetTetrisArrayItem(0, 5);
+	pTetrisDraw->SetTetrisArrayItem(0, 6);
+	pTetrisDraw->SetTetrisArrayItem(0, 7);
+	pTetrisDraw->SetTetrisArrayItem(0, 8);
+	pTetrisDraw->SetTetrisArrayItem(0, 9);
+	pTetrisDraw->SetTetrisArrayItem(1, 1);
+	pTetrisDraw->SetTetrisArrayItem(1, 2);
+	pTetrisDraw->SetTetrisArrayItem(1, 4);
+	pTetrisDraw->SetTetrisArrayItem(1, 5);
+	pTetrisDraw->SetTetrisArrayItem(1, 6);
+	pTetrisDraw->SetTetrisArrayItem(1, 8);
+	pTetrisDraw->SetTetrisArrayItem(2, 2);
+	pTetrisDraw->SetTetrisArrayItem(2, 5);
+
+	bool *pbArrTetrisBoardCopy = new bool[nTetrisBoardHeight*nTetrisBoardWidth];
+	int nHeight = nTetrisBoardHeight;
+	int nWidth = nTetrisBoardWidth;
+	sTetrisBlock stb;
+	//■
+	//■■
+	//  ■
+	stb.nPosX = 4;
+	stb.nPosY = 19;
+	stb.nBlockHeight = 3;
+	stb.nBlockWidth = 2;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth+j] = false; 
+		}
+	}
+	stb.pbBlock[0*stb.nBlockWidth+0] = true;
+	stb.pbBlock[1*stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1*stb.nBlockWidth + 1] = true;
+	stb.pbBlock[2*stb.nBlockWidth + 1] = true;
+
+	sPosition spTmp;
+	int nHighestEvalutionScoreRet;
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 6);
+	assert(spTmp.nPosY == 3);
+	delete[] stb.pbBlock;
+	delete[] pbArrTetrisBoardCopy;
+	delete pTetrisDraw;
+	delete pTetrisController;
+}

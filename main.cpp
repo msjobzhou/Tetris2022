@@ -339,13 +339,14 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	UpdateWindow(hwnd);
 
 	//unit test 的代码 start
-	//PierreDellacherieUnittest pdut;
+	PierreDellacherieUnittest pdut;
 	//pdut.addTestFunc(test_getErodedPieceCellsMetric); 
 	//pdut.addTestFunc(test_getBoardRowTransitions); 
 	//pdut.addTestFunc(test_getBoardColumnTransitions); 
 	//pdut.addTestFunc(test_getBoardBuriedHoles); 
 	//pdut.addTestFunc(test_getBoardWells); 
-	//pdut.runTest();
+	pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
+	pdut.runTest();
 	//unit test 的代码 end
 
 	//enter the message loop
