@@ -5,9 +5,9 @@
 
 using namespace std;
 
-CTetrisBlock::CTetrisBlock(int nType)
+CTetrisBlock::CTetrisBlock(int nType, int nOrientation)
 {
-	generateBlockShapeRandomOrientation(nType);
+	generateBlockShapeRandomOrientation(nType, nOrientation);
 }
 
 
@@ -165,21 +165,26 @@ void CTetrisBlock::Rotate()
 	m_nPosX = m_nPosX + int(nPreBlockWidth - nPreBlockHeight - 1) / 2 + 1;
 	m_nPosY = m_nPosY + int(nPreBlockWidth - nPreBlockHeight + 1) / 2 - 1;
 }
-void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
+void CTetrisBlock::generateBlockShapeRandomOrientation(int nType, int nOrientation)
 {
 	//nType俄罗斯方块的类型，共有1：左Z 2：右Z 3：T 4：左L 5：右L 6：I  7：O
 	m_nBlockHeight = 0;
 	m_nBlockWidth = 0;
 	int nMaxOrientation = 0;
 	m_nType = nType;
-	int nRandNum = 0;
+
+	int nRandNum = nOrientation;
+	if(-1 == nRandNum)
+	{
+		srand((int)time(NULL));  // 产生随机种子
+		nRandNum = rand();
+	}
+	
 	switch (nType)
 	{
 	case 1:
 		//Z形状，两种方向Orientation
 		nMaxOrientation = 2;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第一二列为true，第二行的第二三列为true
 		//■■
 		//  ■■
@@ -213,8 +218,6 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 		//  ■■
 		//■■
 		nMaxOrientation = 2;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第二三列为true，第二行的第一二列为true
 		if (0 == nRandNum % nMaxOrientation)
 		{
@@ -244,8 +247,6 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 	case 3:
 		//T形状，4种方向Orientation
 		nMaxOrientation = 4;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第一二三列为true，第二行的第二列为true
 		//■■■
 		//  ■
@@ -302,8 +303,6 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 	case 4:
 		//左L形状，4种方向Orientation
 		nMaxOrientation = 4;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第一列为true，第二行的第一列为true，第三行的一二列为true
 		//■
 		//■
@@ -361,8 +360,6 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 	case 5:
 		//右L形状，4种方向Orientation
 		nMaxOrientation = 4;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第二列为true，第二行的第二列为true，第三行的一二列为true
 		//  ■
 		//  ■
@@ -419,8 +416,6 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType)
 	case 6:
 		//I形状，两种方向Orientation
 		nMaxOrientation = 2;
-		srand((int)time(NULL));  // 产生随机种子
-		nRandNum = rand();
 		//此处为方向1，第一行的第一二三四列为true
 		//■■■■
 		//  

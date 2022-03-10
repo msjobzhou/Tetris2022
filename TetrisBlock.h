@@ -12,10 +12,10 @@ private:
 protected:
 	bool** newBlock2DArr(int nRow, int nCol);
 	void deleteBlock2DArr(bool **ppbBlock, int nRow);
-	void generateBlockShapeRandomOrientation(int nType);
+	void generateBlockShapeRandomOrientation(int nType, int nOrientation=-1);
 
 public:
-	CTetrisBlock(int nType);
+	CTetrisBlock(int nType, int nOrientation = -1);
 	~CTetrisBlock();
 	bool** prepareRotate(int& nPosX, int& nPosY, bool** ppbBlock, int& nBlockHeight, int& nBlockWidth);
 	void prepareRotateResourceClean(bool **ppbBlock, int nRow);

@@ -109,13 +109,20 @@ int CPierreDellacherieTetrisController::getBoardRowTransitions(bool *pbArrTetris
 		for (int x = 0; x < nWidth - 1; ++x)
 		{
 			//发生transition的两种情况是如下：（可用异或运算来判断）
-			//1、pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x]为true，pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x+1]为false
-			//2、pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x]为false，pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x+1]为true
-			if ((pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] ^ pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x + 1]) == true)
+			//1、pbArrTetrisBoardCopy[y*nWidth + x]为true，pbArrTetrisBoardCopy[y*nWidth + x+1]为false
+			//2、pbArrTetrisBoardCopy[y*nWidth + x]为false，pbArrTetrisBoardCopy[y*nWidth + x+1]为true
+			if ((pbArrTetrisBoardCopy[y*nWidth + x] ^ pbArrTetrisBoardCopy[y*nWidth + x + 1]) == true)
 			{
 				nTransitions++;
 			}
 		}
+		//tetris board的边界算是有石块被占据
+		//先看左边界和本行第一个石块的情况
+		if (false == pbArrTetrisBoardCopy[y*nWidth + 0])
+			nTransitions++;
+		//再看本行最后一个石块和右边界的情况
+		if (false == pbArrTetrisBoardCopy[y*nWidth + nWidth - 1])
+			nTransitions++;
 	}
 
 	return nTransitions;
@@ -128,7 +135,7 @@ int CPierreDellacherieTetrisController::getBoardColumnTransitions(bool *pbArrTet
 	{
 		for (int y = 0; y < nHeight - 1; ++y)
 		{
-			if ((pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] ^ pbArrTetrisBoardCopy[(y + 1)*nTetrisBoardWidth + x]) == true)
+			if ((pbArrTetrisBoardCopy[y*nWidth + x] ^ pbArrTetrisBoardCopy[(y + 1)*nWidth + x]) == true)
 			{
 				nTransitions++;
 			}
@@ -267,7 +274,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		nTetrisBlockPreY = nTetrisBlockOriginY;
 
 		//再向下移动到(nTargetX, 0)
-		for (nTargetY = nTetrisBlockOriginY; nTargetY >= 0; nTargetY--)
+		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
 		{
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
@@ -305,7 +312,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 
 	getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
 	//再向下移动到(nTargetX, 0)
-	for (nTargetY = nTetrisBlockOriginY; nTargetY >= 0; nTargetY--)
+	for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
 	{
 		if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 		{
@@ -349,7 +356,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		//对俄罗斯方块开始第一次向下移动的时候，进行处理一下nTetrisBlockPreY
 		nTetrisBlockPreY = nTetrisBlockOriginY;
 		//再向下移动到(nTargetX, 0)
-		for (nTargetY = nTetrisBlockOriginY; nTargetY >= 0; nTargetY--)
+		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
 		{
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{

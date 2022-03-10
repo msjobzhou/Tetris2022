@@ -341,7 +341,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	//unit test µÄ´úÂë start
 	PierreDellacherieUnittest pdut;
 	//pdut.addTestFunc(test_getErodedPieceCellsMetric); 
-	//pdut.addTestFunc(test_getBoardRowTransitions); 
+	pdut.addTestFunc(test_getBoardRowTransitions); 
 	//pdut.addTestFunc(test_getBoardColumnTransitions); 
 	//pdut.addTestFunc(test_getBoardBuriedHoles); 
 	//pdut.addTestFunc(test_getBoardWells); 

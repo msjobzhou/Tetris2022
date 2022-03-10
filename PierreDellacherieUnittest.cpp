@@ -110,7 +110,8 @@ void test_getBoardRowTransitions()
 	pbArrTetrisBoardCopy[2 * nWidth + 9] = false;
 
 	CPierreDellacherieTetrisController pdtc(0);
-	assert(pdtc.getBoardRowTransitions(pbArrTetrisBoardCopy, nHeight, nWidth) == 17);
+	int nTransition = pdtc.getBoardRowTransitions(pbArrTetrisBoardCopy, nHeight, nWidth);
+	assert(nTransition == 20);
 	delete[]pbArrTetrisBoardCopy;
 }
 void test_getBoardColumnTransitions()
@@ -286,6 +287,59 @@ void test_pickPositionWithHighestEvalutionScore()
 	assert(spTmp.nPosX == 6);
 	assert(spTmp.nPosY == 3);
 	delete[] stb.pbBlock;
+
+
+	//  ¡ö
+	//¡ö¡ö
+	//¡ö
+	stb.nPosX = 5;
+	stb.nPosY = 19;
+	stb.nBlockHeight = 3;
+	stb.nBlockWidth = 2;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 0] = true;
+
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 0);
+	assert(spTmp.nPosY == 3);
+	delete[] stb.pbBlock;
+
+	//¡ö¡ö
+	//  ¡ö
+	//  ¡ö
+	stb.nPosX = 4;
+	stb.nPosY = 9;
+	stb.nBlockHeight = 3;
+	stb.nBlockWidth = 2;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[0 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 1] = true;
+
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 8);
+	assert(spTmp.nPosY == 2);
+	delete[] stb.pbBlock;
+
+
 	delete[] pbArrTetrisBoardCopy;
 	delete pTetrisDraw;
 	delete pTetrisController;
