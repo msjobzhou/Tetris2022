@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PierreDellacherieTetrisController.cpp" />
     <ClCompile Include="PierreDellacherieUnittest.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h" />
+    <ClInclude Include="FileLogger.h" />
     <ClInclude Include="PierreDellacherieTetrisController.h" />
     <ClInclude Include="PierreDellacherieUnittest.h" />
     <ClInclude Include="TetrisBlock.h" />

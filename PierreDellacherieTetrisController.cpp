@@ -1,7 +1,10 @@
 #include "PierreDellacherieTetrisController.h"
 #include "assert.h"
 
+#include "FileLogger.h"
+#include <sstream>
 
+using namespace std;
 
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
 	CTetrisController(pTetrisDraw, pTetrisBlock)
@@ -203,6 +206,8 @@ int CPierreDellacherieTetrisController::getBoardWells(bool *pbArrTetrisBoardCopy
 
 bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb, bool *pbArrTetrisBoardCopy, int x, int y)
 {
+	FileLogger fl("tetrisBlockLog.txt", debug);
+	fl.SetLogLevel(error);
 	//判断当前方块是否可以旋转或者移动到位置(x,y),x,y从0开始
 	//先判断旋转或者移动是否会超出TetrisBoard游戏区之外
 	//再使用旋转或者移动之后的方块2维数组和CTetrisDraw.m_bArrTetris中的元素进行逻辑与操作
@@ -215,8 +220,45 @@ bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
 			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == (pbBlockArr[i*stb.nBlockWidth +j] && pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j]))
+			if (true == (pbBlockArr[i*stb.nBlockWidth + j] && pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j]))
+			{
+				stringstream ss;
+				string debug= "pbBlockArr ";
+				string tmp;
+				ss << i;
+				ss >> tmp;
+				debug = debug + tmp + " ";
+				ss.clear();
+				tmp.clear();
+				ss << j;
+				ss >> tmp;
+				debug = debug + tmp + " ";
+				ss.clear();
+				tmp.clear();
+				ss << pbBlockArr[i*stb.nBlockWidth + j];
+				ss >> tmp;
+				debug = debug + tmp + "\r\n";
+				ss.clear();
+				tmp.clear();
+
+				ss << (y - i);
+				ss >> tmp;
+				debug = debug + "pbArrTetrisBoardCopy" + tmp + " ";
+				ss.clear();
+				tmp.clear();
+				ss << (x + j);
+				ss >> tmp;
+				debug = debug + tmp + " ";
+				ss.clear();
+				tmp.clear();
+				ss << pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j];
+				ss >> tmp;
+				debug = debug + tmp + "\r\n";
+				
+				fl.Debug(debug);
 				return false;
+			}
+				
 		}
 	}
 	return true;

@@ -247,7 +247,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	pTetrisDraw->SetTetrisArrayItem(0, 6);
 	pTetrisDraw->SetTetrisArrayItem(0, 7);
 	pTetrisDraw->SetTetrisArrayItem(0, 8);
-	pTetrisDraw->SetTetrisArrayItem(0, 9);
+	
 	pTetrisDraw->SetTetrisArrayItem(1, 1);
 	pTetrisDraw->SetTetrisArrayItem(1, 2);
 	pTetrisDraw->SetTetrisArrayItem(1, 4);
@@ -273,13 +273,13 @@ void test_pickPositionWithHighestEvalutionScore()
 	{
 		for (int j = 0; j < stb.nBlockWidth; j++)
 		{
-			stb.pbBlock[i*stb.nBlockWidth+j] = false; 
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
 		}
 	}
-	stb.pbBlock[0*stb.nBlockWidth+0] = true;
-	stb.pbBlock[1*stb.nBlockWidth + 0] = true;
-	stb.pbBlock[1*stb.nBlockWidth + 1] = true;
-	stb.pbBlock[2*stb.nBlockWidth + 1] = true;
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 1] = true;
 
 	sPosition spTmp;
 	int nHighestEvalutionScoreRet;
@@ -318,7 +318,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//  ¡ö
 	//  ¡ö
 	stb.nPosX = 4;
-	stb.nPosY = 9;
+	stb.nPosY = 19;
 	stb.nBlockHeight = 3;
 	stb.nBlockWidth = 2;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -339,6 +339,83 @@ void test_pickPositionWithHighestEvalutionScore()
 	assert(spTmp.nPosY == 2);
 	delete[] stb.pbBlock;
 
+
+	//¡ö¡ö
+	//¡ö
+	//¡ö
+	stb.nPosX = 4;
+	stb.nPosY = 19;
+	stb.nBlockHeight = 3;
+	stb.nBlockWidth = 2;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[0 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 0] = true;
+
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 3);
+	assert(spTmp.nPosY == 2);
+	delete[] stb.pbBlock;
+
+	//¡ö
+	//¡ö
+	//¡ö
+	//¡ö
+	stb.nPosX = 4;
+	stb.nPosY = 19;
+	stb.nBlockHeight = 4;
+	stb.nBlockWidth = 1;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[3 * stb.nBlockWidth + 0] = true;
+
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 9);
+	assert(spTmp.nPosY == 3);
+	delete[] stb.pbBlock;
+
+
+	//¡ö¡ö¡ö
+	//  ¡ö
+
+	stb.nPosX = 4;
+	stb.nPosY = 19;
+	stb.nBlockHeight = 2;
+	stb.nBlockWidth = 3;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[0 * stb.nBlockWidth + 1] = true;
+	stb.pbBlock[0 * stb.nBlockWidth + 2] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 1] = true;
+
+	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
+	assert(spTmp.nPosX == 6);
+	assert(spTmp.nPosY == 2);
+	delete[] stb.pbBlock;
 
 	delete[] pbArrTetrisBoardCopy;
 	delete pTetrisDraw;
