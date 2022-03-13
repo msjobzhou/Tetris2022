@@ -18,5 +18,6 @@
 #define nTetrisBoardHeight 20
 
 #define TIMER_BLOCK_DOWN 1001
+#define TIMER_AICommandExecution 1002
 
 #endif

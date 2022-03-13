@@ -14,6 +14,8 @@
 
 #include "PierreDellacherieUnittest.h"
 
+#include <list>
+
 using namespace std;
 
 
@@ -50,6 +52,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 	static CTetrisDraw* pTetrisDraw;
 	static CTetrisController* pTetrisController;
 
+	static CPierreDellacherieTetrisController* pPDTetrisController;
+
+	enum game_mode {ManualMode, AIMode};
+
+	static game_mode mode;
+	static list<int> AICmdList;
 
 	switch (msg)
 	{
@@ -83,11 +91,17 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		//pTetrisDraw = new CTetrisDraw(hdcBackBuffer, rect);
 		pTetrisDraw = new CTetrisDraw(hdc, rect);
 		pTetrisController = new CTetrisController(pTetrisDraw);
+		pPDTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
 
-		SetTimer(hwnd, TIMER_BLOCK_DOWN, 1000, NULL);
-
-
+		SetTimer(hwnd, TIMER_BLOCK_DOWN, 1000, NULL); 
+		//一秒钟可以模拟5次按键
+		SetTimer(hwnd, TIMER_AICommandExecution, 1000/5, NULL);
+		mode = AIMode;
 		
+		if (mode == AIMode)
+		{
+			pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+		}
 	}
 
 	break;
@@ -122,28 +136,35 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		case 0x41: //VK_A 向左
 		{
-			PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			pTetrisController->executeCommand(1);
+			if (mode == ManualMode)
+			{
+				PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				pTetrisController->executeCommand(1);
+			}
+			
 		}
 
 		break;
 
 		case 0x53: //VK_S 向下
 		{
-			//PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			//这里做下判断，如果不能继续往下移动了，需要释放老的方块，重新随机生成1个新的方块
-			if (false == pTetrisController->executeCommand(3))
+			if (mode == ManualMode)
 			{
-				//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
-				if(false == pTetrisController->isGameOver())
+				//PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				//这里做下判断，如果不能继续往下移动了，需要释放老的方块，重新随机生成1个新的方块
+				if (false == pTetrisController->executeCommand(3))
 				{
-					pTetrisController->setCurTetrisBlock();
-				}
-				else
-				{
-					//停止定时器
-					KillTimer(hwnd, TIMER_BLOCK_DOWN);
-					MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+					//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
+					if (false == pTetrisController->isGameOver())
+					{
+						pTetrisController->setCurTetrisBlock();
+					}
+					else
+					{
+						//停止定时器
+						KillTimer(hwnd, TIMER_BLOCK_DOWN);
+						MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+					}
 				}
 			}
 				
@@ -153,16 +174,22 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		case 0x44: //VK_D 向右
 		{
-			PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			pTetrisController->executeCommand(2);
+			if (mode == ManualMode)
+			{
+				PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				pTetrisController->executeCommand(2);
+			}
 		}
 
 		break;
 
 		case 0x4A: //VK_J 旋转
 		{
-			PlaySound(TEXT("rotate.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			pTetrisController->executeCommand(4);
+			if (mode == ManualMode)
+			{
+				PlaySound(TEXT("rotate.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				pTetrisController->executeCommand(4);
+			}
 		}
 
 		break;
@@ -244,6 +271,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		//if (0 != pTetrisController)
 		delete pTetrisController;
 
+		delete pPDTetrisController;
 		// kill the application, this sends a WM_QUIT message 
 		PostQuitMessage(0);
 
@@ -258,22 +286,57 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		switch (wparam)
 		{
 			case TIMER_BLOCK_DOWN:
-				if (false == pTetrisController->executeCommand(3))
+				if (mode == ManualMode)
 				{
-					//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
-					if (false == pTetrisController->isGameOver())
+					if (false == pTetrisController->executeCommand(3))
 					{
-						pTetrisController->setCurTetrisBlock();
-					}
-					else
-					{
-						//停止定时器
-						KillTimer(hwnd, TIMER_BLOCK_DOWN);
-						MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+						//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
+						if (false == pTetrisController->isGameOver())
+						{
+							pTetrisController->setCurTetrisBlock();
+						}
+						else
+						{
+							//停止定时器
+							KillTimer(hwnd, TIMER_BLOCK_DOWN);
+							MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+						}
 					}
 				}
-				break;
+				
+				if (mode == AIMode)
+				{
+					if (false == pPDTetrisController->executeCommand(3))
+					{
+						//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
+						if (false == pPDTetrisController->isGameOver())
+						{
+							pPDTetrisController->setCurTetrisBlock();
+							AICmdList.clear();
+							pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+						}
+						else
+						{
+							//停止定时器
+							KillTimer(hwnd, TIMER_BLOCK_DOWN);
+							MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+						}
+					}
+				}
 
+				break;
+			case TIMER_AICommandExecution:
+				if (mode == AIMode)
+				{
+					if (!AICmdList.empty())
+					{
+						int cmd = AICmdList.front();
+						pPDTetrisController->executeCommand(cmd);
+						AICmdList.pop_front();
+					}
+				}
+
+				break;
 			default:break;
 		}
 	}
@@ -346,6 +409,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_getBoardBuriedHoles); 
 	pdut.addTestFunc(test_getBoardWells); 
 	pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
+	pdut.addTestFunc(test_RotateTetrisBlock);
 	pdut.runTest();
 	//unit test 的代码 end
 

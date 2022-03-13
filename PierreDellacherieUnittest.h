@@ -28,3 +28,5 @@ void test_getBoardColumnTransitions();
 void test_getBoardBuriedHoles();
 void test_getBoardWells();
 void test_pickPositionWithHighestEvalutionScore();
+
+void test_RotateTetrisBlock();

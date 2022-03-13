@@ -421,3 +421,25 @@ void test_pickPositionWithHighestEvalutionScore()
 	delete pTetrisDraw;
 	delete pTetrisController;
 }
+
+void test_RotateTetrisBlock()
+{
+	//    ■
+	//    ■
+	//    ■
+	//    ■
+	sTetrisBlock stb;
+	stb.nBlockHeight = 4;
+	stb.nBlockWidth = 1;
+	stb.nPosX = 4;
+	stb.nPosY = 19;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	//这里要注意的是方块的左上角坐标是(0,0)，x轴方向往右逐渐增加，y轴方向往下逐渐增加
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 0] = false;
+	stb.pbBlock[3 * stb.nBlockWidth + 0] = true;
+
+	CPierreDellacherieTetrisController pdtc(0);
+	pdtc.RotateTetrisBlock(stb);
+}

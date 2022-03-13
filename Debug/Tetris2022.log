@@ -1,3 +1,11 @@
-﻿  PierreDellacherieUnittest.cpp
+﻿  TetrisDraw.cpp
+  TetrisController.cpp
+  TetrisBlock.cpp
+  PierreDellacherieUnittest.cpp
+  PierreDellacherieTetrisController.cpp
+  main.cpp
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\main.cpp(41): warning C4101: “hdc”: 未引用的局部变量
+  FileLogger.cpp
+  正在生成代码...
   Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.exe
   Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.pdb (Partial PDB)

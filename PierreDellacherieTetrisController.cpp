@@ -207,7 +207,7 @@ int CPierreDellacherieTetrisController::getBoardWells(bool *pbArrTetrisBoardCopy
 bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb, bool *pbArrTetrisBoardCopy, int x, int y)
 {
 	FileLogger fl("tetrisBlockLog.txt", debug);
-	fl.SetLogLevel(error);
+	fl.SetLogLevel(debug);
 	//判断当前方块是否可以旋转或者移动到位置(x,y),x,y从0开始
 	//先判断旋转或者移动是否会超出TetrisBoard游戏区之外
 	//再使用旋转或者移动之后的方块2维数组和CTetrisDraw.m_bArrTetris中的元素进行逻辑与操作
@@ -219,6 +219,10 @@ bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb
 			//移动或者旋转超出左右边界和下边界，这里不判断是否超出上边界，主要是跟block刚出场时的初始位置可能在上边界外有关
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
+			//AI模式下，可能对于刚出场的block进行旋转操作，此时对于超出上边界的场景，认为直接具备可旋转，直接返回true
+			//防止超过pbArrTetrisBoardCopy数组的边界，而引发delete []异常
+			if ((y - i) >= nTetrisBoardHeight)
+				return true;
 			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
 			if (true == (pbBlockArr[i*stb.nBlockWidth + j] && pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j]))
 			{
@@ -459,8 +463,17 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 	for (int nRotation = 0; nRotation < nMaxOrientation; nRotation++)
 	{	
 		//第一次保持原始方块的形状，不旋转
-		if(0!=nRotation)
+		if (0 != nRotation)
+		{
 			RotateTetrisBlock(stb);
+			//后判断是否可以旋转
+			//if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, stb.nPosX, stb.nPosY))
+			//{
+				//
+			//	break;
+			//}
+		}
+			
 		int nHighestEvalutionScoreRet;
 		sPosition spTmp;
 		spTmp = pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
@@ -479,7 +492,7 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 		cmdList.push_back(4);
 		nBlockRotateTime--;
 	}
-	//按照先向左或者向右移动，再向下移动的方式将tetrisBlock移动到sPosition sp
+	//按照向左或者向右移动，将tetrisBlock移动到sPosition sp的上方
 	if (stb.nPosX > sp.nPosX)
 	{
 		int nLeftMoveTimes = stb.nPosX - sp.nPosX;
@@ -497,13 +510,6 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 			cmdList.push_back(2);
 			nRightMoveTimes--;
 		}
-	}
-	
-	int nDownMoveTimes = sp.nPosY - stb.nPosY;
-	while (nDownMoveTimes > 0)
-	{
-		cmdList.push_back(3);
-		nDownMoveTimes--;
 	}
 
 	delete[] stb.pbBlock;
