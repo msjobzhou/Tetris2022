@@ -265,7 +265,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//¡ö¡ö
 	//  ¡ö
 	stb.nPosX = 4;
-	stb.nPosY = 19;
+	stb.nPosY = 21;
 	stb.nBlockHeight = 3;
 	stb.nBlockWidth = 2;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -293,7 +293,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//¡ö¡ö
 	//¡ö
 	stb.nPosX = 5;
-	stb.nPosY = 19;
+	stb.nPosY = 21;
 	stb.nBlockHeight = 3;
 	stb.nBlockWidth = 2;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -318,7 +318,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//  ¡ö
 	//  ¡ö
 	stb.nPosX = 4;
-	stb.nPosY = 19;
+	stb.nPosY = 21;
 	stb.nBlockHeight = 3;
 	stb.nBlockWidth = 2;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -344,7 +344,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//¡ö
 	//¡ö
 	stb.nPosX = 4;
-	stb.nPosY = 19;
+	stb.nPosY = 21;
 	stb.nBlockHeight = 3;
 	stb.nBlockWidth = 2;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -370,7 +370,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//¡ö
 	//¡ö
 	stb.nPosX = 4;
-	stb.nPosY = 19;
+	stb.nPosY = 22;
 	stb.nBlockHeight = 4;
 	stb.nBlockWidth = 1;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
@@ -396,7 +396,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	//  ¡ö
 
 	stb.nPosX = 4;
-	stb.nPosY = 19;
+	stb.nPosY = 20;
 	stb.nBlockHeight = 2;
 	stb.nBlockWidth = 3;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];

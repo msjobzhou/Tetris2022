@@ -67,9 +67,15 @@ bool CTetrisController::canTetrisBlockMovable(CTetrisBlock* pBlock, int x, int y
 			//移动或者旋转超出左右边界和下边界，这里不判断是否超出上边界，主要是跟block刚出场时的初始位置可能在上边界外有关
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
-			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
-				return false;
+			//AI模式下，可能对于刚出场的block进行旋转或者移动操作，此时y的值是超过nTetrisBoardHeight-1的
+			//这里再访问数组前加个判断，防止超过pbArrTetrisBoardCopy数组的边界，而引发delete []异常
+			//同时对于从屏幕上方刚出来的tetris block中在nTetrisBoardHeight行及以上的，肯定不会有冲突，不用做额外判断了
+			if ((y - i) < nTetrisBoardHeight)
+			{
+				//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
+				if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
+					return false;
+			}			
 		}
 	}
 	return true;
@@ -85,9 +91,15 @@ bool CTetrisController::canTetrisBlockMovable(bool **ppbBlockArr, int nHeight, i
 			//移动或者旋转超出左右边界和下边界，这里不判断是否超出上边界，主要是跟block刚出场时的初始位置可能在上边界外有关
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
-			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
-				return false;
+			//AI模式下，可能对于刚出场的block进行旋转或者移动操作，此时y的值是超过nTetrisBoardHeight-1的
+			//这里再访问数组前加个判断，防止超过pbArrTetrisBoardCopy数组的边界，而引发delete []异常
+			//同时对于从屏幕上方刚出来的tetris block中在nTetrisBoardHeight行及以上的，肯定不会有冲突，不用做额外判断了
+			if ((y - i) < nTetrisBoardHeight)
+			{
+				//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
+				if (true == (ppbBlockArr[i][j] && m_pTetrisDraw->GetTetrisArrayItem(y - i, x + j)))
+					return false;
+			}
 		}
 	}
 	return true;

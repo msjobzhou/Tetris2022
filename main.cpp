@@ -25,7 +25,7 @@ using namespace std;
 WCHAR*			szApplicationName = TEXT("Tetris2022");
 WCHAR*			szWindowClassName = TEXT("TetrisClass");
 
-
+const int timer_speedup = 100;
 
 
 //-----------------------------------WinProc------------------------------------------
@@ -54,7 +54,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 	static CPierreDellacherieTetrisController* pPDTetrisController;
 
-	enum game_mode {ManualMode, AIMode};
+	enum game_mode {ManualMode, AIMode, ReservedMode};
 
 	static game_mode mode;
 	static list<int> AICmdList;
@@ -93,9 +93,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		pTetrisController = new CTetrisController(pTetrisDraw);
 		pPDTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
 
-		SetTimer(hwnd, TIMER_BLOCK_DOWN, 1000, NULL); 
+		SetTimer(hwnd, TIMER_BLOCK_DOWN, int(1000/timer_speedup), NULL);
 		//一秒钟可以模拟5次按键
-		SetTimer(hwnd, TIMER_AICommandExecution, 1000/5, NULL);
+		SetTimer(hwnd, TIMER_AICommandExecution, int(1000/(5* timer_speedup)), NULL);
 		mode = AIMode;
 		
 		if (mode == AIMode)

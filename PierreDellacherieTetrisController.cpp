@@ -4,7 +4,12 @@
 #include "FileLogger.h"
 #include <sstream>
 
+#include <exception>
+
 using namespace std;
+
+FileLogger g_fileLogger("tetrisBlockLog.txt", error);
+
 
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
 	CTetrisController(pTetrisDraw, pTetrisBlock)
@@ -21,9 +26,9 @@ CPierreDellacherieTetrisController::~CPierreDellacherieTetrisController()
 void CPierreDellacherieTetrisController::getArrTetrisBoardCopyFromCTetrisDraw(bool *pbArrTetrisBoardCopy)
 {
 	CTetrisDraw* pTetrisDraw = getTetrisDraw();
-	for (int y = 0; y < nTetrisBoardHeight; ++y)
+	for (int y = 0; y < nTetrisBoardHeight; y++)
 	{
-		for (int x = 0; x < nTetrisBoardWidth; ++x)
+		for (int x = 0; x < nTetrisBoardWidth; x++)
 		{
 			pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] = pTetrisDraw->GetTetrisArrayItem(y, x);
 		}
@@ -54,6 +59,12 @@ int CPierreDellacherieTetrisController::getLandingHeight(sTetrisBlock& stb)
 //函数getErodedPieceCellsMetric会使用stb占用的位置来填充pbArrTetrisBoardCopy
 int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb)
 {
+	stringstream ss;
+	ss << "getErodedPieceCellsMetric para stb.nPosX " << stb.nPosX << " stb.nPosY" << stb.nPosY << endl;
+
+	string debug = ss.str();
+	g_fileLogger.Debug(debug);
+
 	int nLevelErasedAfterTetrisBlockDownTillItCannotMove = 0;
 	int nBlockElementContributeToLevelErased = 0;
 	//用当前俄罗斯方块所在的位置填充pbArrTetrisBoardCopy
@@ -206,8 +217,6 @@ int CPierreDellacherieTetrisController::getBoardWells(bool *pbArrTetrisBoardCopy
 
 bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb, bool *pbArrTetrisBoardCopy, int x, int y)
 {
-	FileLogger fl("tetrisBlockLog.txt", debug);
-	fl.SetLogLevel(debug);
 	//判断当前方块是否可以旋转或者移动到位置(x,y),x,y从0开始
 	//先判断旋转或者移动是否会超出TetrisBoard游戏区之外
 	//再使用旋转或者移动之后的方块2维数组和CTetrisDraw.m_bArrTetris中的元素进行逻辑与操作
@@ -219,50 +228,29 @@ bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb
 			//移动或者旋转超出左右边界和下边界，这里不判断是否超出上边界，主要是跟block刚出场时的初始位置可能在上边界外有关
 			if ((x + j) < 0 || (x + j) >= nTetrisBoardWidth || (y - i) < 0)
 				return false;
-			//AI模式下，可能对于刚出场的block进行旋转操作，此时对于超出上边界的场景，认为直接具备可旋转，直接返回true
-			//防止超过pbArrTetrisBoardCopy数组的边界，而引发delete []异常
-			if ((y - i) >= nTetrisBoardHeight)
-				return true;
+			
+			//if ((y - i)*nTetrisBoardWidth + x + j >= nTetrisBoardHeight*nTetrisBoardWidth)
+			//{
+			//	g_fileLogger.Error("pbArrTetrisBoardCopy out of range in function canTetrisBlockMovable");
+			//}
 			//移动或者旋转之后的方块和TetrisArray中任何一个位置都被占用的情况下，返回false
-			if (true == (pbBlockArr[i*stb.nBlockWidth + j] && pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j]))
+			//AI模式下，可能对于刚出场的block进行旋转或者移动操作，此时y的值是超过nTetrisBoardHeight-1的
+			//这里再访问数组前加个判断，防止超过pbArrTetrisBoardCopy数组的边界，而引发delete []异常
+			//同时对于从屏幕上方刚出来的tetris block中在nTetrisBoardHeight行及以上的，肯定不会有冲突，不用做额外判断了
+			if ((y - i) < nTetrisBoardHeight)
 			{
-				stringstream ss;
-				string debug= "pbBlockArr ";
-				string tmp;
-				ss << i;
-				ss >> tmp;
-				debug = debug + tmp + " ";
-				ss.clear();
-				tmp.clear();
-				ss << j;
-				ss >> tmp;
-				debug = debug + tmp + " ";
-				ss.clear();
-				tmp.clear();
-				ss << pbBlockArr[i*stb.nBlockWidth + j];
-				ss >> tmp;
-				debug = debug + tmp + "\r\n";
-				ss.clear();
-				tmp.clear();
-
-				ss << (y - i);
-				ss >> tmp;
-				debug = debug + "pbArrTetrisBoardCopy" + tmp + " ";
-				ss.clear();
-				tmp.clear();
-				ss << (x + j);
-				ss >> tmp;
-				debug = debug + tmp + " ";
-				ss.clear();
-				tmp.clear();
-				ss << pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j];
-				ss >> tmp;
-				debug = debug + tmp + "\r\n";
-				
-				fl.Debug(debug);
-				return false;
-			}
-				
+				if (true == (pbBlockArr[i*stb.nBlockWidth + j] && pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j]))
+				{
+					/*stringstream ss;
+					string debug= "pbBlockArr ";
+					string tmp;
+					ss << "pbBlockArr " << i << " " << j << " " << pbBlockArr[i*stb.nBlockWidth + j] << endl;
+					ss << "pbArrTetrisBoardCopy " << (y - i) << " " << (x + j) << " " << pbArrTetrisBoardCopy[(y - i)*nTetrisBoardWidth + x + j] << endl;
+					debug = ss.str();
+					g_fileLogger.Debug(debug);*/
+					return false;
+				}
+			}	
 		}
 	}
 	return true;
@@ -393,7 +381,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 	for (nTargetX = nTetrisBlockOriginX + 1; nTargetX < nTetrisBoardWidth; nTargetX++)
 	{
 		getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
-		//先向左移动到(nTargetX, nTetrisBlockOriginY)
+		//先向右移动到(nTargetX, nTetrisBlockOriginY)
 		if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTetrisBlockOriginY))
 		{
 			//
@@ -467,11 +455,11 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 		{
 			RotateTetrisBlock(stb);
 			//后判断是否可以旋转
-			//if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, stb.nPosX, stb.nPosY))
-			//{
-				//
-			//	break;
-			//}
+			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, stb.nPosX, stb.nPosY))
+			{
+				
+				break;
+			}
 		}
 			
 		int nHighestEvalutionScoreRet;
@@ -530,7 +518,7 @@ void CPierreDellacherieTetrisController::RotateTetrisBlock(sTetrisBlock& stb)
 	stb.nBlockWidth = nPreBlockHeight;
 	
 	//对stb.pbBlock构造一个副本
-	pbBlockCopy = new bool[nPreBlockHeight*nPreBlockHeight];
+	pbBlockCopy = new bool[nPreBlockHeight*nPreBlockWidth];
 
 	for (int m = 0; m < nPreBlockHeight; m++)
 	{

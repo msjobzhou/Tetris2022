@@ -463,6 +463,7 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType, int nOrientati
 	//根据block的高度和高度设置其初始位置
 	m_nPosX = int(nTetrisBoardWidth / 2 - 1 - m_nBlockWidth / 2);
 	m_nPosY = nTetrisBoardHeight - 1 + m_nBlockHeight - 1;
+	//m_nPosY = 19;
 }
 
 void CTetrisBlock::left()
