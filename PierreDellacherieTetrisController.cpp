@@ -8,7 +8,7 @@
 
 using namespace std;
 
-FileLogger g_fileLogger("tetrisBlockLog.txt", error);
+FileLogger g_fileLogger("tetrisBlockLog.txt", debug);
 
 
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
@@ -63,7 +63,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 	ss << "getErodedPieceCellsMetric para stb.nPosX " << stb.nPosX << " stb.nPosY" << stb.nPosY << endl;
 
 	string debug = ss.str();
-	g_fileLogger.Debug(debug);
+	//g_fileLogger.Debug(debug);
 
 	int nLevelErasedAfterTetrisBlockDownTillItCannotMove = 0;
 	int nBlockElementContributeToLevelErased = 0;
@@ -294,6 +294,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 	int nTetrisBlockPreY = nTetrisBlockOriginY;
 
 	int nHighestEvalutionScore = -99999999;
+	stringstream ss;
 	//按照路径1的路线进行搜索
 	for (nTargetX = nTetrisBlockOriginX-1; nTargetX >= 0; nTargetX--)
 	{
@@ -307,8 +308,10 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		//对俄罗斯方块开始第一次向下移动的时候，进行处理一下nTetrisBlockPreY
 		nTetrisBlockPreY = nTetrisBlockOriginY;
 
-		//再向下移动到(nTargetX, 0)
-		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
+		//再向下移动到(nTargetX, -1)，之所以是-1而不是0的原因，是因为，
+		//当tetris block的高度是1，且其要垂直下降的位置上没有任何其他block的时候，这种边界值的场景下，在nTargetY是0时 
+		//canTetrisBlockMovable会返回true，导致不能进入计算evaluationFunction
+		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= -1; nTargetY--)
 		{
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
@@ -320,6 +323,12 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				stb.nPosY = nStoppedY;
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+
+				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+				string debug = ss.str();
+				g_fileLogger.Debug(debug);
+				ss.clear();
+				ss.str("");
 
 				if (nScore >= nHighestEvalutionScore)
 				{
@@ -345,8 +354,10 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 	nTetrisBlockPreY = nTetrisBlockOriginY;
 
 	getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
-	//再向下移动到(nTargetX, 0)
-	for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
+	//再向下移动到(nTargetX, -1)，之所以是-1而不是0的原因，是因为，
+	//当tetris block的高度是1，且其要垂直下降的位置上没有任何其他block的时候，这种边界值的场景下，在nTargetY是0时 
+	//canTetrisBlockMovable会返回true，导致不能进入计算evaluationFunction
+	for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= -1; nTargetY--)
 	{
 		if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 		{
@@ -357,6 +368,12 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			stb.nPosY = nStoppedY;
 			//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 			int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+
+			ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+			string debug = ss.str();
+			g_fileLogger.Debug(debug);
+			ss.clear();
+			ss.str("");
 
 			if (nScore >= nHighestEvalutionScore)
 			{
@@ -389,8 +406,10 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		}
 		//对俄罗斯方块开始第一次向下移动的时候，进行处理一下nTetrisBlockPreY
 		nTetrisBlockPreY = nTetrisBlockOriginY;
-		//再向下移动到(nTargetX, 0)
-		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= 0; nTargetY--)
+		//再向下移动到(nTargetX, -1)，之所以是-1而不是0的原因，是因为，
+		//当tetris block的高度是1，且其要垂直下降的位置上没有任何其他block的时候，这种边界值的场景下，在nTargetY是0时 
+		//canTetrisBlockMovable会返回true，导致不能进入计算evaluationFunction
+		for (nTargetY = nTetrisBlockOriginY-1; nTargetY >= -1; nTargetY--)
 		{
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
@@ -402,6 +421,12 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				stb.nPosY = nStoppedY;
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+
+				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+				string debug = ss.str();
+				g_fileLogger.Debug(debug);
+				ss.clear();
+				ss.str("");
 
 				if (nScore >= nHighestEvalutionScore)
 				{
@@ -426,7 +451,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 
 
 
-bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBlock(list<int>& cmdList)
+sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBlock(list<int>& cmdList)
 {
 	if (!cmdList.empty())
 		cmdList.clear();
@@ -503,7 +528,7 @@ bool CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBl
 	delete[] stb.pbBlock;
 	delete[] pbArrTetrisBoardCopy;
 
-	return true;
+	return sp;
 }
 
 //仿照CTetrisBlock的prepareRotate实现的功能

@@ -1,5 +1,7 @@
 #include "PierreDellacherieUnittest.h"
+#include <list>
 
+using namespace std;
 
 PierreDellacherieUnittest::PierreDellacherieUnittest()
 {
@@ -442,4 +444,78 @@ void test_RotateTetrisBlock()
 
 	CPierreDellacherieTetrisController pdtc(0);
 	pdtc.RotateTetrisBlock(stb);
+}
+
+void test_generateAICommandListForCurrentTetrisBlock()
+{
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = 100;
+	rect.bottom = 200;
+	//CTetrisDraw构造函数的两个参数在此测试函数中并不会用到，所以随便设置一下
+	CTetrisDraw* pTetrisDraw = new CTetrisDraw(0, rect);
+	CPierreDellacherieTetrisController* pTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
+	//生成一个如下形状的block
+	//    ■
+	//    ■
+	//    ■
+	//    ■
+	CTetrisBlock* pTetrisBlock = new CTetrisBlock(6, 1);
+	pTetrisController->setCurTetrisBlock(pTetrisBlock);
+
+	sPosition sp;
+	list<int> AICmdList;
+	sp = pTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+
+	//此时最优的block放置位置的第一步是要旋转，对应的数字是4
+	assert(AICmdList.front() == 4);
+
+	//pTetrisBlock会由CPierreDellacherieTetrisController的析构函数来释放，这里不用显式进行释放了
+	//delete pTetrisBlock;
+	delete pTetrisController;
+	delete pTetrisDraw;
+}
+void test_evaluationFunction()
+{
+	//先构造如上的board数据
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = 100;
+	rect.bottom = 200;
+	//CTetrisDraw构造函数的两个参数在此测试函数中并不会用到，所以随便设置一下
+	CTetrisDraw* pTetrisDraw = new CTetrisDraw(0, rect);
+	CPierreDellacherieTetrisController* pTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
+	bool *pbArrTetrisBoardCopy = new bool[nTetrisBoardHeight*nTetrisBoardWidth];
+	int nHeight = nTetrisBoardHeight;
+	int nWidth = nTetrisBoardWidth;
+
+	pTetrisController->getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
+	sTetrisBlock stb;
+	//■
+	//■
+	//■
+	//■
+	stb.nPosX = 6;
+	stb.nPosY = 0;
+	stb.nBlockHeight = 4;
+	stb.nBlockWidth = 1;
+	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];
+	for (int i = 0; i < stb.nBlockHeight; i++)
+	{
+		for (int j = 0; j < stb.nBlockWidth; j++)
+		{
+			stb.pbBlock[i*stb.nBlockWidth + j] = false;
+		}
+	}
+	stb.pbBlock[0 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[1 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[2 * stb.nBlockWidth + 0] = true;
+	stb.pbBlock[3 * stb.nBlockWidth + 0] = true;
+
+	int nScore = pTetrisController->evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+	
+	delete[] stb.pbBlock;
+	delete[] pbArrTetrisBoardCopy;
 }

@@ -58,7 +58,7 @@ public:
 	bool canTetrisBlockMovable(sTetrisBlock& stb, bool *pbArrTetrisBoardCopy, int x, int y);
 	int evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb);
 	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nHighestEvalutionScoreRet);
-	bool generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
+	sPosition generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
 	void RotateTetrisBlock(sTetrisBlock& stb);
 };
 

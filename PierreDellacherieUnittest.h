@@ -30,3 +30,5 @@ void test_getBoardWells();
 void test_pickPositionWithHighestEvalutionScore();
 
 void test_RotateTetrisBlock();
+void test_generateAICommandListForCurrentTetrisBlock();
+void test_evaluationFunction();

@@ -96,7 +96,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		SetTimer(hwnd, TIMER_BLOCK_DOWN, int(1000/timer_speedup), NULL);
 		//一秒钟可以模拟5次按键
 		SetTimer(hwnd, TIMER_AICommandExecution, int(1000/(5* timer_speedup)), NULL);
-		mode = AIMode;
+		mode = ReservedMode;
 		
 		if (mode == AIMode)
 		{
@@ -408,8 +408,10 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_getBoardColumnTransitions); 
 	pdut.addTestFunc(test_getBoardBuriedHoles); 
 	pdut.addTestFunc(test_getBoardWells); 
-	pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
-	pdut.addTestFunc(test_RotateTetrisBlock);
+	//pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
+	pdut.addTestFunc(test_RotateTetrisBlock); 
+	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
+	pdut.addTestFunc(test_evaluationFunction);
 	pdut.runTest();
 	//unit test 的代码 end
 
