@@ -16,6 +16,26 @@
 
 #include <list>
 
+#include "FileLogger.h"
+#include <sstream>
+
+#include <stdlib.h>  
+#include <crtdbg.h>  
+
+
+#ifdef _DEBUG  
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)  
+#endif  
+
+void EnableMemLeakCheck()
+{
+	int tmpFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+	tmpFlag |= _CRTDBG_LEAK_CHECK_DF;
+	_CrtSetDbgFlag(tmpFlag);
+}
+
+FileLogger g_fileLoggerMain("tetrisBlockMainLog.txt", error);
+
 using namespace std;
 
 
@@ -25,9 +45,9 @@ using namespace std;
 WCHAR*			szApplicationName = TEXT("Tetris2022");
 WCHAR*			szWindowClassName = TEXT("TetrisClass");
 
-const int timer_speedup = 100;
+const int timer_speedup = 20;
 
-
+stringstream ss;
 //-----------------------------------WinProc------------------------------------------
 //
 //------------------------------------------------------------------------------------
@@ -96,7 +116,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		SetTimer(hwnd, TIMER_BLOCK_DOWN, int(1000/timer_speedup), NULL);
 		//一秒钟可以模拟5次按键
 		SetTimer(hwnd, TIMER_AICommandExecution, int(1000/(5* timer_speedup)), NULL);
-		mode = ReservedMode;
+		mode = AIMode;
 		
 		if (mode == AIMode)
 		{
@@ -213,6 +233,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		SelectObject(hdcBackBuffer, hOldBitmap);
 
 		HDC hdc = GetDC(hwnd);
+		HDC hdcOld = pTetrisDraw->SetHDC(hdc);
 		RECT rect;
 		rect.left = 0;
 		rect.top = 0;
@@ -228,6 +249,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		hOldBitmap = (HBITMAP)SelectObject(hdcBackBuffer, hBitmap);
 		pTetrisDraw->SetArea(rect);
 
+		//恢复成之前的DC
+		hdc = pTetrisDraw->SetHDC(hdcOld);
 		ReleaseDC(hwnd, hdc);
 	}
 
@@ -314,6 +337,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 							pPDTetrisController->setCurTetrisBlock();
 							AICmdList.clear();
 							pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+							long lScore = pPDTetrisController->GetScore();
+							ss << "TIMER_BLOCK_DOWN score" << lScore << endl;
+							string debug = ss.str();
+							g_fileLoggerMain.Debug(debug);
+							ss.clear();
+							ss.str("");
 						}
 						else
 						{
@@ -339,6 +368,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 				break;
 			default:break;
 		}
+		//恢复成之前的DC
+		hdc = pTetrisDraw->SetHDC(hdcOld);
+		ReleaseDC(hwnd, hdc);
 	}
 	break;
 
@@ -360,6 +392,8 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	LPSTR lpcmdline,
 	int ncmdshow)
 {
+	EnableMemLeakCheck();
+	//_CrtSetBreakAlloc();
 
 	WNDCLASSEX winclass;
 	HWND	   hwnd;
@@ -404,7 +438,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	//unit test 的代码 start
 	PierreDellacherieUnittest pdut;
 	pdut.addTestFunc(test_getErodedPieceCellsMetric); 
-	pdut.addTestFunc(test_getBoardRowTransitions); 
+	//pdut.addTestFunc(test_getBoardRowTransitions); 
 	pdut.addTestFunc(test_getBoardColumnTransitions); 
 	pdut.addTestFunc(test_getBoardBuriedHoles); 
 	pdut.addTestFunc(test_getBoardWells); 

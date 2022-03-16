@@ -8,7 +8,7 @@
 
 using namespace std;
 
-FileLogger g_fileLogger("tetrisBlockLog.txt", debug);
+FileLogger g_fileLogger("tetrisBlockLog.txt", error);
 
 
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
@@ -132,11 +132,11 @@ int CPierreDellacherieTetrisController::getBoardRowTransitions(bool *pbArrTetris
 		}
 		//tetris board的边界算是有石块被占据
 		//先看左边界和本行第一个石块的情况
-		if (false == pbArrTetrisBoardCopy[y*nWidth + 0])
-			nTransitions++;
+		//if (false == pbArrTetrisBoardCopy[y*nWidth + 0])
+		//	nTransitions++;
 		//再看本行最后一个石块和右边界的情况
-		if (false == pbArrTetrisBoardCopy[y*nWidth + nWidth - 1])
-			nTransitions++;
+		//if (false == pbArrTetrisBoardCopy[y*nWidth + nWidth - 1])
+		//	nTransitions++;
 	}
 
 	return nTransitions;

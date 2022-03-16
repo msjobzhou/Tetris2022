@@ -5,7 +5,7 @@
 FileLogger::FileLogger(string filePath, log_level level)
 {
 	m_of.open(filePath.c_str(), ios::out | ios::app);
-
+	m_level = level;
 	if (!m_of.is_open())
 	{
 

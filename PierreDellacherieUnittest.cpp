@@ -497,8 +497,8 @@ void test_evaluationFunction()
 	//¡ö
 	//¡ö
 	//¡ö
-	stb.nPosX = 6;
-	stb.nPosY = 0;
+	stb.nPosX = 9;
+	stb.nPosY = 3;
 	stb.nBlockHeight = 4;
 	stb.nBlockWidth = 1;
 	stb.pbBlock = new bool[stb.nBlockHeight*stb.nBlockWidth];

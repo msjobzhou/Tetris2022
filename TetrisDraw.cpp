@@ -98,7 +98,6 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 	HBRUSH whiteBrush = (HBRUSH)GetStockObject(WHITE_BRUSH);
 
 	//select them into the device conext
-	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, RedBrush);
 	OldPen = (HPEN)SelectObject(m_hdcDraw, NullPen);
 
 	for (int y = nLow; y<=nHigh; ++y)
@@ -116,29 +115,28 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 			
 			if (m_bArrTetris[y][x] == 1)
 			{
-				SelectObject(m_hdcDraw, RedBrush);
-
+				OldBrush = (HBRUSH)SelectObject(m_hdcDraw, RedBrush);
 				//draw the cell
 				Rectangle(m_hdcDraw, left, top, right, bottom);
+
+				SelectObject(m_hdcDraw, OldBrush);
 			}
 			else
 			{
-				SelectObject(m_hdcDraw, whiteBrush);
-
+				OldBrush = (HBRUSH)SelectObject(m_hdcDraw, whiteBrush);
+				
 				//clear the cell
 				Rectangle(m_hdcDraw, left, top, right, bottom);
+				SelectObject(m_hdcDraw, OldBrush);
 			}
 
 		}
 	}
 
 	
-
-	//restore the original brush
-	SelectObject(m_hdcDraw, OldBrush);
-
-	//and pen
+	//restore the original pen
 	SelectObject(m_hdcDraw, OldPen);
+	DeleteObject(RedBrush);
 }
 
 void CTetrisDraw::DrawScoreArea(long score)
@@ -212,7 +210,7 @@ void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 			//这里增加个判断，超出block的二维数组下标范围抛出异常
 			if (pTetrisBlock->getBlockValue(nPosY-y, x- nPosX) == true)
 			{
-				SelectObject(m_hdcDraw, BlackBrush);
+				//SelectObject(m_hdcDraw, BlackBrush);
 
 				//draw the cell
 				Rectangle(m_hdcDraw, left, top, right, bottom);
@@ -276,7 +274,7 @@ void CTetrisDraw::ClearCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 			//这里增加个判断，超出block的二维数组下标范围抛出异常
 			if (pTetrisBlock->getBlockValue(nPosY - y, x - nPosX) == true)
 			{
-				SelectObject(m_hdcDraw, WhiteBrush);
+				//SelectObject(m_hdcDraw, WhiteBrush);
 
 				//draw the cell
 				Rectangle(m_hdcDraw, left, top, right, bottom);
