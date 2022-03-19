@@ -49,15 +49,15 @@ void CTetrisDraw::SetArea(RECT rect)
 	m_rectGameArea.bottom = m_rectWhole.bottom;
 	m_rectGameArea.right = int(m_rectWhole.right * 2 / 3) - 1;
 
-	m_rectScoreArea.left = int(m_rectWhole.right * 2 / 3);
-	m_rectScoreArea.top = m_rectWhole.top;
-	m_rectScoreArea.bottom = int(m_rectWhole.bottom / 2) - 1;
-	m_rectScoreArea.right = m_rectWhole.right;
+	m_rectScoreAndNextBlockArea.left = int(m_rectWhole.right * 2 / 3);
+	m_rectScoreAndNextBlockArea.top = m_rectWhole.top;
+	m_rectScoreAndNextBlockArea.bottom = int(m_rectWhole.bottom / 2) - 1;
+	m_rectScoreAndNextBlockArea.right = m_rectWhole.right;
 
-	m_rectNextBlockHintArea.left = int(m_rectWhole.right * 2 / 3);
-	m_rectNextBlockHintArea.top = int(m_rectWhole.bottom / 2);
-	m_rectNextBlockHintArea.bottom = m_rectWhole.bottom;
-	m_rectNextBlockHintArea.right = m_rectWhole.right;
+	m_rectGameHintArea.left = int(m_rectWhole.right * 2 / 3);
+	m_rectGameHintArea.top = int(m_rectWhole.bottom / 2);
+	m_rectGameHintArea.bottom = m_rectWhole.bottom;
+	m_rectGameHintArea.right = m_rectWhole.right;
 }
 
 //这里的DrawXXX函数的作图区域默认是x方向从左往右增加，y方向是从上往下增加
@@ -139,18 +139,106 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 	DeleteObject(RedBrush);
 }
 
-void CTetrisDraw::DrawScoreArea(long score)
+void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock)
 {
+	wchar_t sHanzi[100] = L"游戏得分";
+	int nMargin = 5;
+	int nYouXiDeFenTextHeight = 20;
+	SetTextColor(m_hdcDraw, RGB(0, 0, 0));
+	TextOut(m_hdcDraw, m_rectScoreAndNextBlockArea.left+ nMargin, m_rectScoreAndNextBlockArea.top+ nMargin, sHanzi, wcslen(sHanzi));
+	HFONT hFont;
+	HFONT hFontOld;
+	int nFontHeight = 35;
+	//CreateFont参考
+	//https://docs.microsoft.com/zh-cn/windows/win32/api/wingdi/nf-wingdi-createfonta
+	hFont = CreateFont(nFontHeight, 0, 0, 0, FW_EXTRABOLD, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Arial"));
+	hFontOld = (HFONT)SelectObject(m_hdcDraw, hFont);
+	SetTextColor(m_hdcDraw, RGB(0, 255, 0));
+	RECT rectScore;
+	rectScore.left = m_rectScoreAndNextBlockArea.left + nMargin;
+	rectScore.top = m_rectScoreAndNextBlockArea.top + nMargin + nYouXiDeFenTextHeight;
+	rectScore.right = m_rectScoreAndNextBlockArea.right + nMargin;
+	rectScore.bottom = m_rectScoreAndNextBlockArea.top + nMargin + 2* nFontHeight;
 	wchar_t s[100] = L"";
-	swprintf(s, 100, L"游戏得分   %d", score);
-	TextOut(m_hdcDraw, m_rectScoreArea.left, m_rectScoreArea.top, s, wcslen(s));
-	
+	swprintf(s, 100, L"%d", score);
+	DrawText(m_hdcDraw, s, -1, &rectScore, DT_VCENTER | DT_SINGLELINE|DT_NOCLIP);
+	SelectObject(m_hdcDraw, hFontOld);
+	if (0 == pNextTetrisBlock)
+		return;
+	RECT rectNextBlock;
+	rectNextBlock.left = m_rectScoreAndNextBlockArea.left + nMargin;
+	rectNextBlock.top = rectScore.bottom + nMargin;
+	rectNextBlock.right = m_rectScoreAndNextBlockArea.right + nMargin;
+	rectNextBlock.bottom = m_rectScoreAndNextBlockArea.bottom - nMargin;
+
+	const int border = 20;
+	int cxClient = m_rectGameArea.right - m_rectGameArea.left + 1;
+	int cyClient = m_rectGameArea.bottom - m_rectGameArea.top + 1;
+
+	int BlockSizeX = (cxClient - 2 * border) / nTetrisBoardWidth;
+	int BlockSizeY = (cyClient - 2 * border) / nTetrisBoardHeight;
+
+	int rectNextBlockCenterPointX = (rectNextBlock.left + rectNextBlock.right)/2;
+	int rectNextBlockCenterPointY = (rectNextBlock.top + rectNextBlock.bottom) / 2;
+
+	HBRUSH	BlackBrush, OldBrush, WhiteBrush;
+	HPEN	NullPen, OldPen;
+
+	NullPen = (HPEN)GetStockObject(NULL_PEN);
+	BlackBrush = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	WhiteBrush = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, BlackBrush);
+	OldPen = (HPEN)SelectObject(m_hdcDraw, NullPen);
+
+	int nBlockHeight = pNextTetrisBlock->getBlockHeight();
+	int nBlockWidth = pNextTetrisBlock->getBlockWidth();
+
+	//先把rectNextBlock区域清空，再根据下一个Block的实际情况绘画
+	FillRect(m_hdcDraw, &rectNextBlock, WhiteBrush);
+	int nBlockDrawStartPointX = rectNextBlockCenterPointX - nBlockWidth  * BlockSizeX / 2;
+	int nBlockDrawStartPointY = rectNextBlockCenterPointY - nBlockHeight * BlockSizeY / 2;
+
+	for (int y = 0; y<nBlockHeight; y++)
+	{
+		for (int x = 0; x<nBlockWidth; x++)
+		{
+			//TetrisBlock x,y的增长方向和显示器的x,y增长方向一致
+			int left = nBlockDrawStartPointX + (BlockSizeX * x);
+			int right = left + BlockSizeX;
+
+			int top = nBlockDrawStartPointY + (BlockSizeY * y);
+			int bottom = top + BlockSizeY;
+
+			//这里增加个判断，超出block的二维数组下标范围抛出异常
+			if (pNextTetrisBlock->getBlockValue(y, x) == true)
+			{
+				//SelectObject(m_hdcDraw, BlackBrush);
+				Rectangle(m_hdcDraw, left, top, right, bottom);
+			}
+		}
+	}
+
+	SelectObject(m_hdcDraw, OldBrush);
+	SelectObject(m_hdcDraw, OldPen);
 }
 
-void CTetrisDraw::DrawNextBlockHintArea()
+void CTetrisDraw::DrawGameHintArea()
 {
-	TCHAR s[20] = TEXT("Next: ");
-	TextOut(m_hdcDraw, m_rectNextBlockHintArea.left, m_rectNextBlockHintArea.top, s, wcslen(s));
+	TCHAR s[200] = TEXT("按键说明:\r\n A向左 S向下\r\nD向右 J变形\r\n Space 暂停/运行切换\r\n \r\n切换模式\r\n CTRL+A AI模式\r\nR重新切到人工模式 ");
+	//TextOut(m_hdcDraw, m_rectGameHintArea.left, m_rectGameHintArea.top, s, wcslen(s));
+	HFONT hFont;
+	HFONT hFontOld;
+	//CreateFont参考
+	//https://docs.microsoft.com/zh-cn/windows/win32/api/wingdi/nf-wingdi-createfonta
+	hFont = CreateFont(15, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+		CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Arial"));
+	hFontOld=(HFONT)SelectObject(m_hdcDraw, hFont);
+	SetTextColor(m_hdcDraw, RGB(100, 100, 100));
+	//DrawText参考
+	//https://docs.microsoft.com/en-us/previous-versions/aa911421(v=msdn.10)?redirectedfrom=MSDN
+	DrawText(m_hdcDraw, s, -1, &m_rectGameHintArea, DT_NOCLIP| DT_CENTER);
+	SelectObject(m_hdcDraw, hFontOld);
 }
 
 void CTetrisDraw::SetTetrisArrayItem(int nHeight, int nWidth, bool bValue)
@@ -415,4 +503,15 @@ int CTetrisDraw::GetHighestNonEmptyLevel()
 	}
 
 	return nLevel;
+}
+
+void CTetrisDraw::ClearTetrisArray()
+{
+	for (int y = 0; y < nTetrisBoardHeight; ++y)
+	{
+		for (int x = 0; x < nTetrisBoardWidth; ++x)
+		{
+			m_bArrTetris[y][x] = false;
+		}
+	}
 }

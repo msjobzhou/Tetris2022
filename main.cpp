@@ -45,7 +45,7 @@ using namespace std;
 WCHAR*			szApplicationName = TEXT("Tetris2022");
 WCHAR*			szWindowClassName = TEXT("TetrisClass");
 
-const int timer_speedup = 20;
+int timer_speedup = 1;
 
 stringstream ss;
 //-----------------------------------WinProc------------------------------------------
@@ -69,15 +69,20 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 	static HBITMAP	hBitmap;
 	static HBITMAP	hOldBitmap;
 
-	static CTetrisDraw* pTetrisDraw;
-	static CTetrisController* pTetrisController;
+	static CTetrisDraw* pTetrisDraw=0;
+	//TetrisController类里有CurrentTetrisBlock
+	static CTetrisController* pTetrisController=0;
 
-	static CPierreDellacherieTetrisController* pPDTetrisController;
+	static CTetrisBlock* pNextTetrisBlock=0;
+
+	static CPierreDellacherieTetrisController* pPDTetrisController=0;
 
 	enum game_mode {ManualMode, AIMode, ReservedMode};
 
 	static game_mode mode;
 	static list<int> AICmdList;
+
+	static bool bPaused;
 
 	switch (msg)
 	{
@@ -112,16 +117,24 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		pTetrisDraw = new CTetrisDraw(hdc, rect);
 		pTetrisController = new CTetrisController(pTetrisDraw);
 		pPDTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
-
+		
+		srand((int)time(NULL));  // 产生随机种子
+		int nType = rand() % 7 + 1;
+		pNextTetrisBlock = new CTetrisBlock(nType);
+		
 		SetTimer(hwnd, TIMER_BLOCK_DOWN, int(1000/timer_speedup), NULL);
 		//一秒钟可以模拟5次按键
 		SetTimer(hwnd, TIMER_AICommandExecution, int(1000/(5* timer_speedup)), NULL);
-		mode = AIMode;
+		mode = ManualMode;
 		
 		if (mode == AIMode)
 		{
+			//AI模式下，20倍速进行
+			timer_speedup = 20;
 			pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
 		}
+
+		bPaused = false;
 	}
 
 	break;
@@ -149,26 +162,74 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		case VK_SPACE:
 		{
-
+			//空格键按下，暂停和运行之间切换
+			bPaused = !bPaused;
 		}
 
 		break;
 
 		case 0x41: //VK_A 向左
 		{
-			if (mode == ManualMode)
+			bool bCtrlDown = GetAsyncKeyState(VK_CONTROL) & 0x8000;
+			if ((mode == ManualMode)&&!bPaused&&!bCtrlDown)
 			{
 				PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				pTetrisController->executeCommand(1);
 			}
-			
+			//按住CTRL+A，进行AI模式和手动模式切换
+			if (bCtrlDown)
+			{
+				mode = AIMode;
+				//AI模式下，20倍速进行
+				timer_speedup = 20;
+				SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
+			}
 		}
 
 		break;
 
+		case 0x52: //VK_R 
+		{
+			bPaused = true;
+			MessageBox(hwnd, TEXT("Game RESET !"), TEXT("Alert"), MB_OK);
+			
+			KillTimer(hwnd, TIMER_BLOCK_DOWN);
+			KillTimer(hwnd, TIMER_AICommandExecution);
+			
+			pTetrisDraw->ClearTetrisArray();
+			
+
+			srand((int)time(NULL));  // 产生随机种子
+			int nType = rand() % 7 + 1;
+			CTetrisBlock* pTB = new CTetrisBlock(nType);
+
+			srand((int)time(NULL));  // 产生随机种子
+			nType = rand() % 7 + 1;
+			pNextTetrisBlock = new CTetrisBlock(nType);
+
+			SetTimer(hwnd, TIMER_BLOCK_DOWN, int(1000 / timer_speedup), NULL);
+			SetTimer(hwnd, TIMER_AICommandExecution, int(1000 / (5 * timer_speedup)), NULL);
+
+			if (mode == AIMode)
+			{
+				pPDTetrisController->setCurTetrisBlock(pTB);
+				pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+			}
+
+			if (mode == ManualMode)
+			{
+				pTetrisController->setCurTetrisBlock(pTB);
+			}
+
+			bPaused = false;
+			InvalidateRect(hwnd, NULL, true);
+			UpdateWindow(hwnd);
+		}
+		break;
+
 		case 0x53: //VK_S 向下
 		{
-			if (mode == ManualMode)
+			if ((mode == ManualMode) && !bPaused)
 			{
 				//PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				//这里做下判断，如果不能继续往下移动了，需要释放老的方块，重新随机生成1个新的方块
@@ -177,7 +238,13 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
 					if (false == pTetrisController->isGameOver())
 					{
-						pTetrisController->setCurTetrisBlock();
+						pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
+
+						srand((int)time(NULL));  // 产生随机种子
+						int nType = rand() % 7 + 1;
+						pNextTetrisBlock = new CTetrisBlock(nType);
+
+						pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
 					}
 					else
 					{
@@ -194,7 +261,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		case 0x44: //VK_D 向右
 		{
-			if (mode == ManualMode)
+			if ((mode == ManualMode) && !bPaused)
 			{
 				PlaySound(TEXT("left_right.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				pTetrisController->executeCommand(2);
@@ -205,7 +272,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 		case 0x4A: //VK_J 旋转
 		{
-			if (mode == ManualMode)
+			if ((mode == ManualMode) && !bPaused)
 			{
 				PlaySound(TEXT("rotate.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				pTetrisController->executeCommand(4);
@@ -267,9 +334,18 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		pTetrisDraw->SetHDC(hdcBackBuffer);
 		//pTetrisDraw->SetHDC(ps.hdc);
 		pTetrisDraw->DrawGameArea();
-		pTetrisDraw->DrawCurrentTetrisBlock(pTetrisController->getCurTetrisBlock());
-		pTetrisDraw->DrawScoreArea(pTetrisController->GetScore());
-		pTetrisDraw->DrawNextBlockHintArea();
+		if (ManualMode == mode)
+		{
+			pTetrisDraw->DrawCurrentTetrisBlock(pTetrisController->getCurTetrisBlock());
+			pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
+		}
+		else if (AIMode == mode)
+		{
+			pTetrisDraw->DrawCurrentTetrisBlock(pPDTetrisController->getCurTetrisBlock());
+			pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
+		}
+		
+		pTetrisDraw->DrawGameHintArea();
 		//now blit backbuffer to front
 		BitBlt(ps.hdc, 0, 0, cxClient, cyClient, hdcBackBuffer, 0, 0, SRCCOPY);
 
@@ -288,13 +364,17 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		DeleteDC(hdcBackBuffer);
 		DeleteObject(hBitmap);
 
-		//if(0 != pTetrisDraw)
-		delete pTetrisDraw;
+		if(0 != pTetrisDraw)
+			delete pTetrisDraw;
 
-		//if (0 != pTetrisController)
-		delete pTetrisController;
+		if (0 != pTetrisController)
+			delete pTetrisController;
 
-		delete pPDTetrisController;
+		if (0 != pPDTetrisController)
+			delete pPDTetrisController;
+
+		if (0 != pNextTetrisBlock)
+			delete pNextTetrisBlock;
 		// kill the application, this sends a WM_QUIT message 
 		PostQuitMessage(0);
 
@@ -309,14 +389,20 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		switch (wparam)
 		{
 			case TIMER_BLOCK_DOWN:
-				if (mode == ManualMode)
+				if ((mode == ManualMode) && !bPaused)
 				{
 					if (false == pTetrisController->executeCommand(3))
 					{
 						//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
 						if (false == pTetrisController->isGameOver())
 						{
-							pTetrisController->setCurTetrisBlock();
+							pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
+
+							srand((int)time(NULL));  // 产生随机种子
+							int nType = rand() % 7 + 1;
+							pNextTetrisBlock = new CTetrisBlock(nType);
+
+							pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
 						}
 						else
 						{
@@ -327,14 +413,21 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					}
 				}
 				
-				if (mode == AIMode)
+				if ((mode == AIMode) && !bPaused)
 				{
 					if (false == pPDTetrisController->executeCommand(3))
 					{
 						//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
 						if (false == pPDTetrisController->isGameOver())
 						{
-							pPDTetrisController->setCurTetrisBlock();
+							pPDTetrisController->setCurTetrisBlock(pNextTetrisBlock);
+
+							srand((int)time(NULL));  // 产生随机种子
+							int nType = rand() % 7 + 1;
+							pNextTetrisBlock = new CTetrisBlock(nType);
+
+							pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
+
 							AICmdList.clear();
 							pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
 							long lScore = pPDTetrisController->GetScore();
@@ -355,13 +448,18 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 				break;
 			case TIMER_AICommandExecution:
-				if (mode == AIMode)
+				if ((mode == AIMode) && !bPaused)
 				{
 					if (!AICmdList.empty())
 					{
-						int cmd = AICmdList.front();
-						pPDTetrisController->executeCommand(cmd);
-						AICmdList.pop_front();
+						CTetrisBlock* pTB=pPDTetrisController->getCurTetrisBlock();
+						//AI模式下，只有在方块完全下落到nTetrisBoardHeight-1之后再发相应的动作指令
+						if(pTB->getBlockPosY()<=nTetrisBoardHeight-1)
+						{
+							int cmd = AICmdList.front();
+							pPDTetrisController->executeCommand(cmd);
+							AICmdList.pop_front();
+						}
 					}
 				}
 

@@ -11,16 +11,16 @@ private:
 	RECT m_rectWhole;
 	bool m_bArrTetris[nTetrisBoardHeight][nTetrisBoardWidth];
 	RECT m_rectGameArea;
-	RECT m_rectScoreArea;
-	RECT m_rectNextBlockHintArea;
+	RECT m_rectScoreAndNextBlockArea;
+	RECT m_rectGameHintArea;
 	
 
 public:
 	CTetrisDraw(HDC hdcDraw, RECT rectWhole);
 	~CTetrisDraw();
 	void DrawGameArea(int nLow= 0, int nHigh= nTetrisBoardHeight -1);
-	void DrawScoreArea(long score);
-	void DrawNextBlockHintArea();
+	void DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock = 0);
+	void DrawGameHintArea();
 	HDC SetHDC(HDC hdcDraw);
 	void SetArea(RECT rect);
 	void SetTetrisArrayItem(int nHeight, int nWidth, bool bValue=true);
@@ -31,5 +31,6 @@ public:
 	void ClearLevel(int nLevel);
 	int GetHighestNonEmptyLevel();
 	
+	void ClearTetrisArray();
 };
 

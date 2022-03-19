@@ -223,7 +223,7 @@ bool CTetrisController::commandDown()
 			break;
 		}
 		//更新分数
-		m_pTetrisDraw->DrawScoreArea(m_lScore);
+		m_pTetrisDraw->DrawScoreAndNextBlockArea(m_lScore);
 		return false;
 	}
 	//执行实际的向下移动指令并让TetrisDraw重绘
