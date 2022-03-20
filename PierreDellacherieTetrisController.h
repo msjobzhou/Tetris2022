@@ -60,5 +60,7 @@ public:
 	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nHighestEvalutionScoreRet);
 	sPosition generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
 	void RotateTetrisBlock(sTetrisBlock& stb);
+	int GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy);
+	int LevelNumErased(bool *pbArrTetrisBoardCopy, int nLevelStart, int nLevelEnd);
 };
 
