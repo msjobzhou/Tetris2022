@@ -5,6 +5,8 @@
 
 using namespace std;
 
+COLORREF CTetrisBlock::ColorTable[8] = { RGB(255,0,0),RGB(255,255,0),RGB(255,0,255),RGB(0,255,255),RGB(255,100,0),RGB(100,255,0),RGB(125,255,120),RGB(220,120,255) };
+
 CTetrisBlock::CTetrisBlock(int nType, int nOrientation)
 {
 	generateBlockShapeRandomOrientation(nType, nOrientation);
@@ -179,6 +181,10 @@ void CTetrisBlock::generateBlockShapeRandomOrientation(int nType, int nOrientati
 		srand((int)time(NULL));  // 产生随机种子
 		nRandNum = rand();
 	}
+	//随机产生俄罗斯方块的颜色
+	srand((int)time(NULL));  // 产生随机种子
+	int nColorIndex = rand() % nColorTableLen;
+	m_BlockColorIndex = nColorIndex;
 	
 	switch (nType)
 	{
@@ -484,4 +490,15 @@ void CTetrisBlock::down()
 int CTetrisBlock::getBlockMaxOrientation()
 {
 	return m_nMaxOrientation;
+}
+
+COLORREF CTetrisBlock::getColorByIndex(int nIndex)
+{
+	nIndex = nIndex%nColorTableLen;
+	return ColorTable[nIndex];
+}
+
+int CTetrisBlock::getBlockColorIndex()
+{
+	return m_BlockColorIndex;
 }

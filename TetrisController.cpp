@@ -112,6 +112,7 @@ void CTetrisController::setBlockOccupiedTetrisArray(bool bVal)
 	//还需要调用setBlockOccupiedTetrisArray(false)将数组还原
 	int x = m_pCurTetrisBlock->getBlockPosX();
 	int y = m_pCurTetrisBlock->getBlockPosY();
+	int nColorIndex = m_pCurTetrisBlock->getBlockColorIndex();
 	for (int i = 0; i < m_pCurTetrisBlock->getBlockHeight(); i++)
 	{
 		for (int j = 0; j < m_pCurTetrisBlock->getBlockWidth(); j++)
@@ -121,6 +122,7 @@ void CTetrisController::setBlockOccupiedTetrisArray(bool bVal)
 				if ((y-i)>=0&& (y - i)<nTetrisBoardHeight&&(x + j)>=0 && (x + j)< nTetrisBoardWidth)
 				{
 					m_pTetrisDraw->SetTetrisArrayItem(y - i, x + j, bVal);
+					m_pTetrisDraw->SetTetrisArrayItemColorIndex(y - i, x + j, nColorIndex);
 				}
 			}
 		}

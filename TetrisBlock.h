@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>  
 class CTetrisBlock
 {
 private:
@@ -8,7 +9,11 @@ private:
 	int m_nBlockHeight, m_nBlockWidth;
 	bool **m_ppbBlock;
 	int m_nMaxOrientation;
+	int m_BlockColorIndex;
 
+public:
+	static const int nColorTableLen = 8;
+	static COLORREF ColorTable[nColorTableLen];
 protected:
 	bool** newBlock2DArr(int nRow, int nCol);
 	void deleteBlock2DArr(bool **ppbBlock, int nRow);
@@ -32,5 +37,8 @@ public:
 	void right();
 	void down();
 	bool getBlockValue(int nRow, int nCol);
+	
+	static COLORREF getColorByIndex(int nIndex);
+	int getBlockColorIndex();
 };
 

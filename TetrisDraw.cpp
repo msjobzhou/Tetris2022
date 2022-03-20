@@ -16,6 +16,8 @@ CTetrisDraw::CTetrisDraw(HDC hdcDraw, RECT rectWhole)
 		for (int x = 0; x < nTetrisBoardWidth; ++x)
 		{
 			m_bArrTetris[y][x] = false;
+			//-1表示无颜色
+			m_bArrTetrisColor[y][x] = -1;
 		}
 	}
 	//下面这段是测试代码，待后期删除
@@ -72,9 +74,7 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 
 	HBRUSH	BlackBrush, OldBrush, NullBrush;
 	HPEN	NullPen, OldPen, BlackPen;
-	HBRUSH RedBrush = CreateSolidBrush(RGB(255, 0, 0));
-
-
+	
 	//grab a null pen so we can see the outlines of the cells
 	NullPen = (HPEN)GetStockObject(NULL_PEN);
 	BlackPen = (HPEN)GetStockObject(BLACK_PEN);
@@ -115,11 +115,14 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 			
 			if (m_bArrTetris[y][x] == 1)
 			{
-				OldBrush = (HBRUSH)SelectObject(m_hdcDraw, RedBrush);
+				COLORREF brushClr = CTetrisBlock::getColorByIndex(m_bArrTetrisColor[y][x]);
+				HBRUSH tmpBrush = CreateSolidBrush(brushClr);
+				HBRUSH tmpOldBrush = (HBRUSH)SelectObject(m_hdcDraw, tmpBrush);
 				//draw the cell
 				Rectangle(m_hdcDraw, left, top, right, bottom);
 
-				SelectObject(m_hdcDraw, OldBrush);
+				SelectObject(m_hdcDraw, tmpOldBrush);
+				DeleteObject(tmpBrush);
 			}
 			else
 			{
@@ -136,7 +139,7 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 	
 	//restore the original pen
 	SelectObject(m_hdcDraw, OldPen);
-	DeleteObject(RedBrush);
+	
 }
 
 void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock)
@@ -182,13 +185,14 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 	int rectNextBlockCenterPointX = (rectNextBlock.left + rectNextBlock.right)/2;
 	int rectNextBlockCenterPointY = (rectNextBlock.top + rectNextBlock.bottom) / 2;
 
-	HBRUSH	BlackBrush, OldBrush, WhiteBrush;
+	HBRUSH  OldBrush, WhiteBrush;
 	HPEN	NullPen, OldPen;
 
 	NullPen = (HPEN)GetStockObject(NULL_PEN);
-	BlackBrush = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	COLORREF brushClr = CTetrisBlock::getColorByIndex(pNextTetrisBlock->getBlockColorIndex());
+	HBRUSH blockBrush = CreateSolidBrush(brushClr);
 	WhiteBrush = (HBRUSH)GetStockObject(WHITE_BRUSH);
-	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, BlackBrush);
+	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, blockBrush);
 	OldPen = (HPEN)SelectObject(m_hdcDraw, NullPen);
 
 	int nBlockHeight = pNextTetrisBlock->getBlockHeight();
@@ -221,6 +225,8 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 
 	SelectObject(m_hdcDraw, OldBrush);
 	SelectObject(m_hdcDraw, OldPen);
+	DeleteObject(blockBrush);
+	DeleteObject(hFont);
 }
 
 void CTetrisDraw::DrawGameHintArea()
@@ -239,17 +245,26 @@ void CTetrisDraw::DrawGameHintArea()
 	//https://docs.microsoft.com/en-us/previous-versions/aa911421(v=msdn.10)?redirectedfrom=MSDN
 	DrawText(m_hdcDraw, s, -1, &m_rectGameHintArea, DT_NOCLIP| DT_CENTER);
 	SelectObject(m_hdcDraw, hFontOld);
+	DeleteObject(hFont);
 }
 
 void CTetrisDraw::SetTetrisArrayItem(int nHeight, int nWidth, bool bValue)
 {
 	m_bArrTetris[nHeight][nWidth] = bValue;
 }
+void CTetrisDraw::SetTetrisArrayItemColorIndex(int nHeight, int nWidth, int nColorIndex)
+{
+	m_bArrTetrisColor[nHeight][nWidth] = nColorIndex;
+}
 bool CTetrisDraw::GetTetrisArrayItem(int nHeight, int nWidth)
 {
 	return m_bArrTetris[nHeight][nWidth];
 }
 
+int CTetrisDraw::GetTetrisArrayItemColorIndex(int nHeight, int nWidth)
+{
+	return m_bArrTetrisColor[nHeight][nWidth];
+}
 
 void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 {
@@ -263,17 +278,18 @@ void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 
 	int BlockSizeX = (cxClient - 2 * border) / nTetrisBoardWidth;
 	int BlockSizeY = (cyClient - 2 * border) / nTetrisBoardHeight;
-	HBRUSH	BlackBrush, OldBrush;
+	HBRUSH	OldBrush;
 	HPEN	NullPen, OldPen;
 
 	//grab a null pen so we can see the outlines of the cells
 	NullPen = (HPEN)GetStockObject(NULL_PEN);
 
 	//grab a brush to fill our cells with
-	BlackBrush = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	COLORREF brushClr = CTetrisBlock::getColorByIndex(pTetrisBlock->getBlockColorIndex());
+	HBRUSH blockBrush = CreateSolidBrush(brushClr);
 
 	//select them into the device conext
-	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, BlackBrush);
+	OldBrush = (HBRUSH)SelectObject(m_hdcDraw, blockBrush);
 	OldPen = (HPEN)SelectObject(m_hdcDraw, NullPen);
 	int nPosY = pTetrisBlock->getBlockPosY();
 	int nPosX = pTetrisBlock->getBlockPosX();
@@ -312,6 +328,7 @@ void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 
 	//and pen
 	SelectObject(m_hdcDraw, OldPen);
+	DeleteObject(blockBrush);
 }
 
 void CTetrisDraw::ClearCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
