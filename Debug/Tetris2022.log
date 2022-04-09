@@ -1,8 +1,4 @@
-﻿  TetrisDraw.cpp
-  PierreDellacherieTetrisController.cpp
-  正在生成代码...
-  正在跳过...(未检测到相关更改)
-  main.cpp
-  PierreDellacherieUnittest.cpp
-  Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.exe
-  Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.pdb (Partial PDB)
+﻿  main.cpp
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\main.cpp(61): warning C4101: “hdc”: 未引用的局部变量
+  Tetris2022.vcxproj -> C:\Users\msjob\Documents\Visual Studio 2017\Projects\Tetris2022\Debug\Tetris2022.exe
+  Tetris2022.vcxproj -> C:\Users\msjob\Documents\Visual Studio 2017\Projects\Tetris2022\Debug\Tetris2022.pdb (Partial PDB)
