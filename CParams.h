@@ -24,50 +24,6 @@ class CParams
 
 public:
 
-  //------------------------------------general parameters
-  static double dPi;
-  static double dHalfPi;
-  static double dTwoPi;
-
-  static int    WindowWidth;
-  static int    WindowHeight;
-
-  static int    iFramesPerSecond;
-
-  
-  //-------------------------------------used for the neural network
-  static int    iNumInputs;
-  static int    iNumHidden;
-  static int    iNeuronsPerHiddenLayer;
-  static int    iNumOutputs;
-
-  //for tweeking the sigmoid function
-  static double dActivationResponse;
-  //bias value
-  static double dBias;
-
-  //--------------------------------------used to define the sweepers
-
-  //limits how fast the sweepers can turn
-  static double dMaxTurnRate;
-
-  static double dMaxSpeed;
-
-  //for controlling the size
-  static int   iSweeperScale;
-
-
-  //--------------------------------------controller parameters
-  static int    iNumSweepers;
-
-  static int    iNumMines;
-
-  //number of time steps we allow for each generation to live
-  static int    iNumTicks;
-
-  //scaling factor for mines
-  static double dMineScale;
-
   //---------------------------------------GA parameters
   static double dCrossoverRate;
   static double dMutationRate;
@@ -84,7 +40,7 @@ public:
   {
     if(!LoadInParameters("params.ini"))
     {
-      MessageBox(NULL, "Cannot find ini file!", "Error", 0);
+      MessageBox(NULL, TEXT("Cannot find ini file!"), TEXT("Error"), 0);
     }
 
   }
