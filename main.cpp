@@ -89,7 +89,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 	case WM_CREATE:
 	{
 		//seed the random number generator
-		srand((unsigned)time(NULL));
+		srand((unsigned int )time(NULL));
 
 
 
@@ -118,7 +118,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		pTetrisController = new CTetrisController(pTetrisDraw);
 		pPDTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
 		
-		srand((int)time(NULL));  // 产生随机种子
+		srand((unsigned int)time(NULL));  // 产生随机种子
 		int nType = rand() % 7 + 1;
 		pNextTetrisBlock = new CTetrisBlock(nType);
 		
@@ -199,11 +199,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 			pTetrisDraw->ClearTetrisArray();
 			
 
-			srand((int)time(NULL));  // 产生随机种子
+			srand((unsigned int)time(NULL));  // 产生随机种子
 			int nType = rand() % 7 + 1;
 			CTetrisBlock* pTB = new CTetrisBlock(nType);
 
-			srand((int)time(NULL));  // 产生随机种子
+			srand((unsigned int)time(NULL));  // 产生随机种子
 			nType = rand() % 7 + 1;
 			pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -240,7 +240,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					{
 						pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
 
-						srand((int)time(NULL));  // 产生随机种子
+						srand((unsigned int)time(NULL));  // 产生随机种子
 						int nType = rand() % 7 + 1;
 						pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -398,7 +398,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 						{
 							pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
 
-							srand((int)time(NULL));  // 产生随机种子
+							srand((unsigned int)time(NULL));  // 产生随机种子
 							int nType = rand() % 7 + 1;
 							pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -413,38 +413,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					}
 				}
 				
-				if ((mode == AIMode) && !bPaused)
-				{
-					if (false == pPDTetrisController->executeCommand(3))
-					{
-						//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
-						if (false == pPDTetrisController->isGameOver())
-						{
-							pPDTetrisController->setCurTetrisBlock(pNextTetrisBlock);
-
-							srand((int)time(NULL));  // 产生随机种子
-							int nType = rand() % 7 + 1;
-							pNextTetrisBlock = new CTetrisBlock(nType);
-
-							pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
-
-							AICmdList.clear();
-							pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
-							long lScore = pPDTetrisController->GetScore();
-							ss << "TIMER_BLOCK_DOWN score" << lScore << endl;
-							string debug = ss.str();
-							g_fileLoggerMain.Debug(debug);
-							ss.clear();
-							ss.str("");
-						}
-						else
-						{
-							//停止定时器
-							KillTimer(hwnd, TIMER_BLOCK_DOWN);
-							MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
-						}
-					}
-				}
 
 				break;
 			case TIMER_AICommandExecution:
@@ -453,13 +421,61 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					if (!AICmdList.empty())
 					{
 						CTetrisBlock* pTB=pPDTetrisController->getCurTetrisBlock();
-						//AI模式下，只有在方块完全下落到nTetrisBoardHeight-1之后再发相应的动作指令
+						//AI模式下，只有在方块完全下落到nTetrisBoardHeight-1之后再发相应的动作指令，否则执行向下移动一格的命令
 						if(pTB->getBlockPosY()<=nTetrisBoardHeight-1)
 						{
 							int cmd = AICmdList.front();
 							pPDTetrisController->executeCommand(cmd);
 							AICmdList.pop_front();
 						}
+						else {
+							pPDTetrisController->executeCommand(3);
+						}
+					}
+					else
+					{
+						//AICmdList为空时
+						//直接移动到当前方块垂直能下落的最低位置
+						bool bMoveDown = true;
+						while (bMoveDown)
+						{
+							bMoveDown = pPDTetrisController->executeCommand(3);
+						}
+						if (false == bMoveDown)
+						{
+							//先判断是否因当前方块超过了游戏区域最上端而导致游戏结束
+							if (false == pPDTetrisController->isGameOver())
+							{
+								pPDTetrisController->setCurTetrisBlock(pNextTetrisBlock);
+
+								srand((unsigned int)clock());  // 产生随机种子
+								int nNum = rand();
+								int nType = nNum % 7 + 1;
+								pNextTetrisBlock = new CTetrisBlock(nType);
+
+								pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
+
+								AICmdList.clear();
+								pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+								ss << "random number" << nNum << " "<< nType << endl;
+								for (int i = 0; i < 10; i++)
+								{
+									ss << rand() << " ";
+								}
+								string debug = ss.str();
+								g_fileLoggerMain.Debug(debug);
+								ss.clear();
+								ss.str("");
+							}
+							else
+							{
+								//停止定时器
+								KillTimer(hwnd, TIMER_BLOCK_DOWN);
+								MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+							}
+						}
+
+
 					}
 				}
 
