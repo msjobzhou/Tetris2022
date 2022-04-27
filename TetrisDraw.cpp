@@ -65,6 +65,9 @@ void CTetrisDraw::SetArea(RECT rect)
 //这里的DrawXXX函数的作图区域默认是x方向从左往右增加，y方向是从上往下增加
 void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 {
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	const int border = 20;
 	int cxClient = m_rectGameArea.right - m_rectGameArea.left + 1;
 	int cyClient = m_rectGameArea.bottom - m_rectGameArea.top + 1;
@@ -144,6 +147,9 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 
 void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock)
 {
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	wchar_t sHanzi[100] = L"游戏得分";
 	int nMargin = 5;
 	int nYouXiDeFenTextHeight = 20;
@@ -231,6 +237,9 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 
 void CTetrisDraw::DrawGameHintArea()
 {
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	TCHAR s[200] = TEXT("按键说明:\r\n A向左 S向下\r\nD向右 J变形\r\n Space 暂停/运行切换\r\n \r\n切换模式\r\n CTRL+A AI/手工模式切换\r\nR当前模式下重置游戏 ");
 	//TextOut(m_hdcDraw, m_rectGameHintArea.left, m_rectGameHintArea.top, s, wcslen(s));
 	HFONT hFont;
@@ -268,6 +277,9 @@ int CTetrisDraw::GetTetrisArrayItemColorIndex(int nHeight, int nWidth)
 
 void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 {
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	if (0 == pTetrisBlock)
 	{
 		return;
@@ -333,7 +345,9 @@ void CTetrisDraw::DrawCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 
 void CTetrisDraw::ClearCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 {
-
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	if (0 == pTetrisBlock)
 	{
 		return;
@@ -395,6 +409,9 @@ void CTetrisDraw::ClearCurrentTetrisBlock(CTetrisBlock* pTetrisBlock)
 }
 void CTetrisDraw::ClearLevel(int nLevel)
 {
+	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
+	if (0 == m_hdcDraw)
+		return;
 	const int border = 20;
 	int cxClient = m_rectGameArea.right - m_rectGameArea.left + 1;
 	int cyClient = m_rectGameArea.bottom - m_rectGameArea.top + 1;
