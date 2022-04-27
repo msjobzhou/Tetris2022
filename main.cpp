@@ -179,10 +179,22 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 			//按住CTRL+A，进行AI模式和手动模式切换
 			if (bCtrlDown)
 			{
-				mode = AIMode;
-				//AI模式下，20倍速进行
-				timer_speedup = 20;
-				SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
+				if (ManualMode == mode)
+				{
+					mode = AIMode;
+					//AI模式下，20倍速进行
+					timer_speedup = 20;
+					SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
+					break;
+				}
+				if (AIMode == mode)
+				{
+					mode = ManualMode;
+					//手工模式下，1倍速进行
+					timer_speedup = 1;
+					SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
+					break;
+				}
 			}
 		}
 
@@ -198,6 +210,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 			
 			pTetrisDraw->ClearTetrisArray();
 			
+			if (0 != pNextTetrisBlock)
+				delete pNextTetrisBlock;
 
 			srand((unsigned int)time(NULL));  // 产生随机种子
 			int nType = rand() % 7 + 1;
@@ -554,12 +568,12 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_getErodedPieceCellsMetric); 
 	
 	////pdut.addTestFunc(test_getBoardRowTransitions); 
-	//pdut.addTestFunc(test_getBoardColumnTransitions); 
-	//pdut.addTestFunc(test_getBoardBuriedHoles); 
-	//pdut.addTestFunc(test_getBoardWells); 
+	pdut.addTestFunc(test_getBoardColumnTransitions); 
+	pdut.addTestFunc(test_getBoardBuriedHoles); 
+	pdut.addTestFunc(test_getBoardWells); 
 	////pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
-	//pdut.addTestFunc(test_RotateTetrisBlock); 
-	//pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
+	pdut.addTestFunc(test_RotateTetrisBlock); 
+	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
 	pdut.addTestFunc(test_evaluationFunction);
 	
 	pdut.runTest();

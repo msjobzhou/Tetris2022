@@ -231,7 +231,7 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 
 void CTetrisDraw::DrawGameHintArea()
 {
-	TCHAR s[200] = TEXT("按键说明:\r\n A向左 S向下\r\nD向右 J变形\r\n Space 暂停/运行切换\r\n \r\n切换模式\r\n CTRL+A AI模式\r\nR重新切到人工模式 ");
+	TCHAR s[200] = TEXT("按键说明:\r\n A向左 S向下\r\nD向右 J变形\r\n Space 暂停/运行切换\r\n \r\n切换模式\r\n CTRL+A AI/手工模式切换\r\nR当前模式下重置游戏 ");
 	//TextOut(m_hdcDraw, m_rectGameHintArea.left, m_rectGameHintArea.top, s, wcslen(s));
 	HFONT hFont;
 	HFONT hFontOld;
