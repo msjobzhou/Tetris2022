@@ -6,6 +6,8 @@
 
 #include <exception>
 
+#include "ArrayIndexRangeCheck.h"
+
 using namespace std;
 
 FileLogger g_fileLogger("tetrisBlockLog.txt", error);
@@ -59,11 +61,13 @@ int CPierreDellacherieTetrisController::getLandingHeight(sTetrisBlock& stb)
 //函数getErodedPieceCellsMetric会使用stb占用的位置来填充pbArrTetrisBoardCopy
 int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb)
 {
-	stringstream ss;
-	ss << "getErodedPieceCellsMetric para stb.nPosX " << stb.nPosX << " stb.nPosY" << stb.nPosY << endl;
+	//stringstream ss;
+	//ss << "getErodedPieceCellsMetric para stb.nPosX " << stb.nPosX << " stb.nPosY" << stb.nPosY << endl;
 
-	string debug = ss.str();
+	//string debug = ss.str();
 	//g_fileLogger.Debug(debug);
+
+	ArrayIndexRangeCheck arrIndxRngCheck(nHeight, nWidth);
 
 	int nLevelErasedAfterTetrisBlockDownTillItCannotMove = 0;
 	int nBlockElementContributeToLevelErased = 0;
@@ -78,6 +82,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		int nOccupiedNum = 0;
 		for (j = 0; j < nTetrisBoardWidth; j++)
 		{
+			arrIndxRngCheck.IndexRangeCheck(nBlockHeightTmp, j);
 			if (true == pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + j])
 			{
 				nOccupiedNum++;
@@ -87,6 +92,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		//方块填充pbArrTetrisBoardCopy
 		for (j = 0; j < stb.nBlockWidth; j++)
 		{
+			arrIndxRngCheck.IndexRangeCheck(nBlockHeightTmp, stb.nPosX + j);
 			if(true == stb.pbBlock[i*stb.nBlockWidth + j])
 			{
 				pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + stb.nPosX+j]
@@ -98,6 +104,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		int nOccupiedNumAfterTetrisBlockDownTillItCannotMove = 0;
 		for (j = 0; j < nTetrisBoardWidth; j++)
 		{
+			arrIndxRngCheck.IndexRangeCheck(nBlockHeightTmp, j);
 			if (true == pbArrTetrisBoardCopy[nBlockHeightTmp*nTetrisBoardWidth + j])
 			{
 				nOccupiedNumAfterTetrisBlockDownTillItCannotMove++;
@@ -113,7 +120,7 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 		//这里可以优化一下，如果一行都被占满的话，当前没有对pbArrTetrisBoardCopy进行消层操作，因为后面的getBoardRowTransitions
 		//等函数都需要使用被方块占据后的pbArrTetrisBoardCopy进行计算，如果方块的放置方式会在下面形成“空洞”，在会给getBoardBuriedHoles
 		//等函数造成比较大的负值，而实际上被占满的一层会被消层掉，因此“空洞”在消层后并不存在了。
-		LevelNumErased(pbArrTetrisBoardCopy, stb.nPosY - stb.nBlockHeight + 1, stb.nPosY);
+		LevelNumErased(pbArrTetrisBoardCopy, nHeight, nWidth, stb.nPosY - stb.nBlockHeight + 1, stb.nPosY);
 	}
 	//按照PierreDellacherie构造此特征的数值为nLevelErasedAfterTetrisBlockDownTillItCannotMove*nBlockElementContributeToLevelErased
 	return nLevelErasedAfterTetrisBlockDownTillItCannotMove*nBlockElementContributeToLevelErased;
@@ -572,15 +579,17 @@ void CPierreDellacherieTetrisController::RotateTetrisBlock(sTetrisBlock& stb)
 }
 
 //得到有方块占据的最高层的序号，范围是从0到nTetrisBoardHeight-1，如果连第0层都是没有方块的（层数全部消除了），则返回-1
-int CPierreDellacherieTetrisController::GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy)
+int CPierreDellacherieTetrisController::GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth)
 {
 	int nLevel = -1;
-	for (int i = nTetrisBoardHeight - 1; i >= 0; i--)
+	ArrayIndexRangeCheck arrIndxRngCheck(nArrayHeight, nArrayWidth);
+	for (int i = nArrayHeight - 1; i >= 0; i--)
 	{
 		bool bTemp = false;
-		for (int j = 0; j < nTetrisBoardWidth; j++)
+		for (int j = 0; j < nArrayWidth; j++)
 		{
-			bTemp = bTemp | pbArrTetrisBoardCopy[i*nTetrisBoardWidth+j];
+			arrIndxRngCheck.IndexRangeCheck(i, j);
+			bTemp = bTemp | pbArrTetrisBoardCopy[i*nArrayWidth +j];
 		}
 		if (true == bTemp)
 		{
@@ -592,21 +601,24 @@ int CPierreDellacherieTetrisController::GetHighestNonEmptyLevel(bool *pbArrTetri
 	return nLevel;
 }
 
-int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCopy, int nLevelStart, int nLevelEnd)
+int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth, int nLevelStart, int nLevelEnd)
 {
 	//在block方块落地之后判断方块占有的层数是否可以消层，由于方块最多占四层，因此指定层数差大于4层，则返回错误
 	if ((nLevelEnd - nLevelStart) > 4)
 		return -1;
 	if (nLevelEnd < nLevelStart)
 		return -2;
+
+	ArrayIndexRangeCheck arrIndxRngCheck(nArrayHeight, nArrayWidth);
 	bool bArrayLevelErasable[4];//记录nLevelStart到nLevelEnd对应的层数是否都被占满，可消除。
-	int nHighestNonEmptyLevel = GetHighestNonEmptyLevel(pbArrTetrisBoardCopy);//记录判断是否消层前的最高层数
+	int nHighestNonEmptyLevel = GetHighestNonEmptyLevel(pbArrTetrisBoardCopy, nArrayHeight, nArrayWidth);//记录判断是否消层前的最高层数
 	for (int i = nLevelStart; i <= nLevelEnd; i++)
 	{
 		bool bTemp = true;
-		for (int j = 0; j < nTetrisBoardWidth; j++)
+		for (int j = 0; j < nArrayWidth; j++)
 		{
-			bTemp = bTemp & pbArrTetrisBoardCopy[i*nTetrisBoardWidth + j];
+			arrIndxRngCheck.IndexRangeCheck(i, j);
+			bTemp = bTemp & pbArrTetrisBoardCopy[i*nArrayWidth + j];
 		}
 		bArrayLevelErasable[i - nLevelStart] = bTemp;
 	}
@@ -623,9 +635,11 @@ int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCop
 			//当前层不可消除，需要下移nTotalLevelErasable层
 			if (0 != nTotalLevelErasable)
 			{
-				for (int k = 0; k < nTetrisBoardWidth; k++)
+				for (int k = 0; k < nArrayWidth; k++)
 				{
-					pbArrTetrisBoardCopy[(nCurrentLevel - nTotalLevelErasable)*nTetrisBoardWidth + k] = pbArrTetrisBoardCopy[nCurrentLevel*nTetrisBoardWidth + k];
+					arrIndxRngCheck.IndexRangeCheck(nCurrentLevel - nTotalLevelErasable, k);
+					arrIndxRngCheck.IndexRangeCheck(nCurrentLevel, k);
+					pbArrTetrisBoardCopy[(nCurrentLevel - nTotalLevelErasable)*nArrayWidth + k] = pbArrTetrisBoardCopy[nCurrentLevel*nArrayWidth + k];
 				}
 			}
 
@@ -638,17 +652,20 @@ int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCop
 		//消层前原nLevelEnd之上的层下移nTotalLevelErasable层
 		for (int m = nLevelEnd + 1; m <= nHighestNonEmptyLevel; m++)
 		{
-			for (int n = 0; n < nTetrisBoardWidth; n++)
+			for (int n = 0; n < nArrayWidth; n++)
 			{
-				pbArrTetrisBoardCopy[(m - nTotalLevelErasable)*nTetrisBoardWidth + n] = pbArrTetrisBoardCopy[m*nTetrisBoardWidth + n];
+				arrIndxRngCheck.IndexRangeCheck(m - nTotalLevelErasable, n);
+				arrIndxRngCheck.IndexRangeCheck(m, n);
+				pbArrTetrisBoardCopy[(m - nTotalLevelErasable)*nArrayWidth + n] = pbArrTetrisBoardCopy[m*nArrayWidth + n];
 			}
 		}
 		//nHighestNonEmptyLevel层及以下nTotalLevelErasable层用false填满
 		for (int p = nHighestNonEmptyLevel; p > nHighestNonEmptyLevel - nTotalLevelErasable; p--)
 		{
-			for (int q = 0; q < nTetrisBoardWidth; q++)
+			for (int q = 0; q < nArrayWidth; q++)
 			{
-				pbArrTetrisBoardCopy[p*nTetrisBoardWidth + q] = false;
+				arrIndxRngCheck.IndexRangeCheck(p, q);
+				pbArrTetrisBoardCopy[p*nArrayWidth + q] = false;
 			}
 		}
 	}

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayIndexRangeCheck.cpp" />
     <ClCompile Include="CParams.cpp" />
     <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="GeneticAlgrithom.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayIndexRangeCheck.h" />
     <ClInclude Include="CParams.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="FileLogger.h" />

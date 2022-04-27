@@ -1,7 +1,9 @@
 #include "PierreDellacherieUnittest.h"
 #include <list>
-
+#include "FileLogger.h"
 using namespace std;
+
+FileLogger g_fileLoggerPDUnittest("tetrisBlockPDUnittestLog.txt", error);
 
 PierreDellacherieUnittest::PierreDellacherieUnittest()
 {
@@ -78,7 +80,16 @@ void test_getErodedPieceCellsMetric()
 		pbArrTetrisBoardCopy[2*nWidth + j1] = false;
 	}
 	CPierreDellacherieTetrisController pdtc(0);
-	assert(pdtc.getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb) == 6);
+	try {
+		g_fileLoggerPDUnittest.Error("try getErodedPieceCellsMetric start");
+		assert(pdtc.getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb) == 6);
+		
+	}
+	catch (out_of_range& err)
+	{
+		g_fileLoggerPDUnittest.Error(err.what());
+	}
+	//这里有内存泄漏
 	delete []pbArrTetrisBoardCopy;
 	delete []stb.pbBlock;
 }
@@ -444,6 +455,7 @@ void test_RotateTetrisBlock()
 
 	CPierreDellacherieTetrisController pdtc(0);
 	pdtc.RotateTetrisBlock(stb);
+	delete[] stb.pbBlock;
 }
 
 void test_generateAICommandListForCurrentTetrisBlock()
