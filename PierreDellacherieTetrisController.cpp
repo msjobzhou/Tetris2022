@@ -16,7 +16,12 @@ FileLogger g_fileLogger("tetrisBlockLog.txt", error);
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
 	CTetrisController(pTetrisDraw, pTetrisBlock)
 {
-
+	m_PDCoff.lh = -1.0f;
+	m_PDCoff.epcm = 1.0f;
+	m_PDCoff.brt = -1.0f;
+	m_PDCoff.bct = -1.0f;
+	m_PDCoff.bbh = -4.0f;
+	m_PDCoff.bw = -1.0f;
 }
 
 
@@ -266,7 +271,7 @@ bool CPierreDellacherieTetrisController::canTetrisBlockMovable(sTetrisBlock& stb
 	return true;
 }
 
-int CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb)
+float CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb)
 {
 	int lh = getLandingHeight(stb);
 	int epcm = getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
@@ -275,11 +280,11 @@ int CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBoar
 	int bbh = getBoardBuriedHoles(pbArrTetrisBoardCopy, nHeight, nWidth);
 	int bw = getBoardWells(pbArrTetrisBoardCopy, nHeight, nWidth);
 
-	int nScore = -lh + epcm - brt - bct - 4 * bbh - bw;
+	float fScore = m_PDCoff.lh*lh + m_PDCoff.epcm*epcm + m_PDCoff.brt*brt + m_PDCoff.bct*bct + m_PDCoff.bbh * bbh + m_PDCoff.bw * bw;
 
-	return nScore;
+	return fScore;
 }
-sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nHighestEvalutionScoreRet)
+sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, float& fHighestEvalutionScoreRet)
 {
 	//这里只搜索直角形路径或者垂直下降路径(如下图↓和→←指示的方向1,2,3)，不考虑移动过程中变形，钻洞等复杂场景
 	//   1←■  →→3
@@ -303,7 +308,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 	int nTetrisBlockPreX = nTetrisBlockOriginX;
 	int nTetrisBlockPreY = nTetrisBlockOriginY;
 
-	int nHighestEvalutionScore = -99999999;
+	float fHighestEvalutionScore = -99999999.0f;
 	stringstream ss;
 	//按照路径1的路线进行搜索
 	for (nTargetX = nTetrisBlockOriginX-1; nTargetX >= 0; nTargetX--)
@@ -332,17 +337,17 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				stb.nPosX = nStoppedX;
 				stb.nPosY = nStoppedY;
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
-				int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
-				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
 				string debug = ss.str();
 				g_fileLogger.Debug(debug);
 				ss.clear();
 				ss.str("");
 
-				if (nScore >= nHighestEvalutionScore)
+				if (fScore >= fHighestEvalutionScore)
 				{
-					nHighestEvalutionScore = nScore;
+					fHighestEvalutionScore = fScore;
 					sp.nPosX = stb.nPosX;
 					sp.nPosY = stb.nPosY;
 				}
@@ -377,17 +382,17 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			stb.nPosX = nStoppedX;
 			stb.nPosY = nStoppedY;
 			//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
-			int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+			float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
-			ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+			ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
 			string debug = ss.str();
 			g_fileLogger.Debug(debug);
 			ss.clear();
 			ss.str("");
 
-			if (nScore >= nHighestEvalutionScore)
+			if (fScore >= fHighestEvalutionScore)
 			{
-				nHighestEvalutionScore = nScore;
+				fHighestEvalutionScore = fScore;
 				sp.nPosX = stb.nPosX;
 				sp.nPosY = stb.nPosY;
 			}
@@ -430,17 +435,17 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				stb.nPosX = nStoppedX;
 				stb.nPosY = nStoppedY;
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
-				int nScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
+				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
-				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "nScore " << nScore << endl;
+				ss << "pickPositionWithHighestEvalutiofScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
 				string debug = ss.str();
 				g_fileLogger.Debug(debug);
 				ss.clear();
 				ss.str("");
 
-				if (nScore >= nHighestEvalutionScore)
+				if (fScore >= fHighestEvalutionScore)
 				{
-					nHighestEvalutionScore = nScore;
+					fHighestEvalutionScore = fScore;
 					sp.nPosX = stb.nPosX;
 					sp.nPosY = stb.nPosY;
 				}
@@ -455,7 +460,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			nTetrisBlockPreY = nTargetY;
 		}
 	}
-	nHighestEvalutionScoreRet = nHighestEvalutionScore;
+	fHighestEvalutionScoreRet = fHighestEvalutionScore;
 	return sp;
 }
 
@@ -480,7 +485,7 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 	getCurrentTetrisBlockCopy(stb);
 
 	sPosition sp;
-	int nHighestScore=-99999999;
+	float fHighestScore=-99999999.0f;
 	int nBlockRotateTime = 0;
 	//对每个俄罗斯方块的可变形状进行pickPositionWithHighestEvalutionScore调用，选择出evaluationFunction得分最高的最优旋转+最优移动组合
 	for (int nRotation = 0; nRotation < nMaxOrientation; nRotation++)
@@ -497,12 +502,12 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 			}
 		}
 			
-		int nHighestEvalutionScoreRet;
+		float fHighestEvalutionScoreRet;
 		sPosition spTmp;
-		spTmp = pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nHighestEvalutionScoreRet);
-		if (nHighestEvalutionScoreRet >= nHighestScore)
+		spTmp = pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, fHighestEvalutionScoreRet);
+		if (fHighestEvalutionScoreRet >= fHighestScore)
 		{
-			nHighestScore = nHighestEvalutionScoreRet;
+			fHighestScore = fHighestEvalutionScoreRet;
 			sp = spTmp;
 			nBlockRotateTime = nRotation;
 		}

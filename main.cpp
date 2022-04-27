@@ -582,7 +582,6 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	//enter the message loop
 	bool bDone = false;
 
-	
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (msg.message == WM_QUIT)

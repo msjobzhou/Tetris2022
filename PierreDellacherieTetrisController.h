@@ -37,11 +37,38 @@ public:
 	}
 }sPosition;
 
+
+typedef struct PDTetrisControllerCoefficient
+{
+public:
+	//各系数含义参考evaluationFunction函数
+	float lh;
+	float epcm;
+	float brt;
+	float bct;
+	float bbh;
+	float bw;
+public:
+	PDTetrisControllerCoefficient()
+	{
+		lh = 0.0f;
+		epcm = 0.0f;
+		brt = 0.0f;
+		bct = 0.0f;
+		bbh = 0.0f;
+		bw = 0.0f;
+	}
+}sPDTetrisControllerCoefficient;
+
+
 //参考如下博客实现的Pierre Dellacherie算法，纯人工设计的特征和人工设定的各特征权重参数
 //https://blog.csdn.net/qq_41882147/article/details/80005763
 class CPierreDellacherieTetrisController :
 	public CTetrisController
 {
+private:
+	sPDTetrisControllerCoefficient m_PDCoff;
+
 public:
 	CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock = 0);
 	~CPierreDellacherieTetrisController();
@@ -56,8 +83,8 @@ public:
 	int getBoardBuriedHoles(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);
 	int getBoardWells(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);
 	bool canTetrisBlockMovable(sTetrisBlock& stb, bool *pbArrTetrisBoardCopy, int x, int y);
-	int evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb);
-	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nHighestEvalutionScoreRet);
+	float evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb);
+	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, float& fHighestEvalutionScoreRet);
 	sPosition generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
 	void RotateTetrisBlock(sTetrisBlock& stb);
 	int GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth);
