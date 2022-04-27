@@ -507,7 +507,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	int ncmdshow)
 {
 	EnableMemLeakCheck();
-	//_CrtSetBreakAlloc(209);
+	//_CrtSetBreakAlloc(1333);
 
 	WNDCLASSEX winclass;
 	HWND	   hwnd;
@@ -560,7 +560,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	////pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
 	//pdut.addTestFunc(test_RotateTetrisBlock); 
 	//pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
-	//pdut.addTestFunc(test_evaluationFunction);
+	pdut.addTestFunc(test_evaluationFunction);
 	
 	pdut.runTest();
 	//unit test µÄ´úÂë end

@@ -530,4 +530,6 @@ void test_evaluationFunction()
 	
 	delete[] stb.pbBlock;
 	delete[] pbArrTetrisBoardCopy;
+	delete pTetrisDraw;
+	delete pTetrisController;
 }
