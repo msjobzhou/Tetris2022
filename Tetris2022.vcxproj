@@ -144,6 +144,7 @@
     <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="GeneticAlgrithom.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PDTetrisControllerUsingGeneticAlgorithm.cpp" />
     <ClCompile Include="PierreDellacherieTetrisController.cpp" />
     <ClCompile Include="PierreDellacherieUnittest.cpp" />
     <ClCompile Include="TetrisBlock.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="FileLogger.h" />
     <ClInclude Include="GeneticAlgrithom.h" />
+    <ClInclude Include="PDTetrisControllerUsingGeneticAlgorithm.h" />
     <ClInclude Include="PierreDellacherieTetrisController.h" />
     <ClInclude Include="PierreDellacherieUnittest.h" />
     <ClInclude Include="TetrisBlock.h" />

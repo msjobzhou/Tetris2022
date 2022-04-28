@@ -58,6 +58,27 @@ public:
 		bbh = 0.0f;
 		bw = 0.0f;
 	}
+	PDTetrisControllerCoefficient(const PDTetrisControllerCoefficient & eff)
+	{
+		lh = eff.lh;
+		epcm = eff.epcm;
+		brt = eff.brt;
+		bct = eff.bct;
+		bbh = eff.bbh;
+		bw = eff.bw;
+	}
+
+	PDTetrisControllerCoefficient& operator =(const PDTetrisControllerCoefficient &eff)
+	{
+		lh = eff.lh;
+		epcm = eff.epcm;
+		brt = eff.brt;
+		bct = eff.bct;
+		bbh = eff.bbh;
+		bw = eff.bw;
+
+		return *this;
+	}
 }sPDTetrisControllerCoefficient;
 
 
@@ -74,6 +95,7 @@ public:
 	~CPierreDellacherieTetrisController();
 	void getArrTetrisBoardCopyFromCTetrisDraw(bool *pbArrTetrisBoardCopy);
 	void getCurrentTetrisBlockCopy(sTetrisBlock& stb);
+	void setPDTetrisControllerCoefficient(sPDTetrisControllerCoefficient& coff);
 
 public:
 	int getLandingHeight(sTetrisBlock& stb);

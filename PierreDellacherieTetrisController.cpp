@@ -677,3 +677,8 @@ int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCop
 
 	return nTotalLevelErasable;
 }
+
+void CPierreDellacherieTetrisController::setPDTetrisControllerCoefficient(sPDTetrisControllerCoefficient& coff)
+{
+	m_PDCoff = coff;
+}
