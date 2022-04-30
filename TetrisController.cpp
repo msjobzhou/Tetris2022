@@ -279,3 +279,9 @@ long CTetrisController::GetScore()
 {
 	return m_lScore;
 }
+
+void CTetrisController::resetGame()
+{
+	m_lScore = 0;
+	m_pTetrisDraw->ClearTetrisArray();
+}

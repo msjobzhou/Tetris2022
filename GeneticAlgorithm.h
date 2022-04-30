@@ -24,7 +24,7 @@ public:
 };
 
 
-class CGeneticAlgrithom
+class CGeneticAlgorithm
 {
 
 private:
@@ -89,7 +89,7 @@ private:
 
 public:
 
-	CGeneticAlgrithom(int 		popsize,
+	CGeneticAlgorithm(int 		popsize,
 		double	MutRat,
 		double	CrossRat,
 		int	  	numweights);
@@ -105,6 +105,6 @@ public:
 
 public:
 	
-	~CGeneticAlgrithom();
+	~CGeneticAlgorithm();
 };
 

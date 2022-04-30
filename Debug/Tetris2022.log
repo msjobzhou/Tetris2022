@@ -1,10 +1,17 @@
-﻿  GeneticAlgrithom.cpp
-c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgrithom.cpp(47): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgrithom.cpp(123): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgrithom.cpp(169): warning C4018: “<”: 有符号/无符号不匹配
+﻿  TetrisDraw.cpp
+  TetrisController.cpp
+  PierreDellacherieTetrisController.cpp
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\pierredellacherietetriscontroller.cpp(283): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  PDTetrisControllerUsingGeneticAlgorithm.cpp
+  main.cpp
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\main.cpp(61): warning C4101: “hdc”: 未引用的局部变量
+  GeneticAlgorithm.cpp
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgorithm.cpp(47): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgorithm.cpp(123): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\msjob\documents\visual studio 2017\projects\tetris2022\tetris2022\geneticalgorithm.cpp(169): warning C4018: “<”: 有符号/无符号不匹配
   正在生成代码...
   正在编译...
-  PDTetrisControllerUsingGeneticAlgorithm.cpp
+  PierreDellacherieUnittest.cpp
   正在生成代码...
   Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.exe
   Tetris2022.vcxproj -> C:\Users\msjob\documents\visual studio 2017\Projects\Tetris2022\Debug\Tetris2022.pdb (Partial PDB)

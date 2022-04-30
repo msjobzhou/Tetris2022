@@ -42,21 +42,21 @@ typedef struct PDTetrisControllerCoefficient
 {
 public:
 	//各系数含义参考evaluationFunction函数
-	float lh;
-	float epcm;
-	float brt;
-	float bct;
-	float bbh;
-	float bw;
+	double lh;
+	double epcm;
+	double brt;
+	double bct;
+	double bbh;
+	double bw;
 public:
 	PDTetrisControllerCoefficient()
 	{
-		lh = 0.0f;
-		epcm = 0.0f;
-		brt = 0.0f;
-		bct = 0.0f;
-		bbh = 0.0f;
-		bw = 0.0f;
+		lh = 0.0;
+		epcm = 0.0;
+		brt = 0.0;
+		bct = 0.0;
+		bbh = 0.0;
+		bw = 0.0;
 	}
 	PDTetrisControllerCoefficient(const PDTetrisControllerCoefficient & eff)
 	{

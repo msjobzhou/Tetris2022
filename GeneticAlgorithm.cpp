@@ -1,4 +1,4 @@
-#include "GeneticAlgrithom.h"
+#include "GeneticAlgorithm.h"
 #include "utils.h"
 #include "CParams.h"
 
@@ -7,7 +7,7 @@
 //	sets up the population with random floats
 //
 //-----------------------------------------------------------------------
-CGeneticAlgrithom::CGeneticAlgrithom(int	  popsize,
+CGeneticAlgorithm::CGeneticAlgorithm(int	  popsize,
 	double	MutRat,
 	double	CrossRat,
 	int	  numweights) : m_iPopSize(popsize),
@@ -40,7 +40,7 @@ CGeneticAlgrithom::CGeneticAlgrithom(int	  popsize,
 //	mutates a chromosome by perturbing its weights by an amount not 
 //	greater than CParams::dMaxPerturbation
 //-----------------------------------------------------------------------
-void CGeneticAlgrithom::Mutate(vector<double> &chromo)
+void CGeneticAlgorithm::Mutate(vector<double> &chromo)
 {
 	//traverse the chromosome and mutate each weight dependent
 	//on the mutation rate
@@ -60,7 +60,7 @@ void CGeneticAlgrithom::Mutate(vector<double> &chromo)
 //	returns a chromo based on roulette wheel sampling
 //
 //-----------------------------------------------------------------------
-CGenome CGeneticAlgrithom::GetChromoRoulette()
+CGenome CGeneticAlgorithm::GetChromoRoulette()
 {
 	//generate a random number between 0 & total fitness count
 	double Slice = (double)(RandFloat() * m_dTotalFitness);
@@ -94,7 +94,7 @@ CGenome CGeneticAlgrithom::GetChromoRoulette()
 //  given parents and storage for the offspring this method performs
 //	crossover according to the GAs crossover rate
 //-----------------------------------------------------------------------
-void CGeneticAlgrithom::Crossover(const vector<double> &mum,
+void CGeneticAlgorithm::Crossover(const vector<double> &mum,
 	const vector<double> &dad,
 	vector<double>       &baby1,
 	vector<double>       &baby2)
@@ -137,7 +137,7 @@ void CGeneticAlgrithom::Crossover(const vector<double> &mum,
 //	Returns a new population of chromosones.
 //
 //-----------------------------------------------------------------------
-vector<CGenome> CGeneticAlgrithom::Epoch(vector<CGenome> &old_pop)
+vector<CGenome> CGeneticAlgorithm::Epoch(vector<CGenome> &old_pop)
 {
 	//assign the given population to the classes population
 	m_vecPop = old_pop;
@@ -202,7 +202,7 @@ vector<CGenome> CGeneticAlgrithom::Epoch(vector<CGenome> &old_pop)
 //	increase the 'seperation' of genomes on the ladder and allow the 
 //	population to converge much quicker
 //---------------------------------------------------------------------
-void CGeneticAlgrithom::FitnessScaleRank()
+void CGeneticAlgorithm::FitnessScaleRank()
 {
 	const int FitnessMultiplier = 1;
 
@@ -222,7 +222,7 @@ void CGeneticAlgrithom::FitnessScaleRank()
 //	This works like an advanced form of elitism by inserting NumCopies
 //  copies of the NBest most fittest genomes into a population vector
 //--------------------------------------------------------------------
-void CGeneticAlgrithom::GrabNBest(int	            NBest,
+void CGeneticAlgorithm::GrabNBest(int	            NBest,
 	const int	      NumCopies,
 	vector<CGenome>	&Pop)
 {
@@ -242,7 +242,7 @@ void CGeneticAlgrithom::GrabNBest(int	            NBest,
 //	calculates the fittest and weakest genome and the average/total 
 //	fitness scores
 //---------------------------------------------------------------------
-void CGeneticAlgrithom::CalculateBestWorstAvTot()
+void CGeneticAlgorithm::CalculateBestWorstAvTot()
 {
 	m_dTotalFitness = 0;
 
@@ -281,7 +281,7 @@ void CGeneticAlgrithom::CalculateBestWorstAvTot()
 //
 //	resets all the relevant variables ready for a new generation
 //--------------------------------------------------------------
-void CGeneticAlgrithom::Reset()
+void CGeneticAlgorithm::Reset()
 {
 	m_dTotalFitness = 0;
 	m_dBestFitness = 0;
@@ -290,6 +290,6 @@ void CGeneticAlgrithom::Reset()
 }
 
 
-CGeneticAlgrithom::~CGeneticAlgrithom()
+CGeneticAlgorithm::~CGeneticAlgorithm()
 {
 }

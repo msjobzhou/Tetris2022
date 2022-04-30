@@ -142,7 +142,7 @@
     <ClCompile Include="ArrayIndexRangeCheck.cpp" />
     <ClCompile Include="CParams.cpp" />
     <ClCompile Include="FileLogger.cpp" />
-    <ClCompile Include="GeneticAlgrithom.cpp" />
+    <ClCompile Include="GeneticAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PDTetrisControllerUsingGeneticAlgorithm.cpp" />
     <ClCompile Include="PierreDellacherieTetrisController.cpp" />
@@ -157,7 +157,7 @@
     <ClInclude Include="CParams.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="FileLogger.h" />
-    <ClInclude Include="GeneticAlgrithom.h" />
+    <ClInclude Include="GeneticAlgorithm.h" />
     <ClInclude Include="PDTetrisControllerUsingGeneticAlgorithm.h" />
     <ClInclude Include="PierreDellacherieTetrisController.h" />
     <ClInclude Include="PierreDellacherieUnittest.h" />

@@ -546,6 +546,8 @@ void CTetrisDraw::ClearTetrisArray()
 		for (int x = 0; x < nTetrisBoardWidth; ++x)
 		{
 			m_bArrTetris[y][x] = false;
+			//-1表示无颜色
+			m_bArrTetrisColor[y][x] = -1;
 		}
 	}
 }

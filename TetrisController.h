@@ -24,6 +24,7 @@ public:
 	CTetrisDraw* getTetrisDraw();
 	bool isGameOver();
 	long GetScore();
+	void resetGame();
 
 protected:
 	bool canTetrisBlockMovable(CTetrisBlock* pBlock, int x, int y);
