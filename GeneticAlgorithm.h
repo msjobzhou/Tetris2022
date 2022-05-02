@@ -102,6 +102,7 @@ public:
 	vector<CGenome>	GetChromos()const { return m_vecPop; }
 	double			    AverageFitness()const { return m_dTotalFitness / m_iPopSize; }
 	double		    	BestFitness()const { return m_dBestFitness; }
+	double				BestFitnessIndex()const { return m_iFittestGenome; }
 
 public:
 	

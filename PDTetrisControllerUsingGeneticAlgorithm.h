@@ -17,7 +17,7 @@ private:
 	vector<CGenome>	     m_vecPopulation;
 	int m_nPopulationSize;
 	//m_vecPDTetrisControllers和m_vecPopulation一一对应
-	vector<CPierreDellacherieTetrisController> m_vecPDTetrisControllers;
+	vector<CPierreDellacherieTetrisController*> m_vecPDTetrisControllersPointer;
 	int m_nNumWeightInPDController;
 
 	//用于训练的俄罗斯方块序列，所有的个体都使用这一个序列进行训练

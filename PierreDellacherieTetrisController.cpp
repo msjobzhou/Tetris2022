@@ -331,7 +331,9 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
 				//只有向下不能移动的时候，才可以算TetrisBlock停止移动
-				
+				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+				if (stb.nPosY >= nTetrisBoardHeight)
+					break;
 				nStoppedX = nTetrisBlockPreX;
 				nStoppedY = nTetrisBlockPreY;
 				stb.nPosX = nStoppedX;
@@ -377,6 +379,9 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 		{
 			//只有向下不能移动的时候，才可以算TetrisBlock停止移动
+			//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+			if (stb.nPosY >= nTetrisBoardHeight)
+				break;
 			nStoppedX = nTetrisBlockPreX;
 			nStoppedY = nTetrisBlockPreY;
 			stb.nPosX = nStoppedX;
@@ -429,7 +434,9 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
 				//只有向下不能移动的时候，才可以算TetrisBlock停止移动
-
+				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+				if (stb.nPosY >= nTetrisBoardHeight)
+					break;
 				nStoppedX = nTetrisBlockPreX;
 				nStoppedY = nTetrisBlockPreY;
 				stb.nPosX = nStoppedX;

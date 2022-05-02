@@ -56,9 +56,6 @@
     <ClInclude Include="defines.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TetrisDraw.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="TetrisBlock.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -87,6 +84,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GeneticAlgorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisDraw.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

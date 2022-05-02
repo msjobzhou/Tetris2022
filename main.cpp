@@ -22,6 +22,7 @@
 #include <stdlib.h>  
 #include <crtdbg.h>  
 
+#include "PDTetrisControllerUsingGeneticAlgorithm.h"
 
 #ifdef _DEBUG  
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)  
@@ -88,6 +89,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 	{
 	case WM_CREATE:
 	{
+
 		//seed the random number generator
 		srand((unsigned int )time(NULL));
 
@@ -523,6 +525,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	EnableMemLeakCheck();
 	//_CrtSetBreakAlloc(1333);
 
+
 	WNDCLASSEX winclass;
 	HWND	   hwnd;
 	MSG		   msg;
@@ -579,8 +582,14 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.runTest();
 	//unit test µÄ´úÂë end
 
+
+	CPDTetrisControllerUsingGeneticAlgorithm pdcuga = CPDTetrisControllerUsingGeneticAlgorithm();
+	pdcuga.MainProcess();
+
+
 	//enter the message loop
 	bool bDone = false;
+	
 
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
