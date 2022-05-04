@@ -260,7 +260,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 						int nType = rand() % 7 + 1;
 						pNextTetrisBlock = new CTetrisBlock(nType);
 
-						pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
+						pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 					}
 					else
 					{
@@ -353,12 +353,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		if (ManualMode == mode)
 		{
 			pTetrisDraw->DrawCurrentTetrisBlock(pTetrisController->getCurTetrisBlock());
-			pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
+			pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 		}
 		else if (AIMode == mode)
 		{
 			pTetrisDraw->DrawCurrentTetrisBlock(pPDTetrisController->getCurTetrisBlock());
-			pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
+			pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pPDTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 		}
 		
 		pTetrisDraw->DrawGameHintArea();
@@ -418,7 +418,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 							int nType = rand() % 7 + 1;
 							pNextTetrisBlock = new CTetrisBlock(nType);
 
-							pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pNextTetrisBlock);
+							pTetrisDraw->DrawScoreAndNextBlockArea(pTetrisController->GetScore(), pTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 						}
 						else
 						{
@@ -469,7 +469,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 								int nType = nNum % 7 + 1;
 								pNextTetrisBlock = new CTetrisBlock(nType);
 
-								pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pNextTetrisBlock);
+								pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pPDTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 
 								AICmdList.clear();
 								pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
@@ -574,17 +574,17 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_getBoardColumnTransitions); 
 	pdut.addTestFunc(test_getBoardBuriedHoles); 
 	pdut.addTestFunc(test_getBoardWells); 
-	////pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
+	pdut.addTestFunc(test_pickPositionWithHighestEvalutionScore);
 	pdut.addTestFunc(test_RotateTetrisBlock); 
 	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
 	pdut.addTestFunc(test_evaluationFunction);
 	
-	pdut.runTest();
+	//pdut.runTest();
 	//unit test µÄ´úÂë end
 
 
 	CPDTetrisControllerUsingGeneticAlgorithm pdcuga = CPDTetrisControllerUsingGeneticAlgorithm();
-	pdcuga.MainProcess();
+	//pdcuga.MainProcess();
 
 
 	//enter the message loop

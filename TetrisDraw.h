@@ -20,7 +20,7 @@ public:
 	CTetrisDraw(HDC hdcDraw, RECT rectWhole);
 	~CTetrisDraw();
 	void DrawGameArea(int nLow= 0, int nHigh= nTetrisBoardHeight -1);
-	void DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock = 0);
+	void DrawScoreAndNextBlockArea(long score, long lTetrisBlockNumUsed, CTetrisBlock* pNextTetrisBlock = 0);
 	void DrawGameHintArea();
 	HDC SetHDC(HDC hdcDraw);
 	void SetArea(RECT rect);

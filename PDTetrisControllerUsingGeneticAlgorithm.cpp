@@ -3,6 +3,7 @@
 #include <time.h>
 #include "FileLogger.h"
 #include <sstream>
+#include <math.h>
 
 using namespace std;
 
@@ -12,8 +13,9 @@ CPDTetrisControllerUsingGeneticAlgorithm::CPDTetrisControllerUsingGeneticAlgorit
 {
 	m_pGA = 0;
 	m_nPopulationSize = 100;
-	m_nNumWeightInPDController = 5;
+	m_nNumWeightInPDController = 6;
 	m_nCurrentGeneration = 0;
+	m_nTetrisBlockNum = 5000;
 	m_pGA = new CGeneticAlgorithm(m_nPopulationSize,
 		CParams::dMutationRate,
 		CParams::dCrossoverRate,
@@ -23,7 +25,7 @@ CPDTetrisControllerUsingGeneticAlgorithm::CPDTetrisControllerUsingGeneticAlgorit
 	srand((unsigned int)time(NULL));  // 产生随机种子
 	int nType;
 	//产生用于训练的俄罗斯方块数量
-	for (int i = 0; i < 5000; i++)
+	for (int i = 0; i < m_nTetrisBlockNum; i++)
 	{
 		nType = rand() % 7 + 1;
 		m_vecTetrisBlockType.push_back(nType);
@@ -49,13 +51,13 @@ CPDTetrisControllerUsingGeneticAlgorithm::CPDTetrisControllerUsingGeneticAlgorit
 	for (int i = 0; i < m_nPopulationSize; i++)
 	{
 		sPDTetrisControllerCoefficient pdcCoeff;
-		pdcCoeff.lh = m_vecPopulation[i].vecWeights[0];
-		pdcCoeff.epcm = m_vecPopulation[i].vecWeights[1];
-		pdcCoeff.brt = m_vecPopulation[i].vecWeights[2];
-		pdcCoeff.bct = m_vecPopulation[i].vecWeights[3];
-		pdcCoeff.bbh = m_vecPopulation[i].vecWeights[4];
-		//pdcCoeff.bw = m_vecPopulation[i].vecWeights[5];
-		pdcCoeff.bw = -1.0;
+		pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
+		pdcCoeff.epcm = abs(m_vecPopulation[i].vecWeights[1]);
+		pdcCoeff.brt = abs(m_vecPopulation[i].vecWeights[2]);
+		pdcCoeff.bct = abs(m_vecPopulation[i].vecWeights[3]);
+		pdcCoeff.bbh = abs(m_vecPopulation[i].vecWeights[4]);
+		pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);
+		//pdcCoeff.bw = 1.0;
 		m_vecPDTetrisControllersPointer[i]->setPDTetrisControllerCoefficient(pdcCoeff);
 		CTetrisBlock* pTetrisBlock = m_vecPDTetrisControllersPointer[i]->getCurTetrisBlock();
 	}
@@ -145,18 +147,37 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 	stringstream ss;
 	while (true)
 	{
+		double dBestFitness = -999999.0;
+		sPDTetrisControllerCoefficient pdtccBest;
+		sPDTetrisControllerCoefficient pdtccCurrent;
 		for (int i = 0; i < m_nPopulationSize; i++)
 		{
 			double dFitness=0;
 			RunTetrisGameSimulation(*m_vecPDTetrisControllersPointer[i], dFitness);
+			pdtccCurrent = m_vecPDTetrisControllersPointer[i]->getPDTetrisControllerCoefficient();
 			m_vecPopulation[i].dFitness = dFitness;
+			ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << "dFitness: " << dFitness <<endl;
+			string debug = ss.str();
+			g_fileLoggerPDTCGA.Debug(debug);
+			ss.clear();
+			ss.str("");
+			if (dFitness > dBestFitness)
+			{
+				dBestFitness = dFitness;
+				pdtccBest = m_vecPDTetrisControllersPointer[i]->getPDTetrisControllerCoefficient();
+			}
 		}
 		
 		m_vecAvFitness.push_back(m_pGA->AverageFitness());
 		m_vecBestFitness.push_back(m_pGA->BestFitness());
 
 		++m_nCurrentGeneration;
-		ss << "m_nCurrentGeneration:" << m_nCurrentGeneration;
+		ss << "m_nCurrentGeneration: " << m_nCurrentGeneration << " best fitness: " << m_pGA->BestFitness() 
+			<< " best index:"<< m_pGA->BestFitnessIndex()<< endl;
+
+		ss << pdtccBest.lh << " " << pdtccBest.epcm << " " << pdtccBest.brt << " " << pdtccBest.bct << " " << pdtccBest.bbh << " " << pdtccBest.bw << endl;
+
+
 		string debug = ss.str();
 		g_fileLoggerPDTCGA.Debug(debug);
 		ss.clear();
@@ -169,17 +190,17 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 		for (int i = 0; i < m_nPopulationSize; i++)
 		{
 			sPDTetrisControllerCoefficient pdcCoeff;
-			pdcCoeff.lh = m_vecPopulation[i].vecWeights[0];
-			pdcCoeff.epcm = m_vecPopulation[i].vecWeights[1];
-			pdcCoeff.brt = m_vecPopulation[i].vecWeights[2];
-			pdcCoeff.bct = m_vecPopulation[i].vecWeights[3];
-			pdcCoeff.bbh = m_vecPopulation[i].vecWeights[4];
-			//pdcCoeff.bw = m_vecPopulation[i].vecWeights[5];
-			pdcCoeff.bw = -1.0;
+			pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
+			pdcCoeff.epcm = abs(m_vecPopulation[i].vecWeights[1]);
+			pdcCoeff.brt = abs(m_vecPopulation[i].vecWeights[2]);
+			pdcCoeff.bct = abs(m_vecPopulation[i].vecWeights[3]);
+			pdcCoeff.bbh = abs(m_vecPopulation[i].vecWeights[4]);
+			pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);
+			//pdcCoeff.bw = 1.0;
 			m_vecPDTetrisControllersPointer[i]->setPDTetrisControllerCoefficient(pdcCoeff);
 			m_vecPDTetrisControllersPointer[i]->resetGame();
 		}
-		if (m_nCurrentGeneration >= 500)
+		if (m_nCurrentGeneration >= 30)
 			break;
 	}
 	
@@ -196,3 +217,4 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 	ss.clear();
 	ss.str("");
 }
+

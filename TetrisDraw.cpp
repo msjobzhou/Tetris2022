@@ -145,7 +145,7 @@ void CTetrisDraw::DrawGameArea(int nLow, int nHigh)
 	
 }
 
-void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetrisBlock)
+void CTetrisDraw::DrawScoreAndNextBlockArea(long score, long lTetrisBlockNumUsed, CTetrisBlock* pNextTetrisBlock)
 {
 	//如果dcDraw为空，则不作任何绘图动作，给使用遗传算法等计算参数无需绘图的场景使用
 	if (0 == m_hdcDraw)
@@ -154,6 +154,7 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 	int nMargin = 5;
 	int nYouXiDeFenTextHeight = 20;
 	SetTextColor(m_hdcDraw, RGB(0, 0, 0));
+	//输出“游戏得分”字样
 	TextOut(m_hdcDraw, m_rectScoreAndNextBlockArea.left+ nMargin, m_rectScoreAndNextBlockArea.top+ nMargin, sHanzi, wcslen(sHanzi));
 	HFONT hFont;
 	HFONT hFontOld;
@@ -167,18 +168,28 @@ void CTetrisDraw::DrawScoreAndNextBlockArea(long score, CTetrisBlock* pNextTetri
 	RECT rectScore;
 	rectScore.left = m_rectScoreAndNextBlockArea.left + nMargin;
 	rectScore.top = m_rectScoreAndNextBlockArea.top + nMargin + nYouXiDeFenTextHeight;
-	rectScore.right = m_rectScoreAndNextBlockArea.right + nMargin;
+	rectScore.right = m_rectScoreAndNextBlockArea.right - nMargin;
 	rectScore.bottom = m_rectScoreAndNextBlockArea.top + nMargin + 2* nFontHeight;
 	wchar_t s[100] = L"";
 	swprintf(s, 100, L"%d", score);
+	//输出具体的分数，如1500
 	DrawText(m_hdcDraw, s, -1, &rectScore, DT_VCENTER | DT_SINGLELINE|DT_NOCLIP);
 	SelectObject(m_hdcDraw, hFontOld);
+	
+	wchar_t sNum[100] = L"";
+	swprintf(sNum, 100, L"方块数：%d", lTetrisBlockNumUsed);
+	int nTetrisBlockNumUsedTextHeight = 20;
+	SetTextColor(m_hdcDraw, RGB(100, 100, 255));
+	//输出已使用的方块个数，如123
+	TextOut(m_hdcDraw, m_rectScoreAndNextBlockArea.left + nMargin, rectScore.bottom + nMargin, sNum, wcslen(sNum));
+	rectScore.bottom = rectScore.bottom + nTetrisBlockNumUsedTextHeight;
+
 	if (0 == pNextTetrisBlock)
 		return;
 	RECT rectNextBlock;
 	rectNextBlock.left = m_rectScoreAndNextBlockArea.left + nMargin;
 	rectNextBlock.top = rectScore.bottom + nMargin;
-	rectNextBlock.right = m_rectScoreAndNextBlockArea.right + nMargin;
+	rectNextBlock.right = m_rectScoreAndNextBlockArea.right - nMargin;
 	rectNextBlock.bottom = m_rectScoreAndNextBlockArea.bottom - nMargin;
 
 	const int border = 20;

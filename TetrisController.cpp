@@ -10,6 +10,7 @@ CTetrisController::CTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTe
 	m_pTetrisDraw = pTetrisDraw;
 	m_pCurTetrisBlock = pTetrisBlock;
 	m_lScore = 0;
+	m_lTetrisBlockNumUsed = 0;
 
 	if (0 != pTetrisBlock)
 		return;
@@ -30,6 +31,7 @@ CTetrisController::~CTetrisController()
 
 void CTetrisController::setCurTetrisBlock(CTetrisBlock* pCurTetrisBlock)
 {
+	m_lTetrisBlockNumUsed++;
 	if (0 != m_pCurTetrisBlock)
 	{
 		delete m_pCurTetrisBlock;
@@ -225,7 +227,7 @@ bool CTetrisController::commandDown()
 			break;
 		}
 		//更新分数
-		m_pTetrisDraw->DrawScoreAndNextBlockArea(m_lScore);
+		m_pTetrisDraw->DrawScoreAndNextBlockArea(m_lScore, m_lTetrisBlockNumUsed);
 		return false;
 	}
 	//执行实际的向下移动指令并让TetrisDraw重绘
@@ -284,4 +286,8 @@ void CTetrisController::resetGame()
 {
 	m_lScore = 0;
 	m_pTetrisDraw->ClearTetrisArray();
+}
+long CTetrisController::getTetrisBlockNumUsed()
+{
+	return m_lTetrisBlockNumUsed;
 }

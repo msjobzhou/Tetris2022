@@ -96,6 +96,7 @@ public:
 	void getArrTetrisBoardCopyFromCTetrisDraw(bool *pbArrTetrisBoardCopy);
 	void getCurrentTetrisBlockCopy(sTetrisBlock& stb);
 	void setPDTetrisControllerCoefficient(sPDTetrisControllerCoefficient& coff);
+	sPDTetrisControllerCoefficient getPDTetrisControllerCoefficient();
 
 public:
 	int getLandingHeight(sTetrisBlock& stb);

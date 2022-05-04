@@ -400,7 +400,7 @@ void test_pickPositionWithHighestEvalutionScore()
 	stb.pbBlock[3 * stb.nBlockWidth + 0] = true;
 
 	spTmp = pTetrisController->pickPositionWithHighestEvalutionScore(pbArrTetrisBoardCopy, nHeight, nWidth, stb, fHighestEvalutionScoreRet);
-	assert(spTmp.nPosX == 9);
+	assert(spTmp.nPosX == 3);
 	assert(spTmp.nPosY == 3);
 	delete[] stb.pbBlock;
 

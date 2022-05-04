@@ -16,12 +16,21 @@ FileLogger g_fileLogger("tetrisBlockLog.txt", error);
 CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock):
 	CTetrisController(pTetrisDraw, pTetrisBlock)
 {
-	m_PDCoff.lh = -1.0f;
+	//0.114868 0.343262 0.108093 0.592621 0.512634 0.957367
+	m_PDCoff.lh = 1.0f;
 	m_PDCoff.epcm = 1.0f;
-	m_PDCoff.brt = -1.0f;
-	m_PDCoff.bct = -1.0f;
-	m_PDCoff.bbh = -4.0f;
-	m_PDCoff.bw = -1.0f;
+	m_PDCoff.brt = 1.0f;
+	m_PDCoff.bct = 1.0f;
+	m_PDCoff.bbh = 4.0f;
+	m_PDCoff.bw = 1.0f;
+
+	//下面这段是测试代码，待删除
+	m_PDCoff.lh = 0.114868;
+	m_PDCoff.epcm = 0.343262;
+	m_PDCoff.brt = 0.108093;
+	m_PDCoff.bct = 0.592621;
+	m_PDCoff.bbh = 0.512634;
+	m_PDCoff.bw = 0.957367;
 }
 
 
@@ -280,8 +289,8 @@ float CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBo
 	int bbh = getBoardBuriedHoles(pbArrTetrisBoardCopy, nHeight, nWidth);
 	int bw = getBoardWells(pbArrTetrisBoardCopy, nHeight, nWidth);
 
-	float fScore = m_PDCoff.lh*lh + m_PDCoff.epcm*epcm + m_PDCoff.brt*brt + m_PDCoff.bct*bct + m_PDCoff.bbh * bbh + m_PDCoff.bw * bw;
-
+	float fScore = -m_PDCoff.lh*lh + m_PDCoff.epcm*epcm - m_PDCoff.brt*brt - m_PDCoff.bct*bct - m_PDCoff.bbh * bbh - m_PDCoff.bw * bw;
+	//float fScore = -1.0*(float)lh + 1.0*(float)epcm - 1.0*(float)brt - 1.0*(float)bct - 4* (float)bbh - 1.0*(float)bw;
 	return fScore;
 }
 sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, float& fHighestEvalutionScoreRet)
@@ -331,13 +340,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
 				//只有向下不能移动的时候，才可以算TetrisBlock停止移动
-				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
-				if (stb.nPosY >= nTetrisBoardHeight)
-					break;
 				nStoppedX = nTetrisBlockPreX;
 				nStoppedY = nTetrisBlockPreY;
 				stb.nPosX = nStoppedX;
 				stb.nPosY = nStoppedY;
+				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+				if (stb.nPosY >= nTetrisBoardHeight)
+					break;
+
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
@@ -379,13 +389,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 		if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 		{
 			//只有向下不能移动的时候，才可以算TetrisBlock停止移动
-			//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
-			if (stb.nPosY >= nTetrisBoardHeight)
-				break;
+			
 			nStoppedX = nTetrisBlockPreX;
 			nStoppedY = nTetrisBlockPreY;
 			stb.nPosX = nStoppedX;
 			stb.nPosY = nStoppedY;
+			//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+			if (stb.nPosY >= nTetrisBoardHeight)
+				break;
 			//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 			float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
@@ -434,13 +445,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			if (!canTetrisBlockMovable(stb, pbArrTetrisBoardCopy, nTargetX, nTargetY))
 			{
 				//只有向下不能移动的时候，才可以算TetrisBlock停止移动
-				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
-				if (stb.nPosY >= nTetrisBoardHeight)
-					break;
 				nStoppedX = nTetrisBlockPreX;
 				nStoppedY = nTetrisBlockPreY;
 				stb.nPosX = nStoppedX;
 				stb.nPosY = nStoppedY;
+				//增加一个判断，如果不能移动时，tetris block的高度大于等于nTetrisBoardHeight，则不进入evaluationFunction
+				if (stb.nPosY >= nTetrisBoardHeight)
+					break;
+
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
@@ -688,4 +700,9 @@ int CPierreDellacherieTetrisController::LevelNumErased(bool *pbArrTetrisBoardCop
 void CPierreDellacherieTetrisController::setPDTetrisControllerCoefficient(sPDTetrisControllerCoefficient& coff)
 {
 	m_PDCoff = coff;
+}
+
+sPDTetrisControllerCoefficient CPierreDellacherieTetrisController::getPDTetrisControllerCoefficient()
+{
+	return m_PDCoff;
 }

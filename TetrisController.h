@@ -9,6 +9,7 @@ private:
 	CTetrisDraw* m_pTetrisDraw;
 	CTetrisBlock* m_pCurTetrisBlock;
 	long m_lScore;
+	long m_lTetrisBlockNumUsed;
 
 	bool commandLeft();
 	bool commandRight();
@@ -25,6 +26,7 @@ public:
 	bool isGameOver();
 	long GetScore();
 	void resetGame();
+	long getTetrisBlockNumUsed();
 
 protected:
 	bool canTetrisBlockMovable(CTetrisBlock* pBlock, int x, int y);
