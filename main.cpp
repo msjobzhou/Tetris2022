@@ -91,7 +91,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 	{
 
 		//seed the random number generator
-		srand((unsigned int )time(NULL));
+		srand((unsigned int )clock());
 
 
 
@@ -120,7 +120,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		pTetrisController = new CTetrisController(pTetrisDraw);
 		pPDTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
 		
-		srand((unsigned int)time(NULL));  // 产生随机种子
+		srand((unsigned int)clock());  // 产生随机种子
 		int nType = rand() % 7 + 1;
 		pNextTetrisBlock = new CTetrisBlock(nType);
 		
@@ -215,11 +215,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 			if (0 != pNextTetrisBlock)
 				delete pNextTetrisBlock;
 
-			srand((unsigned int)time(NULL));  // 产生随机种子
+			srand((unsigned int)clock());  // 产生随机种子
 			int nType = rand() % 7 + 1;
 			CTetrisBlock* pTB = new CTetrisBlock(nType);
 
-			srand((unsigned int)time(NULL));  // 产生随机种子
+			srand((unsigned int)clock());  // 产生随机种子
 			nType = rand() % 7 + 1;
 			pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -256,7 +256,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 					{
 						pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
 
-						srand((unsigned int)time(NULL));  // 产生随机种子
+						srand((unsigned int)clock());  // 产生随机种子
 						int nType = rand() % 7 + 1;
 						pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -414,7 +414,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 						{
 							pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
 
-							srand((unsigned int)time(NULL));  // 产生随机种子
+							srand((unsigned int)clock());  // 产生随机种子
 							int nType = rand() % 7 + 1;
 							pNextTetrisBlock = new CTetrisBlock(nType);
 
@@ -445,7 +445,15 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 							AICmdList.pop_front();
 						}
 						else {
-							pPDTetrisController->executeCommand(3);
+							bool bMoveDown = pPDTetrisController->executeCommand(3);
+							if (false == bMoveDown)
+							{
+								if (true == pPDTetrisController->isGameOver())
+								{
+									KillTimer(hwnd, TIMER_AICommandExecution);
+									MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+								}
+							}
 						}
 					}
 					else
@@ -485,9 +493,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 							}
 							else
 							{
+								
 								//停止定时器
 								KillTimer(hwnd, TIMER_BLOCK_DOWN);
 								MessageBox(hwnd, TEXT("Game Over !"), TEXT("Alert"), MB_OK);
+								
 							}
 						}
 
