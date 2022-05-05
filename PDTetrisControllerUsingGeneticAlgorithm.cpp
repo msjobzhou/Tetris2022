@@ -153,10 +153,14 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 		for (int i = 0; i < m_nPopulationSize; i++)
 		{
 			double dFitness=0;
+			//clock_t start_time, end_time;
+			//start_time = clock();
 			RunTetrisGameSimulation(*m_vecPDTetrisControllersPointer[i], dFitness);
+			//end_time = clock();
+			//double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 			pdtccCurrent = m_vecPDTetrisControllersPointer[i]->getPDTetrisControllerCoefficient();
 			m_vecPopulation[i].dFitness = dFitness;
-			ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << "dFitness: " << dFitness <<endl;
+			ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << " dFitness: " << dFitness <<endl;
 			string debug = ss.str();
 			g_fileLoggerPDTCGA.Debug(debug);
 			ss.clear();

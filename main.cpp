@@ -35,7 +35,7 @@ void EnableMemLeakCheck()
 	_CrtSetDbgFlag(tmpFlag);
 }
 
-FileLogger g_fileLoggerMain("tetrisBlockMainLog.txt", error);
+FileLogger g_fileLoggerMain("tetrisBlockMainLog.txt", debug);
 
 using namespace std;
 
@@ -593,8 +593,51 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	//unit test 的代码 end
 
 
+	//测试函数性能代码start
+	/*
+	CPDTetrisControllerUsingGeneticAlgorithm pdcuga_test = CPDTetrisControllerUsingGeneticAlgorithm();
+	double dFitness = 0;
+	RECT rect_test;
+	rect_test.top = 0;
+	rect_test.left = 0;
+	rect_test.right = 100;
+	rect_test.bottom = 200;
+	//rect没有意义，遗传算法里面并不会使用，CTetrisDraw第一个参数HDC设置成0，表示遗传算法计算过程不会进行实际绘图
+	CTetrisDraw* pTetrisDraw_test = new CTetrisDraw(0, rect_test);
+
+	//0.369141 0.142426 0.330902 0.351837 0.253052 0.450378
+	CPierreDellacherieTetrisController pdtc_test = CPierreDellacherieTetrisController(pTetrisDraw_test);
+	sPDTetrisControllerCoefficient pdcCoeff_test;
+	pdcCoeff_test.lh = 0.369141;
+	pdcCoeff_test.epcm = 0.142426;
+	pdcCoeff_test.brt = 0.330902;
+	pdcCoeff_test.bct = 0.351837;
+	pdcCoeff_test.bbh = 0.253052;
+	pdcCoeff_test.bw = 0.450378;
+	pdtc_test.setPDTetrisControllerCoefficient(pdcCoeff_test);
+	stringstream ss_test;
+	for (int iTemp = 0; iTemp < 10; iTemp++)
+	{
+		clock_t start_time, end_time;
+		pdtc_test.resetGame();
+		start_time = clock();
+		//测试发现：ArrayIndexRangeCheck::IndexRangeCheck函数中使用string导致性能消耗太大
+		pdcuga_test.RunTetrisGameSimulation(pdtc_test, dFitness);
+		end_time = clock();
+		double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+		ss_test << "elapsed_time: " << elapsed_time << endl;
+		string debug = ss_test.str();
+		g_fileLoggerMain.Debug(debug);
+		ss_test.clear();
+		ss_test.str("");
+	}
+
+	delete pTetrisDraw_test;
+	*/
+	//测试函数性能代码 end
+
 	CPDTetrisControllerUsingGeneticAlgorithm pdcuga = CPDTetrisControllerUsingGeneticAlgorithm();
-	//pdcuga.MainProcess();
+	pdcuga.MainProcess();
 
 
 	//enter the message loop
