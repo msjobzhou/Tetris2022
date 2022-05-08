@@ -51,13 +51,18 @@ CPDTetrisControllerUsingGeneticAlgorithm::CPDTetrisControllerUsingGeneticAlgorit
 	for (int i = 0; i < m_nPopulationSize; i++)
 	{
 		sPDTetrisControllerCoefficient pdcCoeff;
-		pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
+		/*pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
 		pdcCoeff.epcm = abs(m_vecPopulation[i].vecWeights[1]);
 		pdcCoeff.brt = abs(m_vecPopulation[i].vecWeights[2]);
 		pdcCoeff.bct = abs(m_vecPopulation[i].vecWeights[3]);
 		pdcCoeff.bbh = abs(m_vecPopulation[i].vecWeights[4]);
-		pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);
-		//pdcCoeff.bw = 1.0;
+		pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);*/
+		pdcCoeff.lh = m_vecPopulation[i].vecWeights[0];
+		pdcCoeff.epcm = m_vecPopulation[i].vecWeights[1];
+		pdcCoeff.brt = m_vecPopulation[i].vecWeights[2];
+		pdcCoeff.bct = m_vecPopulation[i].vecWeights[3];
+		pdcCoeff.bbh = m_vecPopulation[i].vecWeights[4];
+		pdcCoeff.bw = m_vecPopulation[i].vecWeights[5];
 		m_vecPDTetrisControllersPointer[i]->setPDTetrisControllerCoefficient(pdcCoeff);
 		CTetrisBlock* pTetrisBlock = m_vecPDTetrisControllersPointer[i]->getCurTetrisBlock();
 	}
@@ -160,11 +165,11 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 			//double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 			pdtccCurrent = m_vecPDTetrisControllersPointer[i]->getPDTetrisControllerCoefficient();
 			m_vecPopulation[i].dFitness = dFitness;
-			//ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << " dFitness: " << dFitness <<endl;
-			//string debug = ss.str();
-			//g_fileLoggerPDTCGA.Debug(debug);
-			//ss.clear();
-			//ss.str("");
+			ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << " dFitness: " << dFitness <<endl;
+			string debug = ss.str();
+			g_fileLoggerPDTCGA.Debug(debug);
+			ss.clear();
+			ss.str("");
 			if (dFitness > dBestFitness)
 			{
 				dBestFitness = dFitness;
@@ -196,13 +201,18 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 		for (int i = 0; i < m_nPopulationSize; i++)
 		{
 			sPDTetrisControllerCoefficient pdcCoeff;
-			pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
-			pdcCoeff.epcm = abs(m_vecPopulation[i].vecWeights[1]);
-			pdcCoeff.brt = abs(m_vecPopulation[i].vecWeights[2]);
-			pdcCoeff.bct = abs(m_vecPopulation[i].vecWeights[3]);
-			pdcCoeff.bbh = abs(m_vecPopulation[i].vecWeights[4]);
-			pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);
-			//pdcCoeff.bw = 1.0;
+			/*pdcCoeff.lh = abs(m_vecPopulation[i].vecWeights[0]);
+		pdcCoeff.epcm = abs(m_vecPopulation[i].vecWeights[1]);
+		pdcCoeff.brt = abs(m_vecPopulation[i].vecWeights[2]);
+		pdcCoeff.bct = abs(m_vecPopulation[i].vecWeights[3]);
+		pdcCoeff.bbh = abs(m_vecPopulation[i].vecWeights[4]);
+		pdcCoeff.bw = abs(m_vecPopulation[i].vecWeights[5]);*/
+		pdcCoeff.lh = m_vecPopulation[i].vecWeights[0];
+		pdcCoeff.epcm = m_vecPopulation[i].vecWeights[1];
+		pdcCoeff.brt = m_vecPopulation[i].vecWeights[2];
+		pdcCoeff.bct = m_vecPopulation[i].vecWeights[3];
+		pdcCoeff.bbh = m_vecPopulation[i].vecWeights[4];
+		pdcCoeff.bw = m_vecPopulation[i].vecWeights[5];
 			m_vecPDTetrisControllersPointer[i]->setPDTetrisControllerCoefficient(pdcCoeff);
 			m_vecPDTetrisControllersPointer[i]->resetGame();
 		}

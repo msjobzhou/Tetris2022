@@ -1,6 +1,9 @@
 #include "GeneticAlgorithm.h"
 #include "utils.h"
 #include "CParams.h"
+#include "FileLogger.h"
+
+FileLogger g_fileLoggerGA2("tetrisBlockGALog2.txt", debug);
 
 //-----------------------------------constructor-------------------------
 //
@@ -157,10 +160,10 @@ vector<CGenome> CGeneticAlgorithm::Epoch(vector<CGenome> &old_pop)
 	//Now to add a little elitism we shall add in some copies of the
 	//fittest genomes. Make sure we add an EVEN number or the roulette
 	//wheel sampling will crash
-	if (!(CParams::iNumCopiesElite * CParams::iNumElite % 2))
-	{
-		GrabNBest(CParams::iNumElite, CParams::iNumCopiesElite, vecNewPop);
-	}
+	//if (!(CParams::iNumCopiesElite * CParams::iNumElite % 2))
+	//{
+		//GrabNBest(CParams::iNumElite, CParams::iNumCopiesElite, vecNewPop);
+	//}
 
 
 	//now we enter the GA loop

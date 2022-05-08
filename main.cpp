@@ -36,6 +36,8 @@ void EnableMemLeakCheck()
 }
 
 FileLogger g_fileLoggerMain("tetrisBlockMainLog.txt", debug);
+//初始化遗传算法使用的参数，代码中并显式调用变量g_Params
+CParams   g_Params;
 
 using namespace std;
 
@@ -637,7 +639,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	//测试函数性能代码 end
 
 	CPDTetrisControllerUsingGeneticAlgorithm pdcuga = CPDTetrisControllerUsingGeneticAlgorithm();
-	pdcuga.MainProcess();
+	//pdcuga.MainProcess();
 
 
 	//enter the message loop
