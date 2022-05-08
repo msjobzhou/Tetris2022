@@ -160,11 +160,11 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 			//double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 			pdtccCurrent = m_vecPDTetrisControllersPointer[i]->getPDTetrisControllerCoefficient();
 			m_vecPopulation[i].dFitness = dFitness;
-			ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << " dFitness: " << dFitness <<endl;
-			string debug = ss.str();
-			g_fileLoggerPDTCGA.Debug(debug);
-			ss.clear();
-			ss.str("");
+			//ss <<"population : " << i << " " << pdtccCurrent.lh << " " << pdtccCurrent.epcm << " " << pdtccCurrent.brt << " " << pdtccCurrent.bct << " " << pdtccCurrent.bbh << " " << pdtccCurrent.bw << " dFitness: " << dFitness <<endl;
+			//string debug = ss.str();
+			//g_fileLoggerPDTCGA.Debug(debug);
+			//ss.clear();
+			//ss.str("");
 			if (dFitness > dBestFitness)
 			{
 				dBestFitness = dFitness;
@@ -179,7 +179,9 @@ void CPDTetrisControllerUsingGeneticAlgorithm::MainProcess()
 		ss << "m_nCurrentGeneration: " << m_nCurrentGeneration << " best fitness: " << m_pGA->BestFitness() 
 			<< " best index:"<< m_pGA->BestFitnessIndex()<< endl;
 
-		ss << pdtccBest.lh << " " << pdtccBest.epcm << " " << pdtccBest.brt << " " << pdtccBest.bct << " " << pdtccBest.bbh << " " << pdtccBest.bw << endl;
+		ss << "average  fitness: " << m_pGA->AverageFitness() << endl;
+
+		ss << "best weight: " <<pdtccBest.lh << " " << pdtccBest.epcm << " " << pdtccBest.brt << " " << pdtccBest.bct << " " << pdtccBest.bbh << " " << pdtccBest.bw << endl;
 
 
 		string debug = ss.str();

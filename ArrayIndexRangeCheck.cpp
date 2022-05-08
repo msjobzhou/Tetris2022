@@ -23,6 +23,7 @@ ArrayIndexRangeCheck::~ArrayIndexRangeCheck()
 void ArrayIndexRangeCheck::IndexRangeCheck(int nRowIndex, int nColIndex)
 {
 	
+	/*
 	//使用string的性能消耗太大，因此去掉string的使用，过程中尝试使用sprintf_s的消耗也挺大
 	//string strInfo = string("IndexRangeCheck:");
 
@@ -44,9 +45,8 @@ void ArrayIndexRangeCheck::IndexRangeCheck(int nRowIndex, int nColIndex)
 
 		//throw out_of_range(strInfo);
 		assert(nRowIndex < m_nRowIndexRange);
-	}
-
-	if ((nColIndex >= m_nColIndexRange) || (nColIndex < 0))
+	} 
+	else if ((nColIndex >= m_nColIndexRange) || (nColIndex < 0))
 	{
 		//ss << "Column index " << nColIndex << " out of limit " << m_nColIndexRange;
 		//string expectionMsg = ss.str();
@@ -61,5 +61,5 @@ void ArrayIndexRangeCheck::IndexRangeCheck(int nRowIndex, int nColIndex)
 
 		//throw out_of_range(strInfo);
 		assert(nColIndex < m_nColIndexRange);
-	}
+	}*/
 }

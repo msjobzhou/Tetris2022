@@ -26,12 +26,12 @@ CPierreDellacherieTetrisController::CPierreDellacherieTetrisController(CTetrisDr
 	m_PDCoff.bw = 1.0f;
 
 	//下面这段是测试代码，待删除
-	m_PDCoff.lh = 0.392151;
+	/*m_PDCoff.lh = 0.392151;
 	m_PDCoff.epcm = 0.177582;
 	m_PDCoff.brt = 0.263275;
 	m_PDCoff.bct = 0.174591;
 	m_PDCoff.bbh = 0.768738;
-	m_PDCoff.bw = 0.105408;
+	m_PDCoff.bw = 0.105408;*/
 }
 
 
@@ -360,11 +360,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
-				ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
-				string debug = ss.str();
-				g_fileLogger.Debug(debug);
-				ss.clear();
-				ss.str("");
+				//遗传算法主流程CPDTetrisControllerUsingGeneticAlgorithm.MainProcess调用RunTetrisGameSimulation
+				//再调用generateAICommandListForCurrentTetrisBlock再调用pickPositionWithHighestEvalutionScore
+				//这个调用栈通过VS的性能诊断发现接近42%的性能消耗在这里，为提升性能，注释掉
+				//ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
+				//string debug = ss.str();
+				//g_fileLogger.Debug(debug);
+				//ss.clear();
+				//ss.str("");
 
 				if (fScore >= fHighestEvalutionScore)
 				{
@@ -409,11 +412,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 			float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
 
-			ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
-			string debug = ss.str();
-			g_fileLogger.Debug(debug);
-			ss.clear();
-			ss.str("");
+			//遗传算法主流程CPDTetrisControllerUsingGeneticAlgorithm.MainProcess调用RunTetrisGameSimulation
+			//再调用generateAICommandListForCurrentTetrisBlock再调用pickPositionWithHighestEvalutionScore
+			//这个调用栈通过VS的性能诊断发现接近42%的性能消耗在这里，为提升性能，注释掉
+			//ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
+			//string debug = ss.str();
+			//g_fileLogger.Debug(debug);
+			//ss.clear();
+			//ss.str("");
 
 			if (fScore >= fHighestEvalutionScore)
 			{
@@ -464,12 +470,14 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 
 				//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 				float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb);
-
-				ss << "pickPositionWithHighestEvalutiofScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
-				string debug = ss.str();
-				g_fileLogger.Debug(debug);
-				ss.clear();
-				ss.str("");
+				//遗传算法主流程CPDTetrisControllerUsingGeneticAlgorithm.MainProcess调用RunTetrisGameSimulation
+				//再调用generateAICommandListForCurrentTetrisBlock再调用pickPositionWithHighestEvalutionScore
+				//这个调用栈通过VS的性能诊断发现接近42%的性能消耗在这里，为提升性能，注释掉
+				//ss << "pickPositionWithHighestEvalutionScore stb.nPosX " << stb.nPosX << " stb.nPosY " << stb.nPosY << "fScore " << fScore << endl;
+				//string debug = ss.str();
+				//g_fileLogger.Debug(debug);
+				//ss.clear();
+				//ss.str("");
 
 				if (fScore >= fHighestEvalutionScore)
 				{
