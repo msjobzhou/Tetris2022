@@ -94,13 +94,15 @@ public:
 	CPierreDellacherieTetrisController(CTetrisDraw* pTetrisDraw, CTetrisBlock* pTetrisBlock = 0);
 	~CPierreDellacherieTetrisController();
 	void getArrTetrisBoardCopyFromCTetrisDraw(bool *pbArrTetrisBoardCopy);
+	void getArrCopyFromTetrisBoard(bool *pbArrCopy, bool *pbTetrisBoard);
 	void getCurrentTetrisBlockCopy(sTetrisBlock& stb);
+	void getTetrisBlockCopy(CTetrisBlock* pTetrisBlock, sTetrisBlock& stb);
 	void setPDTetrisControllerCoefficient(sPDTetrisControllerCoefficient& coff);
 	sPDTetrisControllerCoefficient getPDTetrisControllerCoefficient();
 
 public:
 	int getLandingHeight(sTetrisBlock& stb);
-	int getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb);
+	int getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nRetLevelNumErased);
 	int getBoardRowTransitions(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);
 	int getBoardColumnTransitions(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);
 	int getBoardBuriedHoles(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth);
@@ -109,6 +111,8 @@ public:
 	float evaluationFunction(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb);
 	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, float& fHighestEvalutionScoreRet);
 	sPosition generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
+	sPosition generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(list<int>& cmdList, CTetrisBlock* pNextTetrisBlock);
+	bool findRectangularPath(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int destPosX, int& nStoppedY, int& nLevelNumErased);
 	void RotateTetrisBlock(sTetrisBlock& stb);
 	int GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth);
 	int LevelNumErased(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth, int nLevelStart, int nLevelEnd);

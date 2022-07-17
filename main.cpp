@@ -591,7 +591,10 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlock);
 	pdut.addTestFunc(test_evaluationFunction);
 	
-	//pdut.runTest();
+	pdut.addTestFunc(test_findRectangularPath);
+	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
+	
+	pdut.runTest();
 	//unit test µÄ´úÂë end
 
 

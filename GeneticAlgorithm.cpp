@@ -164,7 +164,7 @@ vector<CGenome> CGeneticAlgorithm::Epoch(vector<CGenome> &old_pop)
 	//{
 		//GrabNBest(CParams::iNumElite, CParams::iNumCopiesElite, vecNewPop);
 	//}
-
+	FitnessScaleRank();
 
 	//now we enter the GA loop
 

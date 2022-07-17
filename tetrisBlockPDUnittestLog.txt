@@ -148,3 +148,297 @@ try getErodedPieceCellsMetric start
 try getErodedPieceCellsMetric start
 try getErodedPieceCellsMetric start
 try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 
+
+try getErodedPieceCellsMetric start
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 1 1 0 0 1 0 0 0 0 
+1 1 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+
+try getErodedPieceCellsMetric start
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 1 1 0 0 1 0 0 0 0 
+1 1 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+
+try getErodedPieceCellsMetric start
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 1 1 0 0 1 0 0 0 0 
+1 1 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+
+try getErodedPieceCellsMetric start
+
+try getErodedPieceCellsMetric start
+
+try getErodedPieceCellsMetric start
+
+try getErodedPieceCellsMetric start
+
+try getErodedPieceCellsMetric start
+
+try getErodedPieceCellsMetric start
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+1 1 1 0 1 1 1 1 1 0 
+0 1 1 0 1 1 1 0 1 0 
+0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 
+
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start
+try getErodedPieceCellsMetric start

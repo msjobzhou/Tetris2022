@@ -122,7 +122,8 @@ void CPDTetrisControllerUsingGeneticAlgorithm::RunTetrisGameSimulation(CPierreDe
 					if (true == pdController.isGameOver())
 					{
 						//这里待要加入不同原因值的判断
-						dFitness = nTetrisBlockUsed;
+						//dFitness = nTetrisBlockUsed + 2*pdController.GetScore()/100;
+						dFitness = pdController.GetScore() / 100;
 						return;
 					}
 				}
@@ -137,13 +138,15 @@ void CPDTetrisControllerUsingGeneticAlgorithm::RunTetrisGameSimulation(CPierreDe
 		if (true == pdController.isGameOver())
 		{
 			//这里待要加入不同原因值的判断
-			dFitness = nTetrisBlockUsed;
+			//dFitness = nTetrisBlockUsed + 2 * pdController.GetScore() / 100;
+			dFitness = pdController.GetScore() / 100;
 			return;
 		}
 	}
 	assert(nTetrisBlockUsed<=m_nTetrisBlockNum);
 	//所有用于训练的俄罗斯方块都使用完了，游戏依然还活着
-	dFitness = nTetrisBlockUsed;
+	//dFitness = nTetrisBlockUsed + 2 * pdController.GetScore() / 100;
+	dFitness = pdController.GetScore() / 100;
 	return;
 }
 
