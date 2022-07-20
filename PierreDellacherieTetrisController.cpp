@@ -700,6 +700,7 @@ bool CPierreDellacherieTetrisController::findRectangularPath(bool *pbArrTetrisBo
 
 sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(list<int>& cmdList, CTetrisBlock* pNextTetrisBlock)
 {
+
 	sPosition sp;
 	sp.nPosX = -1;
 	sp.nPosY = -1;

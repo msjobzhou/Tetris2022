@@ -12360,3 +12360,3455 @@ evaluationFunction score -12.0288
 
 1st block nRotation time 3 findRectangularPath nPosX 9 nStoppedY -1result 0
 
+1st block nRotation time 0 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -81
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -93
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -102
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -73
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+1st block nRotation time 0 findRectangularPath nPosX 1 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -83
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -66
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -58
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 2 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -74
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -70
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -58
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -67
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+1st block nRotation time 0 findRectangularPath nPosX 3 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -74
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -70
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -37
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 4 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -90
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+1st block nRotation time 0 findRectangularPath nPosX 5 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -100
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 6 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -81
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -89
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -36
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -66
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+1st block nRotation time 0 findRectangularPath nPosX 7 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -76
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -62
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 8 nStoppedY -1result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -83
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -96
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -32
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -39
+
+1st block nRotation time 1 findRectangularPath nPosX 1 nStoppedY 3result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -38
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score 17
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -38
+
+1st block nRotation time 1 findRectangularPath nPosX 2 nStoppedY 2result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 2 result 1
+
+evaluationFunction score -39
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 2 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 2 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 2 result 1
+
+evaluationFunction score -24
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 2 result 1
+
+evaluationFunction score -18
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 2 result 1
+
+evaluationFunction score -19
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 2 result 1
+
+evaluationFunction score -17
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 14 result 1
+
+evaluationFunction score -234
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -23
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -30
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 3 result 1
+
+evaluationFunction score -19
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -24
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -37
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -23
+
+1st block nRotation time 1 findRectangularPath nPosX 3 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -73
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+1st block nRotation time 1 findRectangularPath nPosX 4 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 13 result 1
+
+evaluationFunction score -213
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 5 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+1st block nRotation time 1 findRectangularPath nPosX 6 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 12 result 1
+
+evaluationFunction score -212
+
+1st block nRotation time 1 findRectangularPath nPosX 7 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+1st block nRotation time 1 findRectangularPath nPosX 8 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 2 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+1st block nRotation time 2 findRectangularPath nPosX 1 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+1st block nRotation time 2 findRectangularPath nPosX 2 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+1st block nRotation time 2 findRectangularPath nPosX 3 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+1st block nRotation time 2 findRectangularPath nPosX 4 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+1st block nRotation time 2 findRectangularPath nPosX 5 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+1st block nRotation time 2 findRectangularPath nPosX 6 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+1st block nRotation time 2 findRectangularPath nPosX 7 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+1st block nRotation time 2 findRectangularPath nPosX 8 nStoppedY -1result 0
+
+1st block nRotation time 2 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 3 findRectangularPath nPosX 0 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+1st block nRotation time 3 findRectangularPath nPosX 1 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+1st block nRotation time 3 findRectangularPath nPosX 2 nStoppedY 3result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+1st block nRotation time 3 findRectangularPath nPosX 3 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+1st block nRotation time 3 findRectangularPath nPosX 4 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+1st block nRotation time 3 findRectangularPath nPosX 5 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+1st block nRotation time 3 findRectangularPath nPosX 6 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+1st block nRotation time 3 findRectangularPath nPosX 7 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+1st block nRotation time 3 findRectangularPath nPosX 8 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+1st block nRotation time 3 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -81
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -93
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -102
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -73
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+1st block nRotation time 0 findRectangularPath nPosX 1 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -83
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -66
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -58
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 2 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -74
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -70
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -58
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -67
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -63
+
+1st block nRotation time 0 findRectangularPath nPosX 3 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -74
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -70
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -37
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 4 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -90
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -47
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+1st block nRotation time 0 findRectangularPath nPosX 5 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -57
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -77
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -100
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 6 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -81
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -89
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -63
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -36
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -66
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+1st block nRotation time 0 findRectangularPath nPosX 7 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -51
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -44
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -60
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -46
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -76
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -78
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -72
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -55
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -62
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 8 nStoppedY -1result 0
+
+1st block nRotation time 0 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -83
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -96
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -64
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -32
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -39
+
+1st block nRotation time 1 findRectangularPath nPosX 1 nStoppedY 3result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -38
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score 17
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -42
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -38
+
+1st block nRotation time 1 findRectangularPath nPosX 2 nStoppedY 2result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 2 result 1
+
+evaluationFunction score -39
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 2 result 1
+
+evaluationFunction score -41
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 2 result 1
+
+evaluationFunction score -34
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 2 result 1
+
+evaluationFunction score -24
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 2 result 1
+
+evaluationFunction score -18
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 2 result 1
+
+evaluationFunction score -19
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 2 result 1
+
+evaluationFunction score -17
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 14 result 1
+
+evaluationFunction score -234
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+2nd block nRotation time 1 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -23
+
+2nd block nRotation time 1 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -30
+
+2nd block nRotation time 1 findRectangularPath nPosX2 2 nStoppedY2 3 result 1
+
+evaluationFunction score -19
+
+2nd block nRotation time 1 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -24
+
+2nd block nRotation time 1 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -27
+
+2nd block nRotation time 1 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -37
+
+2nd block nRotation time 1 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -23
+
+1st block nRotation time 1 findRectangularPath nPosX 3 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -69
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -73
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -68
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -71
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -75
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -61
+
+1st block nRotation time 1 findRectangularPath nPosX 4 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 13 result 1
+
+evaluationFunction score -213
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 5 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -35
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -50
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -52
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -65
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -45
+
+1st block nRotation time 1 findRectangularPath nPosX 6 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 12 result 1
+
+evaluationFunction score -212
+
+1st block nRotation time 1 findRectangularPath nPosX 7 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 13 result 1
+
+evaluationFunction score -105
+
+1st block nRotation time 1 findRectangularPath nPosX 8 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 -1 result 0
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 -1 result 0
+
+1st block nRotation time 1 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 2 findRectangularPath nPosX 0 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 12 result 1
+
+evaluationFunction score -79
+
+1st block nRotation time 2 findRectangularPath nPosX 1 nStoppedY 4result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 10 result 1
+
+evaluationFunction score -185
+
+1st block nRotation time 2 findRectangularPath nPosX 2 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 11 result 1
+
+evaluationFunction score -91
+
+1st block nRotation time 2 findRectangularPath nPosX 3 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -151
+
+1st block nRotation time 2 findRectangularPath nPosX 4 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 10 result 1
+
+evaluationFunction score -54
+
+1st block nRotation time 2 findRectangularPath nPosX 5 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 8 result 1
+
+evaluationFunction score -128
+
+1st block nRotation time 2 findRectangularPath nPosX 6 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 9 result 1
+
+evaluationFunction score -56
+
+1st block nRotation time 2 findRectangularPath nPosX 7 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -97
+
+1st block nRotation time 2 findRectangularPath nPosX 8 nStoppedY -1result 0
+
+1st block nRotation time 2 findRectangularPath nPosX 9 nStoppedY -1result 0
+
+1st block nRotation time 3 findRectangularPath nPosX 0 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 8 result 1
+
+evaluationFunction score -53
+
+1st block nRotation time 3 findRectangularPath nPosX 1 nStoppedY 5result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 6 result 1
+
+evaluationFunction score -101
+
+1st block nRotation time 3 findRectangularPath nPosX 2 nStoppedY 3result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 7 result 1
+
+evaluationFunction score -49
+
+1st block nRotation time 3 findRectangularPath nPosX 3 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -88
+
+1st block nRotation time 3 findRectangularPath nPosX 4 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 6 result 1
+
+evaluationFunction score -48
+
+1st block nRotation time 3 findRectangularPath nPosX 5 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 4 result 1
+
+evaluationFunction score -59
+
+1st block nRotation time 3 findRectangularPath nPosX 6 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 5 result 1
+
+evaluationFunction score -33
+
+1st block nRotation time 3 findRectangularPath nPosX 7 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 3 result 1
+
+evaluationFunction score -43
+
+1st block nRotation time 3 findRectangularPath nPosX 8 nStoppedY 6result 1
+
+2nd block nRotation time 0 findRectangularPath nPosX2 0 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 1 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 2 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 3 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 4 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 5 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 6 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 7 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 8 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+2nd block nRotation time 0 findRectangularPath nPosX2 9 nStoppedY2 4 result 1
+
+evaluationFunction score -33
+
+1st block nRotation time 3 findRectangularPath nPosX 9 nStoppedY -1result 0
+
