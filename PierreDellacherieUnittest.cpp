@@ -736,9 +736,63 @@ void test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetris
 	list<int> cmdList;
 	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
 
+	assert(cmdList.size() == 4);
+	//第一个命令是旋转
+	assert(cmdList.front() == 4);
+
 	assert(sp.nPosX == 1);
 	assert(sp.nPosY == 3);
 
+	//使用停止下落的方块填充tetris board（将方块移动到对应的位置，executeCommand向下的指令会用方块填充tetris board）
+	CTetrisBlock* pTB = 0;
+	while (!cmdList.empty())
+	{
+		pTB = pTetrisController->getCurTetrisBlock();
+		//只有在方块完全下落到nTetrisBoardHeight-1之后再发相应的动作指令，否则执行向下移动一格的命令
+		if (pTB->getBlockPosY() <= nTetrisBoardHeight - 1)
+		{
+			int cmd = cmdList.front();
+			pTetrisController->executeCommand(cmd);
+			cmdList.pop_front();
+		}
+		else {
+			bool bMoveDown = pTetrisController->executeCommand(3);
+		}
+	}
+	//AICmdList为空时
+	//直接移动到当前方块垂直能下落的最低位置
+	bool bMoveDown = true;
+	while (bMoveDown)
+	{
+		bMoveDown = pTetrisController->executeCommand(3);
+	}
+
+
+	//检查方块确实移动到了generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock返回的位置
+	assert(sp.nPosX == pTB->getBlockPosX());
+	assert(sp.nPosY == pTB->getBlockPosY());
+
+	//打印出来tetris board
+	stringstream ss;
+	for (int y = 0; y < nTetrisBoardHeight; y++)
+	{
+		for (int x = 0; x < nTetrisBoardWidth; x++)
+		{
+			ss << pTetrisController->getTetrisDraw()->GetTetrisArrayItem(y,x) << " ";
+		}
+		ss << endl;
+	}
+
+	string debug = ss.str();
+	g_fileLoggerPDUnittest.Debug(debug);
+
+	pTetrisController->setCurTetrisBlock(pNextTetrisBlock);
+	//再下个方块还是■■■■
+	pNextTetrisBlock = new CTetrisBlock(6, 0);
+	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
+	
+	assert(sp.nPosX == 0);
+	assert(sp.nPosY == 0);
 	
 	//pTetrisBlock会由CPierreDellacherieTetrisController的析构函数来释放，这里不用显式进行释放了
 	//delete pTetrisBlock;

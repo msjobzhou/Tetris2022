@@ -406,7 +406,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				//ss.clear();
 				//ss.str("");
 
-				if (fScore >= fHighestEvalutionScore)
+				if (fScore > fHighestEvalutionScore)
 				{
 					fHighestEvalutionScore = fScore;
 					sp.nPosX = stb.nPosX;
@@ -458,7 +458,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 			//ss.clear();
 			//ss.str("");
 
-			if (fScore >= fHighestEvalutionScore)
+			if (fScore > fHighestEvalutionScore)
 			{
 				fHighestEvalutionScore = fScore;
 				sp.nPosX = stb.nPosX;
@@ -516,7 +516,7 @@ sPosition CPierreDellacherieTetrisController::pickPositionWithHighestEvalutionSc
 				//ss.clear();
 				//ss.str("");
 
-				if (fScore >= fHighestEvalutionScore)
+				if (fScore > fHighestEvalutionScore)
 				{
 					fHighestEvalutionScore = fScore;
 					sp.nPosX = stb.nPosX;
@@ -700,7 +700,9 @@ bool CPierreDellacherieTetrisController::findRectangularPath(bool *pbArrTetrisBo
 
 sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(list<int>& cmdList, CTetrisBlock* pNextTetrisBlock)
 {
-
+	if (!cmdList.empty())
+		cmdList.clear();
+	
 	sPosition sp;
 	sp.nPosX = -1;
 	sp.nPosY = -1;
@@ -828,11 +830,12 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 							fScore = fScore + m_PDCoff.epcm*nLevelNumErased;
 
 							//找出评分最大的组合
-							if (fScore >= fHighestEvalutionScore)
+							if (fScore > fHighestEvalutionScore)
 							{
 								fHighestEvalutionScore = fScore;
 								sp.nPosX = stb.nPosX;
 								sp.nPosY = stb.nPosY;
+								nBlockRotateTime = nRotation;
 							}
 							//evaluationFunction的代码里面会对pbArrTetrisBoardCopy进行改变，在进行下次查找第二个方块位置之前，恢复pbArrTetrisBoardCopy到第一次方块停止之后的状态
 							getArrCopyFromTetrisBoard(pbArrTetrisBoardCopy, pbArrTetrisBoardCopyAfterFirstBlockStopped);
@@ -855,7 +858,35 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 		}
 		
 	}
-	
+	getCurrentTetrisBlockCopy(stb);
+	//将rotate的命令加入到cmdList
+	//命令对应表 1 left 2 right 3 down 4 rotate
+	while (nBlockRotateTime>0)
+	{
+		RotateTetrisBlock(stb);
+		cmdList.push_back(4);
+		nBlockRotateTime--;
+	}
+	//按照向左或者向右移动，将tetrisBlock移动到sPosition sp的上方
+	if (stb.nPosX > sp.nPosX)
+	{
+		int nLeftMoveTimes = stb.nPosX - sp.nPosX;
+		while (nLeftMoveTimes > 0)
+		{
+			cmdList.push_back(1);
+			nLeftMoveTimes--;
+		}
+	}
+	else if (stb.nPosX < sp.nPosX)
+	{
+		int nRightMoveTimes = sp.nPosX - stb.nPosX;
+		while (nRightMoveTimes > 0)
+		{
+			cmdList.push_back(2);
+			nRightMoveTimes--;
+		}
+	}
+
 	delete []stb.pbBlock;
 	delete []stb2.pbBlock;
 	delete []pbArrTetrisBoardCopy;
