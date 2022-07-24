@@ -100,7 +100,7 @@ int CPierreDellacherieTetrisController::getLandingHeight(sTetrisBlock& stb)
 {
 	return stb.nPosY;
 }
-//函数getErodedPieceCellsMetric会使用stb占用的位置来填充pbArrTetrisBoardCopy
+//函数getErodedPieceCellsMetric会使用stb占用的位置来填充pbArrTetrisBoardCopy，且stb的最终位置nPosY需要减去nRetLevelNumErased
 int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int& nRetLevelNumErased)
 {
 	//stringstream ss;
@@ -166,6 +166,11 @@ int CPierreDellacherieTetrisController::getErodedPieceCellsMetric(bool *pbArrTet
 	//等函数造成比较大的负值，而实际上被占满的一层会被消层掉，因此“空洞”在消层后并不存在了。
 	LevelNumErased(pbArrTetrisBoardCopy, nHeight, nWidth, stb.nPosY - stb.nBlockHeight + 1, stb.nPosY);
 	nRetLevelNumErased = nLevelErasedAfterTetrisBlockDownTillItCannotMove;
+	if (nRetLevelNumErased > 0)
+	{
+		stb.nPosY = stb.nPosY - nRetLevelNumErased;
+		//当前std落地到pbArrTetrisBoardCopy的最底部，且std所填充的行都被消除的情形，stb.nPosY等于-1；
+	}
 	//按照PierreDellacherie构造此特征的数值为nLevelErasedAfterTetrisBlockDownTillItCannotMove*nBlockElementContributeToLevelErased
 	return nLevelErasedAfterTetrisBlockDownTillItCannotMove*nBlockElementContributeToLevelErased;
 }
@@ -318,9 +323,10 @@ float CPierreDellacherieTetrisController::evaluationFunction(bool *pbArrTetrisBo
 	int nLevelNumErased = -1;
 	int epcm = getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
 	
-	int lh = getLandingHeight(stb) - nLevelNumErased;
-	//当前std落地到pbArrTetrisBoardCopy的最底部，且std所填充的行都被消除的情形，其lh值为-1;
-	assert(lh >= -1);
+	//stb的高度序号是从0开始的，因此getLandingHeight加一下1
+	int lh = getLandingHeight(stb) + 1;
+	//当前std落地到pbArrTetrisBoardCopy的最底部，且std所填充的行都被消除的情形，其lh值为0;
+	assert(lh >= 0);
 	
 	int brt = getBoardRowTransitions(pbArrTetrisBoardCopy, nHeight, nWidth);
 	int bct = getBoardColumnTransitions(pbArrTetrisBoardCopy, nHeight, nWidth);
@@ -619,14 +625,15 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 	return sp;
 }
 
-bool CPierreDellacherieTetrisController::findRectangularPath(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int destPosX, int& nStoppedY, int& nLevelNumErased)
+bool CPierreDellacherieTetrisController::findRectangularPath(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int destPosX, int& nStoppedY)
 {
+	//函数参数epcm表示PD算法里的ErodedPieceCellsMetric
 	//仿照pickPositionWithHighestEvalutionScore函数写的 方块移动算法
 	//函数的运行过程是先从pTetrisBlock的当前位置，水平移动到destPosX，然后再下落到不能往下移动位置
 	//类似于pickPositionWithHighestEvalutionScore，不考虑移动过程中变形，钻洞等复杂场景
-	//如果能找到移动到对应的destPosX位置，则返回true，同时返回方块停留的位置nStoppedPosY和消除的层数
-	//findRectangularPath函数中的参数nLevelNumErased设置成-255，表示此函数不使用stb填充pbArrTetrisBoardCopy
-	//否则函数会用停止后的pTetrisBlock填充pbArrTetrisBoardCopy
+	//如果能找到移动到对应的destPosX位置，则返回true，同时返回方块停留的位置nStoppedPosY
+	
+	
 	int nDirection = 0;
 	int nBlockPosX = stb.nPosX;
 	int nBlockPosY = stb.nPosY;
@@ -686,11 +693,6 @@ bool CPierreDellacherieTetrisController::findRectangularPath(bool *pbArrTetrisBo
 				return false;
 			stb.nPosX = nBlockPosX;
 			stb.nPosY = nBlockPosY;
-			if (-255 != nLevelNumErased)
-			{
-				//用pTetrisBlock填充pbArrTetrisBoardCopy，这里复用getErodedPieceCellsMetric的代码
-				int epcm = getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
-			}
 			
 			return true;
 		}
@@ -707,6 +709,8 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 	sp.nPosX = -1;
 	sp.nPosY = -1;
 	float fHighestEvalutionScore = -99999999.0f;
+	//EvalutionScore相等时，使用第一个方块落地时消层最多的方块变形、移动方案
+	int nFirstBlockLevelErased=-255;
 
 	bool *pbArrTetrisBoardCopy = new bool[nTetrisBoardHeight*nTetrisBoardWidth];
 	bool *pbArrTetrisBoardCopyAfterFirstBlockStopped = new bool[nTetrisBoardHeight*nTetrisBoardWidth];
@@ -758,9 +762,10 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 		{
 			
 			int nLevelNumErased=0;
+			int epcm;
 			int nStoppedY;
 			
-			bool bRet = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nPosX, nStoppedY, nLevelNumErased);
+			bool bRet = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nPosX, nStoppedY);
 			ss << "1st block nRotation time "<< nRotation <<" findRectangularPath nPosX " << nPosX << " nStoppedY " << nStoppedY << "result " << bRet << endl;
 			string debug = ss.str();
 			g_fileLogger.Debug(debug);
@@ -768,6 +773,9 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 			ss.str("");
 			if (bRet == false)
 				continue;
+			//bRet为true，找到对应的RectangularPath，用停止下落的pTetrisBlock填充pbArrTetrisBoardCopy，
+			//这里复用getErodedPieceCellsMetric的代码
+			epcm = getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
 
 			//将第一个方块放置之后的TetrisBoard拷贝一份
 			getArrCopyFromTetrisBoard(pbArrTetrisBoardCopyAfterFirstBlockStopped, pbArrTetrisBoardCopy);
@@ -793,18 +801,20 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 				for (int nPosX2 = 0; nPosX2 < nWidth; nPosX2++)
 				{
 					int nLevelNumErased2=-255;
+					int epcm2;
 					int nStoppedY2=-1;
 					//打印TetrisBoard到日志文件中方便定位
-					/*for (int y = 0; y < nTetrisBoardHeight; y++)
+					ss << "TetrisBoard after first block " << endl;
+					for (int y = 0; y < nTetrisBoardHeight; y++)
 					{
 						for (int x = 0; x < nTetrisBoardWidth; x++)
 						{
 							ss << pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] << " ";
 						}
 						ss << endl;
-					}*/
+					}
 					//findRectangularPath函数中的参数nLevelNumErased2设置成-255，表示此函数不使用stb填充pbArrTetrisBoardCopy，转而由后面的evaluationFunction来做此动作
-					bool bRet2 = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb2, nPosX2, nStoppedY2, nLevelNumErased2);
+					bool bRet2 = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb2, nPosX2, nStoppedY2);
 					ss << "2nd block nRotation time " << nRotation2 << " findRectangularPath nPosX2 " << nPosX2 << " nStoppedY2 " << nStoppedY2 << " result " << bRet2 << endl;
 					string debugTmp = ss.str();
 					g_fileLogger.Debug(debugTmp);
@@ -821,20 +831,36 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 
 							//调用evaluationFunction之前需要将stb的位置设置移动到tetrisBlock不能向下移动的位置
 							float fScore = evaluationFunction(pbArrTetrisBoardCopy, nHeight, nWidth, stb2);
+							//最终的fScore还需要考虑第一个方块的消层nLevelNumErased以及
+							//第一个方块落下的高度（经过两次方块放置后可能的消层之后）
+							//第二个方块下落之后的消层数用nStoppedY2 - stb2.nPosY表示
+							int nTmpLevelErased2 = nStoppedY2 - stb2.nPosY;
+							fScore = fScore + m_PDCoff.epcm*epcm + m_PDCoff.lh*(stb.nPosY + 1 - nTmpLevelErased2);
+							ss << "TetrisBoard after second block " << endl;
+							for (int y = 0; y < nTetrisBoardHeight; y++)
+							{
+								for (int x = 0; x < nTetrisBoardWidth; x++)
+								{
+									ss << pbArrTetrisBoardCopy[y*nTetrisBoardWidth + x] << " ";
+								}
+								ss << endl;
+							}
+							ss <<"epcm " << epcm << " stb.nPosY + 1 " << stb.nPosY + 1 << " nTmpLevelErased2 "<< nTmpLevelErased2 << " ";
 							ss << "evaluationFunction score " << fScore << endl;
 							string debug = ss.str();
 							g_fileLogger.Debug(debug);
 							ss.clear();
 							ss.str("");
-							//最终的fScore还需要考虑第一个方块的消层nLevelNumErased
-							fScore = fScore + m_PDCoff.epcm*nLevelNumErased;
 
-							//找出评分最大的组合
-							if (fScore > fHighestEvalutionScore)
+							//找出评分最大的组合，分数相等时，优先使用第一个方块消层多的方案
+							if ((fScore >fHighestEvalutionScore)||((fScore == fHighestEvalutionScore) && (nLevelNumErased > nFirstBlockLevelErased)))
+							//if (fScore >fHighestEvalutionScore)
 							{
+								nFirstBlockLevelErased = nLevelNumErased;
 								fHighestEvalutionScore = fScore;
 								sp.nPosX = stb.nPosX;
-								sp.nPosY = stb.nPosY;
+								//findRectanglePath函数返回的sp.nPosY的地址是消层前的位置
+								sp.nPosY = stb.nPosY + nFirstBlockLevelErased;
 								nBlockRotateTime = nRotation;
 							}
 							//evaluationFunction的代码里面会对pbArrTetrisBoardCopy进行改变，在进行下次查找第二个方块位置之前，恢复pbArrTetrisBoardCopy到第一次方块停止之后的状态

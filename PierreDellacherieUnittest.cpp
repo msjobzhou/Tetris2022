@@ -601,9 +601,10 @@ void test_findRectangularPath()
 	//测试场景1：x轴方向移动到0
 	pTetrisController->getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
 
-	int nLevelNumErased, nDestPosX=0;
-	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY, nLevelNumErased);
-
+	int nLevelNumErased, nDestPosX=0, epcm;
+	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY);
+	//用pTetrisBlock填充pbArrTetrisBoardCopy，这里复用getErodedPieceCellsMetric的代码
+	epcm = pTetrisController->getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
 	assert(bRet == true);
 	assert(nStoppedY == 4);
 	//检查俄罗斯方块停止位置填充了pbArrTetrisBoardCopy
@@ -614,9 +615,12 @@ void test_findRectangularPath()
 	stb.nPosY = 21;
 	pTetrisController->getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
 	nDestPosX = nWidth - stb.nBlockWidth;
-	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY, nLevelNumErased);
+	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY);
 	assert(bRet == true);
 	assert(nStoppedY == 3);
+	//用pTetrisBlock填充pbArrTetrisBoardCopy，这里复用getErodedPieceCellsMetric的代码
+	epcm = pTetrisController->getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
+
 	//检查俄罗斯方块停止位置填充了pbArrTetrisBoardCopy
 	assert(pbArrTetrisBoardCopy[nStoppedY * nWidth + nDestPosX] == true);
 
@@ -639,8 +643,10 @@ void test_findRectangularPath()
 	}
 	*/
 	nDestPosX = stb.nPosX;
-	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY, nLevelNumErased);
-	
+	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY);
+	//用pTetrisBlock填充pbArrTetrisBoardCopy，这里复用getErodedPieceCellsMetric的代码
+	epcm = pTetrisController->getErodedPieceCellsMetric(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nLevelNumErased);
+
 	/*
 	//打印数组
 	for (int y = 0; y < nTetrisBoardHeight; y++)
@@ -668,13 +674,13 @@ void test_findRectangularPath()
 	pTetrisController->getArrTetrisBoardCopyFromCTetrisDraw(pbArrTetrisBoardCopy);
 
 	nDestPosX = 5;
-	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY, nLevelNumErased);
+	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY);
 
 	assert(bRet == false);
 	assert(nStoppedY == -1);
 
 	nDestPosX = 7;
-	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY, nLevelNumErased);
+	bRet = pTetrisController->findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nDestPosX, nStoppedY);
 
 	assert(bRet == false);
 	assert(nStoppedY == -1);
@@ -791,8 +797,8 @@ void test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetris
 	pNextTetrisBlock = new CTetrisBlock(6, 0);
 	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
 	
-	assert(sp.nPosX == 0);
-	assert(sp.nPosY == 0);
+	assert(sp.nPosX == 3);
+	assert(sp.nPosY == 3);
 	
 	//pTetrisBlock会由CPierreDellacherieTetrisController的析构函数来释放，这里不用显式进行释放了
 	//delete pTetrisBlock;

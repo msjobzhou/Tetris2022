@@ -112,7 +112,7 @@ public:
 	sPosition pickPositionWithHighestEvalutionScore(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, float& fHighestEvalutionScoreRet);
 	sPosition generateAICommandListForCurrentTetrisBlock(list<int>& cmdList);
 	sPosition generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(list<int>& cmdList, CTetrisBlock* pNextTetrisBlock);
-	bool findRectangularPath(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int destPosX, int& nStoppedY, int& nLevelNumErased);
+	bool findRectangularPath(bool *pbArrTetrisBoardCopy, int nHeight, int nWidth, sTetrisBlock& stb, int destPosX, int& nStoppedY);
 	void RotateTetrisBlock(sTetrisBlock& stb);
 	int GetHighestNonEmptyLevel(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth);
 	int LevelNumErased(bool *pbArrTetrisBoardCopy, int nArrayHeight, int nArrayWidth, int nLevelStart, int nLevelEnd);
