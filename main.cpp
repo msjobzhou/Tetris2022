@@ -82,6 +82,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 
 	enum game_mode {ManualMode, AIMode, ReservedMode};
 
+	//AI模式下是否采用two piece的算法
+	static bool AIMode_two_piece;
+
 	static game_mode mode;
 	static list<int> AICmdList;
 
@@ -130,12 +133,16 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		//一秒钟可以模拟5次按键
 		SetTimer(hwnd, TIMER_AICommandExecution, int(1000/(5* timer_speedup)), NULL);
 		mode = ManualMode;
+		AIMode_two_piece = true;
 		
 		if (mode == AIMode)
 		{
 			//AI模式下，20倍速进行
-			timer_speedup = 20;
-			pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+			timer_speedup = 5;
+			if (AIMode_two_piece)
+				pPDTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(AICmdList, pNextTetrisBlock);
+			else
+				pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
 		}
 
 		bPaused = false;
@@ -187,7 +194,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 				{
 					mode = AIMode;
 					//AI模式下，20倍速进行
-					timer_speedup = 20;
+					timer_speedup = 5;
 					SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
 					break;
 				}
@@ -231,7 +238,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 			if (mode == AIMode)
 			{
 				pPDTetrisController->setCurTetrisBlock(pTB);
-				pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+				if (AIMode_two_piece)
+					pPDTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(AICmdList, pNextTetrisBlock);
+				else
+					pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
 			}
 
 			if (mode == ManualMode)
@@ -482,16 +492,19 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 								pTetrisDraw->DrawScoreAndNextBlockArea(pPDTetrisController->GetScore(), pPDTetrisController->getTetrisBlockNumUsed(), pNextTetrisBlock);
 
 								AICmdList.clear();
-								pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
-								ss << "random number" << nNum << " "<< nType << endl;
-								for (int i = 0; i < 10; i++)
-								{
-									ss << rand() << " ";
-								}
-								string debug = ss.str();
-								g_fileLoggerMain.Debug(debug);
-								ss.clear();
-								ss.str("");
+								if (AIMode_two_piece)
+									pPDTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(AICmdList, pNextTetrisBlock);
+								else
+									pPDTetrisController->generateAICommandListForCurrentTetrisBlock(AICmdList);
+								//ss << "random number" << nNum << " "<< nType << endl;
+								// (int i = 0; i < 10; i++)
+								//{
+								//	ss << rand() << " ";
+								//}
+								//string debug = ss.str();
+								//g_fileLoggerMain.Debug(debug);
+								//ss.clear();
+								//ss.str("");
 							}
 							else
 							{
@@ -592,7 +605,8 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_evaluationFunction);
 	
 	pdut.addTestFunc(test_findRectangularPath);
-	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
+	//pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
+	pdut.addTestFunc(test2_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
 	
 	pdut.runTest();
 	//unit test 的代码 end

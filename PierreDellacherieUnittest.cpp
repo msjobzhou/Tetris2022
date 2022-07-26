@@ -796,7 +796,9 @@ void test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetris
 	//再下个方块还是■■■■
 	pNextTetrisBlock = new CTetrisBlock(6, 0);
 	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
-	
+	assert(cmdList.size() == 2);
+	//第一个命令是旋转
+	assert(cmdList.front() == 4);
 	assert(sp.nPosX == 3);
 	assert(sp.nPosY == 3);
 	
@@ -805,4 +807,45 @@ void test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetris
 	delete pNextTetrisBlock;
 	delete pTetrisDraw;
 	delete pTetrisController;
+}
+
+void test2_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock()
+{
+	
+	
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = 100;
+	rect.bottom = 200;
+	//CTetrisDraw构造函数的两个参数在此测试函数中并不会用到，所以随便设置一下
+	CTetrisDraw* pTetrisDraw = new CTetrisDraw(0, rect);
+	CPierreDellacherieTetrisController* pTetrisController = new CPierreDellacherieTetrisController(pTetrisDraw);
+
+	//先构造空白的board数据
+
+
+	//  ■
+	//■■
+	//  ■
+	CTetrisBlock* pTetrisBlock = new CTetrisBlock(3, 1);
+	pTetrisController->setCurTetrisBlock(pTetrisBlock);
+
+	//下一个方块信息
+	//  ■
+	//■■■
+	CTetrisBlock* pNextTetrisBlock = new CTetrisBlock(3, 2);
+
+
+	sPosition sp;
+	list<int> cmdList;
+	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
+
+	assert(cmdList.size() == 4);
+	//第一个命令是旋转
+	assert(cmdList.front() == 4);
+
+	assert(sp.nPosX == 1);
+	assert(sp.nPosY == 3);
+
 }

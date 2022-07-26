@@ -764,7 +764,8 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 			int nLevelNumErased=0;
 			int epcm;
 			int nStoppedY;
-			
+			//打印tetris block到文件中
+			ss << "1st tetris block的height " << stb.nBlockHeight << " width " << stb.nBlockWidth << " nPosX " << stb.nPosX << " nPosY " << stb.nPosY << endl;
 			bool bRet = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nPosX, nStoppedY);
 			ss << "1st block nRotation time "<< nRotation <<" findRectangularPath nPosX " << nPosX << " nStoppedY " << nStoppedY << "result " << bRet << endl;
 			string debug = ss.str();
@@ -813,7 +814,8 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 						}
 						ss << endl;
 					}
-					//findRectangularPath函数中的参数nLevelNumErased2设置成-255，表示此函数不使用stb填充pbArrTetrisBoardCopy，转而由后面的evaluationFunction来做此动作
+					ss << "2nd tetris block的height " << stb2.nBlockHeight << " width " << stb2.nBlockWidth << " nPosX " << stb2.nPosX << " nPosY " << stb2.nPosY << endl;
+
 					bool bRet2 = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb2, nPosX2, nStoppedY2);
 					ss << "2nd block nRotation time " << nRotation2 << " findRectangularPath nPosX2 " << nPosX2 << " nStoppedY2 " << nStoppedY2 << " result " << bRet2 << endl;
 					string debugTmp = ss.str();
@@ -845,7 +847,7 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 								}
 								ss << endl;
 							}
-							ss <<"epcm " << epcm << " stb.nPosY + 1 " << stb.nPosY + 1 << " nTmpLevelErased2 "<< nTmpLevelErased2 << " ";
+							ss <<"epcm " << epcm << " stb.nPosY + 1: " << stb.nPosY + 1 << " nTmpLevelErased2 "<< nTmpLevelErased2 << " ";
 							ss << "evaluationFunction score " << fScore << endl;
 							string debug = ss.str();
 							g_fileLogger.Debug(debug);

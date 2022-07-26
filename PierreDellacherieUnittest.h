@@ -36,3 +36,5 @@ void test_evaluationFunction();
 void test_findRectangularPath();
 
 void test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock();
+
+void test2_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock();
