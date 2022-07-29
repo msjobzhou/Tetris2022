@@ -841,11 +841,16 @@ void test2_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetri
 	list<int> cmdList;
 	sp = pTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(cmdList, pNextTetrisBlock);
 
-	assert(cmdList.size() == 4);
+	assert(cmdList.size() == 3);
 	//第一个命令是旋转
 	assert(cmdList.front() == 4);
 
 	assert(sp.nPosX == 1);
-	assert(sp.nPosY == 3);
+	assert(sp.nPosY == 1);
 
+	//pTetrisBlock会由CPierreDellacherieTetrisController的析构函数来释放，这里不用显式进行释放了
+	//delete pTetrisBlock;
+	delete pNextTetrisBlock;
+	delete pTetrisDraw;
+	delete pTetrisController;
 }

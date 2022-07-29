@@ -138,7 +138,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 		if (mode == AIMode)
 		{
 			//AI模式下，20倍速进行
-			timer_speedup = 5;
+			timer_speedup = 20;
 			if (AIMode_two_piece)
 				pPDTetrisController->generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock(AICmdList, pNextTetrisBlock);
 			else
@@ -194,7 +194,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
 				{
 					mode = AIMode;
 					//AI模式下，20倍速进行
-					timer_speedup = 5;
+					timer_speedup = 20;
 					SendMessage(hwnd, WM_KEYDOWN, 0x52, 0);
 					break;
 				}
@@ -605,7 +605,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	pdut.addTestFunc(test_evaluationFunction);
 	
 	pdut.addTestFunc(test_findRectangularPath);
-	//pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
+	pdut.addTestFunc(test_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
 	pdut.addTestFunc(test2_generateAICommandListForCurrentTetrisBlockWithTheKnowledgeOfNextTetrisBlock);
 	
 	pdut.runTest();

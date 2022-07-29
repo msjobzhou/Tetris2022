@@ -738,7 +738,7 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 	int nFirstBlockPosX, nFirstBlockPosY;
 	int nSecondBlockPosX, nSecondBlockPosY;
 	
-	stringstream ss;
+	//stringstream ss;
 
 	//对每个俄罗斯方块的可变形状进行调用
 	for (int nRotation = 0; nRotation < nMaxOrientation; nRotation++)
@@ -765,13 +765,13 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 			int epcm;
 			int nStoppedY;
 			//打印tetris block到文件中
-			ss << "1st tetris block的height " << stb.nBlockHeight << " width " << stb.nBlockWidth << " nPosX " << stb.nPosX << " nPosY " << stb.nPosY << endl;
+			//ss << "1st tetris block的height " << stb.nBlockHeight << " width " << stb.nBlockWidth << " nPosX " << stb.nPosX << " nPosY " << stb.nPosY << endl;
 			bool bRet = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb, nPosX, nStoppedY);
-			ss << "1st block nRotation time "<< nRotation <<" findRectangularPath nPosX " << nPosX << " nStoppedY " << nStoppedY << "result " << bRet << endl;
+			/*ss << "1st block nRotation time "<< nRotation <<" findRectangularPath nPosX " << nPosX << " nStoppedY " << nStoppedY << "result " << bRet << endl;
 			string debug = ss.str();
 			g_fileLogger.Debug(debug);
 			ss.clear();
-			ss.str("");
+			ss.str("");*/
 			if (bRet == false)
 				continue;
 			//bRet为true，找到对应的RectangularPath，用停止下落的pTetrisBlock填充pbArrTetrisBoardCopy，
@@ -780,7 +780,7 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 
 			//将第一个方块放置之后的TetrisBoard拷贝一份
 			getArrCopyFromTetrisBoard(pbArrTetrisBoardCopyAfterFirstBlockStopped, pbArrTetrisBoardCopy);
-
+			getTetrisBlockCopy(pNextTetrisBlock, stb2);
 			//对第二个方块的旋转和水平移动情况进行组合遍历
 			for (int nRotation2 = 0; nRotation2 < nMaxOrientation2; nRotation2++)
 			{
@@ -805,8 +805,8 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 					int epcm2;
 					int nStoppedY2=-1;
 					//打印TetrisBoard到日志文件中方便定位
-					ss << "TetrisBoard after first block " << endl;
-					for (int y = 0; y < nTetrisBoardHeight; y++)
+					/*ss << "TetrisBoard after first block " << endl;
+					for (int y = nTetrisBoardHeight-1; y >= 0; y--)
 					{
 						for (int x = 0; x < nTetrisBoardWidth; x++)
 						{
@@ -815,13 +815,13 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 						ss << endl;
 					}
 					ss << "2nd tetris block的height " << stb2.nBlockHeight << " width " << stb2.nBlockWidth << " nPosX " << stb2.nPosX << " nPosY " << stb2.nPosY << endl;
-
+					*/
 					bool bRet2 = findRectangularPath(pbArrTetrisBoardCopy, nHeight, nWidth, stb2, nPosX2, nStoppedY2);
-					ss << "2nd block nRotation time " << nRotation2 << " findRectangularPath nPosX2 " << nPosX2 << " nStoppedY2 " << nStoppedY2 << " result " << bRet2 << endl;
+					/*ss << "2nd block nRotation time " << nRotation2 << " findRectangularPath nPosX2 " << nPosX2 << " nStoppedY2 " << nStoppedY2 << " result " << bRet2 << endl;
 					string debugTmp = ss.str();
 					g_fileLogger.Debug(debugTmp);
 					ss.clear();
-					ss.str("");
+					ss.str("");*/
 					
 					//如果能成功找到对应的路径才继续进行后面evaluationFunction等操作
 					if (bRet2 == true)
@@ -838,8 +838,8 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 							//第二个方块下落之后的消层数用nStoppedY2 - stb2.nPosY表示
 							int nTmpLevelErased2 = nStoppedY2 - stb2.nPosY;
 							fScore = fScore + m_PDCoff.epcm*epcm + m_PDCoff.lh*(stb.nPosY + 1 - nTmpLevelErased2);
-							ss << "TetrisBoard after second block " << endl;
-							for (int y = 0; y < nTetrisBoardHeight; y++)
+							/*ss << "TetrisBoard after second block " << endl;
+							for (int y = nTetrisBoardHeight - 1; y >= 0; y--)
 							{
 								for (int x = 0; x < nTetrisBoardWidth; x++)
 								{
@@ -852,7 +852,7 @@ sPosition CPierreDellacherieTetrisController::generateAICommandListForCurrentTet
 							string debug = ss.str();
 							g_fileLogger.Debug(debug);
 							ss.clear();
-							ss.str("");
+							ss.str("");*/
 
 							//找出评分最大的组合，分数相等时，优先使用第一个方块消层多的方案
 							if ((fScore >fHighestEvalutionScore)||((fScore == fHighestEvalutionScore) && (nLevelNumErased > nFirstBlockLevelErased)))
